@@ -1,0 +1,56 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Hugo: Serve (with drafts)",
+      "type": "shell",
+      "command": "hugo server -D --source site",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      },
+      "problemMatcher": [],
+      "detail": "Start local dev server on http://localhost:1313 (includes draft posts)"
+    },
+    {
+      "label": "Hugo: Serve (published only)",
+      "type": "shell",
+      "command": "hugo server --source site",
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      },
+      "problemMatcher": [],
+      "detail": "Start local dev server showing only published posts"
+    },
+    {
+      "label": "Hugo: Build",
+      "type": "shell",
+      "command": "hugo --source site",
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "problemMatcher": [],
+      "detail": "Build the site into site/public/"
+    },
+    {
+      "label": "Hugo: Clean",
+      "type": "shell",
+      "command": "rm -rf site/public site/resources",
+      "group": "build",
+      "presentation": {
+        "reveal": "silent",
+        "panel": "shared"
+      },
+      "problemMatcher": [],
+      "detail": "Delete Hugo build output"
+    }
+  ]
+}

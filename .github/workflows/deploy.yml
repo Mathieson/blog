@@ -1,0 +1,56 @@
+name: Deploy to GitHub Pages
+
+# Runs on every push to main, and can also be triggered manually
+# from the Actions tab in GitHub.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Allow the workflow to write to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Only allow one deployment at a time; don't cancel in-progress runs
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive  # required — PaperMod is a git submodule
+          fetch-depth: 0         # full history so Hugo can use .GitInfo / lastmod
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: 'latest'
+          extended: true         # PaperMod requires Hugo extended
+
+      - name: Build
+        run: hugo --source site
+        # Note: --minify is intentionally omitted.
+        # hugo.toml sets minifyOutput = false because Hugo's minifier
+        # breaks PaperMod's JSON-LD schema output.
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site/public
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

@@ -1,0 +1,16 @@
+# WordPress export (keep out of version control)
+*.xml
+export/
+
+# Hugo build output
+site/public/
+site/resources/
+
+# Hugo module cache
+site/.hugo_build.lock
+
+# macOS
+.DS_Store
+
+# Source assets already copied into site/
+clipart2708970.png

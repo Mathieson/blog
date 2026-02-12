@@ -1,0 +1,43 @@
+{
+  // ── Markdown ──────────────────────────────────────────────────────────────
+  "[markdown]": {
+    "editor.wordWrap": "on",
+    "editor.wordWrapColumn": 100,
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2,
+    "editor.quickSuggestions": {
+      "other": true,
+      "comments": false,
+      "strings": false
+    }
+  },
+  // Disable VS Code's built-in markdown link validator (conflicts with Hugo shortcodes)
+  "markdown.validate.enabled": false,
+
+  // ── TOML ──────────────────────────────────────────────────────────────────
+  "[toml]": {
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2
+  },
+
+  // ── General editor ────────────────────────────────────────────────────────
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "editor.rulers": [100],
+
+  // ── File associations ─────────────────────────────────────────────────────
+  "files.associations": {
+    "*.html": "html",
+    "*.toml": "toml"
+  },
+
+  // ── Front Matter CMS ──────────────────────────────────────────────────────
+  // Tells the extension where your Hugo site root lives
+  "frontMatter.site.frontMatterDir": "site",
+
+  // ── markdownlint ──────────────────────────────────────────────────────────
+  "markdownlint.config": {
+    "MD013": false,   // line length — too strict for blog prose
+    "MD033": false    // inline HTML — needed for Hugo shortcodes
+  }
+}

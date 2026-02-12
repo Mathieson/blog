@@ -1,0 +1,117 @@
+# =============================================================================
+# TODO: Update these values before going live
+# =============================================================================
+# baseURL       → set to your live URL, e.g. "https://username.github.io/" or
+#                 "https://username.github.io/repo-name/" if deployed to a sub-path
+# params.author → replace "Your Name" with your name
+# params.socialIcons[].url → add your GitHub profile URL
+# =============================================================================
+#
+# Giscus comments setup (see [params.giscus] section below):
+#   1. Create a public GitHub repository for your blog (if you haven't already)
+#   2. Enable Discussions on that repo: Settings → Features → Discussions ✓
+#   3. Install the Giscus GitHub App: https://github.com/apps/giscus
+#      Grant access to your blog repo
+#   4. Visit https://giscus.app, enter your repo name, and generate your values
+#   5. Copy data-repo, data-repo-id, data-category, data-category-id into the
+#      [params.giscus] section below
+# =============================================================================
+
+baseURL      = "/"
+languageCode = "en-us"
+title        = "Mat's Mind Dump"
+theme        = "PaperMod"
+[pagination]
+  pagerSize = 10
+
+enableRobotsTXT = true
+buildDrafts     = false
+buildFuture     = false
+buildExpired    = false
+
+[minify]
+  disableXML = true
+  minifyOutput = false
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+# ---------------------------------------------------------------------------
+# Syntax highlighting
+# ---------------------------------------------------------------------------
+[markup]
+  [markup.highlight]
+    style              = "monokai"
+    lineNos            = false
+    lineNumbersInTable = true
+    noClasses          = false   # PaperMod requires false; it ships its own chroma CSS
+  [markup.goldmark.renderer]
+    unsafe = true   # allow raw HTML in markdown (needed for embedded content)
+
+# ---------------------------------------------------------------------------
+# PaperMod theme parameters
+# ---------------------------------------------------------------------------
+[params]
+  env           = "production"
+  author        = "Your Name"  # TODO: replace with your name
+  description   = "Adventures in Tech Art & iOS Dev"
+  defaultTheme  = "light"
+  disableSpecial1stPost = true
+  ShowReadingTime      = true
+  ShowShareButtons     = false
+  ShowPostNavLinks     = true
+  ShowBreadCrumbs      = true
+  ShowCodeCopyButtons  = true
+  ShowRssButtonInList  = true
+  ShowToc              = true
+  disableScrollToTop   = false
+  comments             = true   # enables the Giscus partial
+
+  [params.label]
+    text        = "Mat's Mind Dump"
+    icon        = "/logo.png"
+    iconHeight  = 40
+
+  [params.profileMode]
+    enabled     = true
+    title       = "Mat's Mind Dump"
+    subtitle    = "Adventures in Tech Art & iOS Dev"
+    imageUrl    = "logo.png"   # resolves from site/assets/logo.png
+    imageWidth  = 180
+    imageHeight = 180
+    imageTitle  = "Mat's Mind Dump"
+
+  [[params.socialIcons]]
+    name = "github"
+    url  = "https://github.com/mathieson"
+
+  # ---------------------------------------------------------------------------
+  # Giscus comment configuration
+  # Fill these in after completing the Giscus setup steps listed at the top.
+  # ---------------------------------------------------------------------------
+  [params.giscus]
+    repo         = ""   # TODO: e.g. "username/blog"
+    repoId       = ""   # TODO: from giscus.app
+    category     = ""   # TODO: e.g. "Announcements"
+    categoryId   = ""   # TODO: from giscus.app
+    mapping      = "pathname"
+    strict       = "0"
+    reactionsEnabled = "1"
+    emitMetadata     = "0"
+    inputPosition    = "bottom"
+    theme            = "preferred_color_scheme"
+    lang             = "en"
+    loading          = "lazy"
+
+# ---------------------------------------------------------------------------
+# Menus
+# ---------------------------------------------------------------------------
+[[menus.main]]
+  name       = "Posts"
+  url        = "/posts/"
+  weight     = 10
+
+[[menus.main]]
+  name       = "Tags"
+  url        = "/tags/"
+  weight     = 20

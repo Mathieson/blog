@@ -1,0 +1,16 @@
+{
+  "recommendations": [
+    // Hugo syntax highlighting and shortcode snippets
+    "budparr.language-hugo-vscode",
+    // TOML validation and autocompletion (for hugo.toml)
+    "tamasfe.even-better-toml",
+    // Markdown editing: shortcuts, TOC generation, preview
+    "yzhang.markdown-all-in-one",
+    // Markdown linting
+    "DavidAnson.vscode-markdownlint",
+    // Headless CMS dashboard for Hugo — manage posts, media, and preview
+    // without leaving VSCode. Run the "Front Matter: Initialize project"
+    // command after installing to set it up.
+    "eliostruyf.vscode-front-matter"
+  ]
+}

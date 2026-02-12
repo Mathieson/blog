@@ -1,0 +1,23 @@
+{{- with site.Params.giscus -}}
+{{- if and .repo .repoId .category .categoryId }}
+<script src="https://giscus.app/client.js"
+  data-repo="{{ .repo }}"
+  data-repo-id="{{ .repoId }}"
+  data-category="{{ .category }}"
+  data-category-id="{{ .categoryId }}"
+  data-mapping="{{ .mapping | default "pathname" }}"
+  data-strict="{{ .strict | default "0" }}"
+  data-reactions-enabled="{{ .reactionsEnabled | default "1" }}"
+  data-emit-metadata="{{ .emitMetadata | default "0" }}"
+  data-input-position="{{ .inputPosition | default "bottom" }}"
+  data-theme="{{ .theme | default "preferred_color_scheme" }}"
+  data-lang="{{ .lang | default "en" }}"
+  data-loading="{{ .loading | default "lazy" }}"
+  crossorigin="anonymous"
+  async>
+</script>
+{{- else }}
+<!-- TODO: Giscus is not yet configured. -->
+<!-- Fill in the [params.giscus] values in hugo.toml after completing setup at https://giscus.app -->
+{{- end }}
+{{- end }}

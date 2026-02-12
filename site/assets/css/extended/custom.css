@@ -1,0 +1,130 @@
+/* ── Fonts & accent colour ────────────────────────────────────────────────
+   Headings: Montserrat (clean geometric, modern tech blog feel)
+   Body:     Lato (clean, readable sans-serif)
+   Accent:   a steel blue used for links, site title, and tags
+   ───────────────────────────────────────────────────────────────────────── */
+
+:root {
+    --accent: #3a8fc7;
+    --accent-hover: #2a6f9e;
+}
+
+body {
+    font-family: 'Lato', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+
+/* Site title in nav */
+.logo a {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--accent) !important;
+}
+
+/* All links */
+a,
+.post-content a {
+    color: var(--accent);
+}
+
+a:hover,
+.post-content a:hover {
+    color: var(--accent-hover);
+}
+
+/* Post list entry titles */
+.entry-header h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+/* Tags */
+.post-tags a,
+ul.post-tags li a {
+    color: var(--accent);
+    border-color: var(--accent);
+}
+
+/* Profile mode: compact header — don't fill the whole viewport */
+.main .profile {
+    min-height: unset;
+    padding: 2.5rem 0 1.5rem;
+}
+
+/* Logo should not be cropped into a circle */
+.profile img {
+    border-radius: 0;
+}
+
+/* Home page heading (profile mode and home info mode) */
+.profile h1,
+.home-info .entry-header h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: var(--accent);
+}
+
+/* Dark mode: slightly lighter accent so it stays readable */
+:root[data-theme="dark"] {
+    --accent: #5baedd;
+    --accent-hover: #7ec3e8;
+}
+
+/* ── Single post: constrain cover image height ────────────────────────────
+   Prevents the hero image from dominating the top of the page.
+   ───────────────────────────────────────────────────────────────────────── */
+
+.post-single .entry-cover {
+    margin-bottom: 1.5rem;
+}
+
+.post-single .entry-cover img {
+    max-height: 320px;
+    max-width: 100%;
+    width: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 8px;
+}
+
+/* ── Post list: right-side thumbnail layout ───────────────────────────────
+   Mirrors the original WordPress layout where cover images appear as a
+   compact thumbnail to the right of the post text.
+   Uses :has() which is supported in all current browsers.
+   ───────────────────────────────────────────────────────────────────────── */
+
+@media (min-width: 550px) {
+    .post-entry:has(.entry-cover) {
+        display: grid;
+        grid-template-columns: 1fr 180px;
+        grid-template-rows: auto auto auto;
+        grid-template-areas:
+            "header  cover"
+            "content cover"
+            "footer  cover";
+        column-gap: 1.25rem;
+        align-items: start;
+    }
+
+    .post-entry .entry-cover {
+        grid-area: cover;
+        margin: 0;
+    }
+
+    .post-entry .entry-cover img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 6px;
+    }
+
+    .post-entry .entry-header  { grid-area: header; }
+    .post-entry .entry-content { grid-area: content; }
+    .post-entry .entry-footer  { grid-area: footer; }
+}

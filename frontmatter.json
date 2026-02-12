@@ -1,0 +1,27 @@
+{
+  "$schema": "https://frontmatter.codes/frontmatter.schema.json",
+  "frontMatter.framework.id": "hugo",
+  "frontMatter.preview.host": "http://localhost:1313",
+  "frontMatter.content.pageFolders": [
+    {
+      "title": "Posts",
+      "path": "[[workspace]]/site/content/posts",
+      "contentTypes": ["post"]
+    }
+  ],
+  "frontMatter.content.publicFolder": "[[workspace]]/site/static",
+  "frontMatter.taxonomy.contentTypes": [
+    {
+      "name": "post",
+      "pageBundle": false,
+      "fields": [
+        { "title": "Title",      "name": "title",   "type": "string" },
+        { "title": "Date",       "name": "date",    "type": "datetime" },
+        { "title": "Draft",      "name": "draft",   "type": "draft" },
+        { "title": "Tags",       "name": "tags",    "type": "tags" },
+        { "title": "Categories", "name": "categories", "type": "categories" },
+        { "title": "Cover image","name": "coverImage", "type": "image" }
+      ]
+    }
+  ]
+}
