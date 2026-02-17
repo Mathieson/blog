@@ -1,6 +1,8 @@
 # Mat's Mind Dump
 
-A static blog built with [Hugo](https://gohugo.io/) and the [PaperMod](https://github.com/adityatelange/hugo-PaperMod) theme. Comments are powered by [Giscus](https://giscus.app/) (GitHub Discussions). Originally migrated from WordPress via `migrate.py`.
+A static blog built with [Hugo](https://gohugo.io/) and the [PaperMod](https://github.com/adityatelange/hugo-PaperMod) theme, deployed to GitHub Pages. Comments are powered by [Giscus](https://giscus.app/) (GitHub Discussions). Originally migrated from WordPress.
+
+**Live site:** <https://mathieson.github.io/blog/>
 
 ---
 
@@ -32,27 +34,16 @@ Open <http://localhost:1313>. The `-D` flag includes draft posts.
 
 ---
 
-## Before going live
+## Giscus comments setup
 
-Edit `site/hugo.toml` and update every line marked `# TODO`:
-
-| Setting         | Location                  | Example                               |
-| --------------- | ------------------------- | ------------------------------------- |
-| `baseURL`       | top of file               | `"https://mathieson.github.io/blog/"` |
-| `params.author` | `[params]` section        | `"Mat"`                               |
-| Giscus values   | `[params.giscus]` section | see Giscus setup below                |
-
-### Giscus comments setup
-
-1. Push the blog to a **public** GitHub repository.
-2. Enable Discussions: repo **Settings → Features → Discussions**.
-3. Install the [Giscus GitHub App](https://github.com/apps/giscus) and grant it access to your repo.
-4. Visit <https://giscus.app>, enter your repo name, and copy the generated values.
-5. Paste `repo`, `repoId`, `category`, and `categoryId` into the `[params.giscus]` block in `site/hugo.toml`.
+1. Enable Discussions: repo **Settings → Features → Discussions**.
+2. Install the [Giscus GitHub App](https://github.com/apps/giscus) and grant it access to your repo.
+3. Visit <https://giscus.app>, enter your repo name, and copy the generated values.
+4. Paste `repo`, `repoId`, `category`, and `categoryId` into the `[params.giscus]` block in `site/hugo.toml`.
 
 ### Seed comments from WordPress (optional)
 
-Once Giscus is configured, run `migrate_comments.py` to import the original WordPress comments as GitHub Discussion replies:
+If migrating from WordPress, run `migrate_comments.py` to import comments as GitHub Discussion replies:
 
 ```bash
 uv run --with requests migrate_comments.py \

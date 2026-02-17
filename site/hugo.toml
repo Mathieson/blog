@@ -1,23 +1,8 @@
 # =============================================================================
-# TODO: Update these values before going live
-# =============================================================================
-# baseURL       → set to your live URL, e.g. "https://username.github.io/" or
-#                 "https://username.github.io/repo-name/" if deployed to a sub-path
-# params.author → replace "Your Name" with your name
-# params.socialIcons[].url → add your GitHub profile URL
-# =============================================================================
-#
-# Giscus comments setup (see [params.giscus] section below):
-#   1. Create a public GitHub repository for your blog (if you haven't already)
-#   2. Enable Discussions on that repo: Settings → Features → Discussions ✓
-#   3. Install the Giscus GitHub App: https://github.com/apps/giscus
-#      Grant access to your blog repo
-#   4. Visit https://giscus.app, enter your repo name, and generate your values
-#   5. Copy data-repo, data-repo-id, data-category, data-category-id into the
-#      [params.giscus] section below
+# Hugo configuration for Mat's Mind Dump
 # =============================================================================
 
-baseURL      = "/"
+baseURL      = "https://mathieson.github.io/blog/"
 languageCode = "en-us"
 title        = "Mat's Mind Dump"
 theme        = "PaperMod"
@@ -53,7 +38,7 @@ buildExpired    = false
 # ---------------------------------------------------------------------------
 [params]
   env           = "production"
-  author        = "Your Name"  # TODO: replace with your name
+  author        = "Mat"
   description   = "Adventures in Tech Art & iOS Dev"
   defaultTheme  = "light"
   disableSpecial1stPost = true
@@ -87,13 +72,12 @@ buildExpired    = false
 
   # ---------------------------------------------------------------------------
   # Giscus comment configuration
-  # Fill these in after completing the Giscus setup steps listed at the top.
   # ---------------------------------------------------------------------------
   [params.giscus]
-    repo         = ""   # TODO: e.g. "username/blog"
-    repoId       = ""   # TODO: from giscus.app
-    category     = ""   # TODO: e.g. "Announcements"
-    categoryId   = ""   # TODO: from giscus.app
+    repo         = "Mathieson/blog"
+    repoId       = "R_kgDOROa5Jw"
+    category     = "Announcements"
+    categoryId   = "DIC_kwDOROa5J84C2mkH"
     mapping      = "pathname"
     strict       = "0"
     reactionsEnabled = "1"
