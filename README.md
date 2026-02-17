@@ -50,6 +50,7 @@ uv run --with requests migrate_comments.py \
   --xml <your-wordpress-export.xml> \
   --repo mathieson/blog \
   --category Announcements \
+  --base-path blog \
   --token <your-github-pat>
 ```
 

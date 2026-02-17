@@ -106,11 +106,11 @@ def parse_wordpress_xml(xml_path: str) -> list[WPPost]:
                 continue  # skip unapproved / spam
 
             comments.append(WPComment(
-                id        = (c.find("wp:comment_id",     NS) or _empty()).text or "",
-                parent_id = (c.find("wp:comment_parent", NS) or _empty()).text or "0",
-                author    = (c.find("wp:comment_author", NS) or _empty()).text or "Anonymous",
-                date      = (c.find("wp:comment_date",   NS) or _empty()).text or "",
-                content   = (c.find("wp:comment_content",NS) or _empty()).text or "",
+                id        = _text(c, "wp:comment_id",      ""),
+                parent_id = _text(c, "wp:comment_parent",  "0"),
+                author    = _text(c, "wp:comment_author",  "Anonymous"),
+                date      = _text(c, "wp:comment_date",    ""),
+                content   = _text(c, "wp:comment_content", ""),
                 approved  = True,
             ))
 
@@ -120,8 +120,17 @@ def parse_wordpress_xml(xml_path: str) -> list[WPPost]:
     return posts
 
 
-class _empty:
-    text = None
+def _text(parent, tag: str, default: str = "") -> str:
+    """Safely extract text from an XML child element.
+
+    Note: xml.etree Elements with no children evaluate to False in a
+    boolean context, so ``el or fallback`` doesn't work. Use ``is not
+    None`` instead.
+    """
+    el = parent.find(tag, NS)
+    if el is not None and el.text is not None:
+        return el.text
+    return default
 
 
 # ── GitHub GraphQL helpers ────────────────────────────────────────────────────
@@ -220,11 +229,15 @@ def format_comment(comment: WPComment) -> str:
     )
 
 
-def discussion_title_for_post(slug: str) -> str:
+def discussion_title_for_post(slug: str, base_path: str = "") -> str:
     """
     Giscus maps pages to discussions by pathname (default mapping).
-    The pathname Hugo generates for posts is /posts/<slug>/
+    The pathname Hugo generates for posts is /<base_path>/posts/<slug>/
+    where base_path comes from the baseURL (e.g. "blog" for
+    https://username.github.io/blog/).
     """
+    if base_path:
+        return f"/{base_path}/posts/{slug}/"
     return f"/posts/{slug}/"
 
 
@@ -236,6 +249,8 @@ def main():
     parser.add_argument("--repo",     required=True,  help="GitHub repo (owner/name)")
     parser.add_argument("--category", required=True,  help="GitHub Discussions category name")
     parser.add_argument("--token",    required=True,  help="GitHub personal access token")
+    parser.add_argument("--base-path", default="",
+                        help="URL base path (e.g. 'blog' for username.github.io/blog/)")
     parser.add_argument("--dry-run",  action="store_true",
                         help="Print actions without calling the API")
     args = parser.parse_args()
@@ -253,7 +268,7 @@ def main():
 
     if args.dry_run:
         for post in posts:
-            print(f"[DRY RUN] Would create discussion: {discussion_title_for_post(post.slug)}")
+            print(f"[DRY RUN] Would create discussion: {discussion_title_for_post(post.slug, args.base_path)}")
             for c in post.comments:
                 print(f"  → Comment by {c.author} ({c.date})")
         return
@@ -264,7 +279,7 @@ def main():
     total_comments = 0
     for post in posts:
         print(f"\nPost: {post.title}")
-        title = discussion_title_for_post(post.slug)
+        title = discussion_title_for_post(post.slug, args.base_path)
         body  = (
             f"Comments migrated from the original WordPress post: "
             f"**{post.title}**\n\n"

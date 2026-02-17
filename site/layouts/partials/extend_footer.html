@@ -1,3 +1,32 @@
 {{- if .IsHome }}
 <script src="/js/infinite-scroll.js" defer></script>
 {{- end }}
+
+{{- /* Sync PaperMod theme toggle with Giscus iframe */ -}}
+<script>
+(function() {
+  function getTheme() {
+    return document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+  }
+  function setGiscusTheme(theme) {
+    var iframe = document.querySelector('iframe.giscus-frame');
+    if (iframe) {
+      iframe.contentWindow.postMessage(
+        { giscus: { setConfig: { theme: theme } } },
+        'https://giscus.app'
+      );
+    }
+  }
+  // Set initial theme once Giscus loads
+  window.addEventListener('message', function(e) {
+    if (e.origin === 'https://giscus.app') {
+      setGiscusTheme(getTheme());
+    }
+  });
+  // Watch for PaperMod theme toggle changes
+  var observer = new MutationObserver(function() {
+    setGiscusTheme(getTheme());
+  });
+  observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+})();
+</script>

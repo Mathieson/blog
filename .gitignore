@@ -9,6 +9,10 @@ site/resources/
 # Hugo module cache
 site/.hugo_build.lock
 
+# Python
+__pycache__/
+*.pyc
+
 # macOS
 .DS_Store
 
