@@ -47,6 +47,7 @@ If migrating from WordPress, run `migrate_comments.py` to import comments as Git
 
 ```bash
 uv run --with requests migrate_comments.py \
+  --xml <your-wordpress-export.xml> \
   --repo mathieson/blog \
   --category Announcements \
   --token <your-github-pat>

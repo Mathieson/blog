@@ -27,6 +27,15 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--accent) !important;
 }
 
+/* Nav bar: show only the icon, hide the text on all pages */
+.logo a {
+    font-size: 0;
+}
+
+.logo a img {
+    transform: none;
+}
+
 /* All links */
 a,
 .post-content a {
