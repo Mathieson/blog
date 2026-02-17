@@ -5,7 +5,7 @@ tags = ["deep-learning", "pytorch", "reinforcement-learning"]
 +++
 
 
-Reinforcement learning is my area of focus so far when it comes to deep learning. RL is probably is not the first stop for most on the machine learning education circuit, but it just happens to be where the problem I am trying to solve has taken me.
+Reinforcement learning is my area of focus so far when it comes to deep learning. RL is probably not the first stop for most on the machine learning education circuit, but it just happens to be where the problem I am trying to solve has taken me.
 
 When starting down the RL road, I was immediately confused by the concept of reward. Nothing was confusing about what it was - giving a dog a treat when it sits after you've asked it to sums things up pretty well. Instead, I was confused by its relation to the loss function. Both, at a high level, help inform when the correct thing is happening.
 
@@ -17,7 +17,7 @@ If you're unfamiliar with reinforcement learning - things work a bit different f
 
 Neural networks are still present in RL, but they are applied differently, and, in my experience so far, the emphasis is less on the NN and more on the environment. For example, there is a high-level wrapper library for RL, [stable-baselines](https://github.com/DLR-RM/stable-baselines3), which can handle all of the NN setups for you.
 
-There is no dataset in machine learning. Instead, you have an environment. To properly train your agent, you need to create a custom environment for your agent to interact. A standard template exists for creating custom environments. You need to describe the environment state, the agent's allowed actions, and the reward for said actions.
+There is no dataset in reinforcement learning. Instead, you have an environment. To properly train your agent, you need to create a custom environment for your agent to interact. A standard template exists for creating custom environments. You need to describe the environment state, the agent's allowed actions, and the reward for said actions.
 
 ![5 Things You Need to Know about Reinforcement Learning - KDnuggets](images/reinforcement-learning-fig1-700.jpg)
 
