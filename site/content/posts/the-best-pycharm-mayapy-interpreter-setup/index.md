@@ -15,13 +15,13 @@ Today I will share how I set up PyCharm to work with MayaPy and how it enables a
 
 ## Getting Maya Python stub files
 
-To get started, we'll fetch Maya's devkit. If you're unfamiliar, the devkit contains autocomplete stubs for Maya's Python modules. Download the appropriate one for your version of Maya from [here](https://www.autodesk.com/developer-network/platform-technologies/maya and download the).
+To get started, we'll fetch Maya's devkit. If you're unfamiliar, the devkit contains autocomplete stubs for Maya's Python modules. Download the appropriate one for your version of Maya from [here](https://www.autodesk.com/developer-network/platform-technologies/maya).
 
 With it downloaded, you'll find the stub files at the following location inside: `devkit/other/Python(x)/pymel/completion`
 
 There is a special kind of stub file PyCharm supports that we will take advantage of - pyi files! I reached out to Autodesk several years ago when I first learned of pyi files and asked them to begin including them with Maya distributions. So, if you see a folder named "pyi" in the devkit location from above, use it. If you are on a version of Maya where the devkit _doesn't_ include pyi files, we can make them ourselves! All you need to do is rename the extension of the .py Maya stubs to .pyi. Here is a short script to help you with the renaming.
 
-```
+```python
 import os
 import shutil
 def rename_from_py_to_pyi(py_dir, output_dir):
@@ -41,19 +41,19 @@ Find a nice home for these pyi stubs on your hard drive, as we will be using the
 
 Now that you have a stubs folder full of .pyi files, it is time we set up our MayaPy interpreter in PyCharm. If you've done this before using past approaches, this time will be slightly different because of pyi, so be sure to follow along.
 
-![](images/image-1024x706.png)
+![PyCharm Python Interpreter settings panel](images/image-1024x706.png)
 
 1. In PyCharm's Settings, go into _"Project: <Your Project Name>"_ and choose _"Python Interpreter"_ from the left-side menu.
 2. Click on the _"..."_ button to the right of the _"Python Interpreter:"_ dropdown and choose _"Add..."_
 
-![](images/image-2.png)
+![System Interpreter selection dialog](images/image-2.png)
 
 1. Select _"System Interpreter"_.
 2. Press the _"..."_ button to the right of the _"Interpreter:"_ dropdown. It will pop up a new window.
 3. Navigate to your Maya installation's bin folder and choose _"mayapy.exe"_ (or _"mayapy2.exe"_).
 4. Press OK
 
-![](images/image-3.png)
+![Renaming the MayaPy interpreter](images/image-3.png)
 
 1. Press the _"..."_ button to the right of the _"Python Interpreter:"_ dropdown again. This time choose _"Show All..."_
 2. From the list of interpreters that appears, choose the one you just made.
@@ -61,7 +61,7 @@ Now that you have a stubs folder full of .pyi files, it is time we set up our Ma
 4. Rename it to something more descriptive. I like to follow the template of _"ExeName AppVersion PythonVersion"_, i.e. _"MayaPy 2022 3.7"_
 5. Press OK to accept your changes.
 
-![](images/image-4.png)
+![Adding pyi stubs folder to interpreter paths](images/image-4.png)
 
 1. Select your newly renamed Python Interpreter again from the previous window.
 2. This time, press the tree, _"Show paths for the selected interpreter"_, button.

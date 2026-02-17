@@ -19,4 +19,4 @@ If you're new to machine learning and aren't too sure where to start, give Kaggl
 
 [https://www.kaggle.com/learn](https://www.kaggle.com/learn)
 
-![](images/learn-home-208h@2x.png)
+![Kaggle Learn courses homepage](images/learn-home-208h@2x.png)

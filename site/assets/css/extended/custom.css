@@ -79,10 +79,22 @@ ul.post-tags li a {
     color: var(--accent);
 }
 
+/* Light mode: light code block background */
+:root:not([data-theme="dark"]) {
+    --code-block-bg: #fafafa;
+}
+
 /* Dark mode: slightly lighter accent so it stays readable */
 :root[data-theme="dark"] {
     --accent: #5baedd;
     --accent-hover: #7ec3e8;
+}
+
+/* Dark mode: light outline around logo so it reads on dark backgrounds */
+[data-theme="dark"] .logo img,
+[data-theme="dark"] .profile img {
+    filter: drop-shadow(0 0 1px rgba(255,255,255,0.6))
+            drop-shadow(0 0 3px rgba(255,255,255,0.3));
 }
 
 /* ── Single post: constrain cover image height ────────────────────────────

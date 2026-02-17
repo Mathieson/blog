@@ -11,7 +11,7 @@ While it is remarkably flexible and powerful, it is still very young. There are 
 
 One such area is with entering currency values in an application. Searching this topic brought back many results, but all of which seemed overly complicated. I returned to this today and came up with what I feel is a solid and straightforward solution, so I thought I would share!
 
-```
+```swift
 import SwiftUI
 
 struct SelectOnFocus: ViewModifier {
@@ -32,19 +32,19 @@ extension TextField {
 }
 
 public struct CurrencyField: View {
-    
+
     @Binding var value: Decimal?
     @FocusState private var isActive
-    
+
     var locale = Locale.current
-    
+
     var formatter: NumberFormatter {
         let formatter = NumberFormatter()
         formatter.locale = locale
         formatter.numberStyle = .currency
         return formatter
     }
-    
+
     public var body: some View {
         TextField(formatter.string(from: 0) ?? "0",
                   value: $value,
@@ -84,7 +84,7 @@ struct CurrencyField_Previews: PreviewProvider {
 
 And here are the results from the PreviewProvider.
 
-![](images/Screen-Shot-2022-01-10-at-5.28.24-PM.png)
+![CurrencyField preview showing multiple locale formats](images/Screen-Shot-2022-01-10-at-5.28.24-PM.png)
 
 The behaviour is similar to a currency field you often see in apps.
 

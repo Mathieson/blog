@@ -9,7 +9,7 @@ The \_\_new\_\_ method is a special method for Python classes. It is essentially
 
 This concept can be a bit confusing at first. A better way of understanding might be through example.
 
-```
+```python
 class Sphere(object):
     pass
 
@@ -23,7 +23,7 @@ print "My cube object is of type: %s" % type(obj)
 
 Here is the most basic and obvious example of what \_\_new\_\_ does. If you run this code, you will see that your cube is actually a sphere. The \_\_new\_\_ method of the Cube class is being overridden. If I were to not override the method, the code inside would essentially look like this:
 
-```
+```python
 return object.__new__(cls, *args, **kwargs)
 ```
 
@@ -43,7 +43,7 @@ This was powerful because it brought all the features of inheritance to my riggi
 
 Every once in a while you might come across an instance where you might want a class to ever be able to be created once. Nine times out of ten this probably means you should be breaking this code out to its own module, but there is still that odd time that you might have reason not to. You can use the \_\_new\_\_ method to make it so your class only ever gets created once. Here is example code for this:
 
-```
+```python
 class Singleton(object):
     _instance = None
 

@@ -45,7 +45,7 @@ The for-loop was just a summation. The Sum Rule shows to get the derivative of f
 
 <figure>
 
-![](images/Screen-Shot-2022-09-05-at-10.12.49-AM.png)
+![Sum Rule for derivatives](images/Screen-Shot-2022-09-05-at-10.12.49-AM.png)
 
 <figcaption>
 
@@ -65,7 +65,7 @@ The trick for circumventing this problem is to take advantage of getting the squ
 
 <figure>
 
-![](images/image-1.png)
+![Square root of x squared equals absolute value of x](images/image-1.png)
 
 <figcaption>
 

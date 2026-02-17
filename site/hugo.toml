@@ -39,7 +39,7 @@ buildExpired    = false
 [params]
   env           = "production"
   author        = "Mat"
-  description   = "Adventures in Tech Art & iOS Dev"
+  description   = "Adventures in Tech Art, AI & iOS Dev"
   defaultTheme  = "light"
   disableSpecial1stPost = true
   ShowReadingTime      = true
@@ -60,7 +60,7 @@ buildExpired    = false
   [params.profileMode]
     enabled     = true
     title       = "Mat's Mind Dump"
-    subtitle    = "Adventures in Tech Art & iOS Dev"
+    subtitle    = "Adventures in Tech Art, AI & iOS Dev"
     imageUrl    = "logo.png"   # resolves from site/assets/logo.png
     imageWidth  = 180
     imageHeight = 180
@@ -69,6 +69,10 @@ buildExpired    = false
   [[params.socialIcons]]
     name = "github"
     url  = "https://github.com/mathieson"
+
+  [[params.socialIcons]]
+    name = "linkedin"
+    url  = "https://linkedin.com/in/matfacer"
 
   # ---------------------------------------------------------------------------
   # Giscus comment configuration

@@ -19,13 +19,13 @@ I finally landed on something that feels clean and doesn't have much boilerplate
 
 The first step is to disable "Use Scalar Type" on your attribute in the Data Inspector.
 
-![](images/Screen-Shot-2022-01-21-at-6.42.18-PM.png)
+![CoreData attribute inspector showing Use Scalar Type option](images/Screen-Shot-2022-01-21-at-6.42.18-PM.png)
 
 Doing this will change the data type in the Swift codegen from Double to NSNumber?, which you can see is optional (yay!)
 
 Now that we have an NSNumber? as our type, we want to extend our NSManagedObject codegen with a get/set as a Double?.
 
-```
+```swift
 extension MyEntity {
     var length: Double? {
         get {
@@ -49,7 +49,7 @@ To call it out and make it obvious, please note that the attribute's name in Cor
 
 This code should be pretty straightforward stuff. However, it isn't terrific to rewrite this every time you want a Double? type. Instead, you can change this to the following to make it reusable with little repetitive code.
 
-```
+```swift
 extension NSManagedObject {
     func optionalGet(storedValue: NSNumber?) -> Double? {
         if let value = storedValue?.doubleValue, value > 0 {
@@ -79,7 +79,7 @@ This code now extends NSManagedObject instead, adding general functions for gett
 
 I also needed Decimal? as a stored type. Here is another extension, overloading the optionalGet and optionalSet to work with Decimal?.
 
-```
+```swift
 func optionalGet(storedValue: NSDecimalNumber?) -> Decimal? {
     if let value = storedValue?.decimalValue, value > 0 {
         return value

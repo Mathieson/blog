@@ -69,7 +69,7 @@ To give some insight into my problem space, while keeping it minimal - I am work
 
 I installed [PyTorch3D](http://pytorch3d.org) to leverage the mesh framework within, even though my problem is in 2D space, and it was quick and easy to create a custom loss function. I made the environment slightly more complicated once again and tried running my optimization loop. Keep in mind - this is not RL at this point, but instead just testing a theory on convergence for my problem, similar to [PyTorch3D's Fit Mesh](https://pytorch3d.org/tutorials/deform_source_mesh_to_target_mesh) tutorial. The result was great!
 
-![](images/image.png)
+![Convergence results from custom loss function optimization](images/image.png)
 
 ## What have I learned?
 

@@ -22,9 +22,9 @@ If you're visiting my blog, you're possibly a technical artist or rigger. One of
 
 To keep things simple for now, let's use an already established naming convention: Motionbuilder's Required HIK Nodes.
 
-![](images/39a64c6b-2dd6-4961-8a55-2fd5a60a0936-37878-0000058ff829b725_file-292x300.jpg)
+![Motionbuilder HIK required node naming convention](images/39a64c6b-2dd6-4961-8a55-2fd5a60a0936-37878-0000058ff829b725_file-292x300.jpg)
 
-```
+```regex
 ^(Left|Right)?([A-Za-z]+)$
 ```
 
