@@ -95,11 +95,6 @@ buildExpired    = false
 # Menus
 # ---------------------------------------------------------------------------
 [[menus.main]]
-  name       = "Posts"
-  url        = "/posts/"
-  weight     = 10
-
-[[menus.main]]
   name       = "Tags"
   url        = "/tags/"
   weight     = 20
