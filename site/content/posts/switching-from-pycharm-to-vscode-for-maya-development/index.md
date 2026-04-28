@@ -1,7 +1,7 @@
 +++
 title = "Switching from PyCharm to VS Code for Maya Development"
 date = 2026-04-02
-draft = true
+draft = false
 tags = ["maya", "python", "vscode", "tooling", "tech-art"]
 +++
 
