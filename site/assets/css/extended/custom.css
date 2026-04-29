@@ -36,6 +36,20 @@ h1, h2, h3, h4, h5, h6 {
     transform: none;
 }
 
+/* Move PaperMod's theme toggle from the left (next to logo) over to the
+   right, alongside the menu. Flattens .logo so its children participate
+   directly in .header-nav's flex layout, then re-orders them. */
+.header-nav .logo {
+    display: contents;
+}
+.header-nav .menu {
+    order: 1;
+    margin-left: auto;
+}
+.header-nav .logo-switches {
+    order: 2;
+}
+
 /* All links */
 a,
 .post-content a {
