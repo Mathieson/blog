@@ -1,44 +1,93 @@
-/* ── Fonts & accent colour ────────────────────────────────────────────────
-   Headings: Montserrat (clean geometric, modern tech blog feel)
-   Body:     Lato (clean, readable sans-serif)
-   Accent:   a steel blue used for links, site title, and tags
+/* ── Mat's Mind Dump — custom.css ─────────────────────────────────────────
+   Loaded by PaperMod from site/assets/css/extended/.
+   Overrides PaperMod's theme tokens (--theme, --primary, etc.) directly
+   rather than via aliases so we win specificity.
    ───────────────────────────────────────────────────────────────────────── */
 
+/* ── 1. Theme tokens ────────────────────────────────────────────────────── */
+/* Light: warm off-white base, cool ink for text */
 :root {
-    --accent: #3a8fc7;
-    --accent-hover: #2a6f9e;
+    --theme:       oklch(98.4% 0.006 80);
+    --entry:       oklch(98.4% 0.006 80);
+    --primary:     oklch(22%   0.010 260);
+    --secondary:   oklch(48%   0.012 260);
+    --tertiary:    oklch(80%   0.012 80);
+    --content:     oklch(22%   0.010 260);
+    --border:      oklch(90%   0.012 80);
+    --code-bg:     oklch(96%   0.010 80);
+    --code-block-bg: oklch(96% 0.010 80);
+
+    /* Custom accent + transition */
+    --ac:    oklch(56% 0.13 232);     /* steel blue */
+    --ac-h:  oklch(46% 0.13 232);     /* hover */
+    --ac-bg: oklch(94.5% 0.028 232);  /* tinted background */
+    --tr:    0.18s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Dark: deep navy */
+:root[data-theme="dark"] {
+    --theme:       oklch(15.5% 0.010 260);
+    --entry:       oklch(18%   0.010 260);
+    --primary:     oklch(93%   0.005 80);
+    --secondary:   oklch(65%   0.008 80);
+    --tertiary:    oklch(35%   0.012 260);
+    --content:     oklch(93%   0.005 80);
+    --border:      oklch(27%   0.015 260);
+    --code-bg:     oklch(20%   0.012 260);
+    --code-block-bg: oklch(20% 0.012 260);
+
+    --ac:    oklch(68% 0.12 232);
+    --ac-h:  oklch(78% 0.10 232);
+    --ac-bg: oklch(24% 0.040 232);
+}
+
+/* ── 2. Body ────────────────────────────────────────────────────────────── */
 body {
+    background: var(--theme) !important;
+    color: var(--primary);
     font-family: 'Lato', -apple-system, BlinkMacSystemFont, sans-serif;
+    -webkit-font-smoothing: antialiased;
 }
 
+/* ── 3. Headings ────────────────────────────────────────────────────────── */
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
     letter-spacing: 0.02em;
 }
 
-/* Site title in nav */
-.logo a {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    color: var(--accent) !important;
+/* ── 4. Links ───────────────────────────────────────────────────────────── */
+a, .post-content a {
+    color: var(--ac);
+    transition: color var(--tr);
+}
+a:hover, .post-content a:hover {
+    color: var(--ac-h);
 }
 
-/* Nav bar: show only the icon, hide the text on all pages */
+/* ── 5. Frosted-glass sticky header ─────────────────────────────────────── */
+.header {
+    background: color-mix(in oklch, var(--theme) 82%, transparent) !important;
+    backdrop-filter: blur(14px) saturate(1.4);
+    -webkit-backdrop-filter: blur(14px) saturate(1.4);
+}
+
+/* ── 6. Logo + nav menu ─────────────────────────────────────────────────── */
+/* Hide the site-name text in nav (logo image only) */
 .logo a {
     font-size: 0;
 }
-
 .logo a img {
     transform: none;
+    filter: drop-shadow(0 2px 6px oklch(56% 0.13 232 / 0.18));
+    transition: filter var(--tr), transform var(--tr);
+}
+.logo a:hover img {
+    filter: drop-shadow(0 4px 12px oklch(56% 0.13 232 / 0.30));
+    transform: translateY(-1px);
 }
 
-/* Move PaperMod's theme toggle from the left (next to logo) over to the
-   right, alongside the menu. Flattens .logo so its children participate
-   directly in .header-nav's flex layout, then re-orders them. */
+/* Theme toggle on the right (PaperMod's default puts it left of the logo) */
 .header-nav .logo {
     display: contents;
 }
@@ -50,116 +99,320 @@ h1, h2, h3, h4, h5, h6 {
     order: 2;
 }
 
-/* All links */
-a,
-.post-content a {
-    color: var(--accent);
-}
-
-a:hover,
-.post-content a:hover {
-    color: var(--accent-hover);
-}
-
-/* Post list entry titles */
-.entry-header h2 {
+/* Menu links: small Montserrat caps */
+.menu a {
     font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
     font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--secondary);
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: color var(--tr), background var(--tr);
+}
+.menu a:hover {
+    color: var(--ac);
+    background: var(--ac-bg);
 }
 
-/* Tags */
-.post-tags a,
-ul.post-tags li a {
-    color: var(--accent);
-    border-color: var(--accent);
-}
-
-/* Profile mode: compact header — don't fill the whole viewport */
+/* ── 7. Profile section ─────────────────────────────────────────────────── */
 .main .profile {
     min-height: unset;
-    padding: 2.5rem 0 1.5rem;
+    padding: 52px 0 44px;
 }
 
-/* Logo should not be cropped into a circle */
 .profile img {
-    border-radius: 0;
+    border-radius: 0 !important;
+    filter: drop-shadow(0 4px 18px oklch(56% 0.13 232 / 0.22));
+    transition: filter var(--tr), transform 0.25s ease;
+}
+.profile img:hover {
+    filter: drop-shadow(0 8px 28px oklch(56% 0.13 232 / 0.32));
+    transform: translateY(-3px);
 }
 
-/* Home page heading (profile mode and home info mode) */
 .profile h1,
 .home-info .entry-header h1 {
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
-    color: var(--accent);
+    color: var(--ac);
 }
 
-/* Light mode: light code block background */
-:root:not([data-theme="dark"]) {
-    --code-block-bg: #fafafa;
+/* Subtitle styling kept defensively in case the param is re-added */
+.profile .post-description,
+.home-info .post-description {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--secondary);
+    opacity: 0.7;
 }
 
-/* Dark mode: slightly lighter accent so it stays readable */
-:root[data-theme="dark"] {
-    --accent: #5baedd;
-    --accent-hover: #7ec3e8;
+/* ── 8. Social icons ────────────────────────────────────────────────────── */
+.social-icons a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1.5px solid var(--border);
+    color: var(--secondary);
+    transition: border-color var(--tr), color var(--tr),
+                background var(--tr), transform var(--tr);
+}
+.social-icons a:hover {
+    border-color: var(--ac);
+    color: var(--ac);
+    background: var(--ac-bg);
+    transform: translateY(-2px);
+}
+.social-icons a span {
+    display: none;
 }
 
-/* Dark mode: light outline around logo so it reads on dark backgrounds */
-[data-theme="dark"] .logo img,
-[data-theme="dark"] .profile img {
-    filter: drop-shadow(0 0 1px rgba(255,255,255,0.6))
-            drop-shadow(0 0 3px rgba(255,255,255,0.3));
+/* ── 9. Post list ───────────────────────────────────────────────────────── */
+/* Defeat PaperMod's hardcoded card box: no border, no bg, no radius. */
+.post-entry,
+.first-entry {
+    position: relative;
+    border: none;
+    background: transparent;
+    border-radius: 0;
+    padding: 0 0 calc(var(--gap) * 1.2) 0;
+    margin-bottom: calc(var(--gap) * 1.2);
+    border-bottom: 1px solid var(--border);
+    transition: none;
+}
+.post-entry:hover,
+.first-entry:hover {
+    transform: none;
+    border-color: var(--border);
+}
+.post-entry:last-of-type {
+    border-bottom: none;
 }
 
-/* ── Single post: constrain cover image height ────────────────────────────
-   Prevents the hero image from dominating the top of the page.
-   ───────────────────────────────────────────────────────────────────────── */
-
-.post-single .entry-cover {
-    margin-bottom: 1.5rem;
+/* Hover stripe that slides in from outside the gutter */
+.post-entry::before {
+    content: '';
+    position: absolute;
+    left: -24px;
+    top: 0;
+    bottom: calc(var(--gap) * 1.2);
+    width: 3px;
+    border-radius: 0 2px 2px 0;
+    background: var(--ac);
+    opacity: 0;
+    transition: opacity var(--tr);
+}
+.post-entry:hover::before {
+    opacity: 1;
 }
 
-.post-single .entry-cover img {
-    max-height: 320px;
-    max-width: 100%;
-    width: auto;
-    display: block;
-    margin: 0 auto;
-    border-radius: 8px;
+/* Entry title */
+.entry-header h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    line-height: 1.35;
+    color: var(--primary);
+    text-wrap: pretty;
+    transition: color var(--tr);
+}
+.post-entry:hover .entry-header h2 {
+    color: var(--ac);
 }
 
-/* ── Post list: right-side thumbnail layout ───────────────────────────────
-   Mirrors the original WordPress layout where cover images appear as a
-   compact thumbnail to the right of the post text.
-   Uses :has() which is supported in all current browsers.
-   ───────────────────────────────────────────────────────────────────────── */
+/* Excerpt */
+.entry-content p {
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: var(--secondary);
+    text-wrap: pretty;
+}
 
+/* Meta row */
+.entry-footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px 8px;
+    margin-top: 10px;
+}
+.post-meta {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.71rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--secondary);
+    opacity: 0.75;
+}
+
+/* ── 10. Tag pills ──────────────────────────────────────────────────────── */
+ul.post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+ul.post-tags li {
+    padding: 0;
+    margin: 0;
+}
+.post-tags a,
+ul.post-tags li a {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--ac);
+    background: var(--ac-bg);
+    padding: 1px 7px;
+    border-radius: 20px;
+    border: 1px solid color-mix(in oklch, var(--ac) 18%, transparent);
+    transition: background var(--tr), color var(--tr), transform var(--tr);
+    line-height: 1.6;
+}
+.post-tags a:hover,
+ul.post-tags li a:hover {
+    background: var(--ac);
+    color: #fff;
+    transform: translateY(-1px);
+}
+
+/* ── 11. Pagination ─────────────────────────────────────────────────────── */
+.pagination a {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--ac);
+    background: var(--ac-bg);
+    border: 1px solid color-mix(in oklch, var(--ac) 22%, transparent);
+    border-radius: 20px;
+    padding: 0 14px;
+    transition: background var(--tr), color var(--tr), transform var(--tr);
+}
+.pagination a:hover {
+    background: var(--ac);
+    color: #fff;
+    transform: translateY(-1px);
+}
+
+/* ── 12. Cover thumbnail grid (post list) ──────────────────────────────── */
 @media (min-width: 550px) {
     .post-entry:has(.entry-cover) {
         display: grid;
-        grid-template-columns: 1fr 180px;
+        grid-template-columns: 1fr 120px;
         grid-template-rows: auto auto auto;
         grid-template-areas:
             "header  cover"
             "content cover"
             "footer  cover";
-        column-gap: 1.25rem;
+        column-gap: 20px;
         align-items: start;
     }
-
-    .post-entry .entry-cover {
-        grid-area: cover;
-        margin: 0;
-    }
-
-    .post-entry .entry-cover img {
-        width: 100%;
-        height: 150px;
-        object-fit: cover;
-        border-radius: 6px;
-    }
-
+    .post-entry .entry-cover   { grid-area: cover; margin: 0; align-self: center; }
     .post-entry .entry-header  { grid-area: header; }
     .post-entry .entry-content { grid-area: content; }
     .post-entry .entry-footer  { grid-area: footer; }
+
+    .post-entry .entry-cover img {
+        width: 100%;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 8px;
+        filter: saturate(0.88);
+        transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1), filter var(--tr);
+    }
+    .post-entry:hover .entry-cover img {
+        transform: scale(1.05);
+        filter: saturate(1.05);
+    }
+}
+
+/* ── 12. Single post ────────────────────────────────────────────────────── */
+/* Hero cover: constrain so it doesn't dominate */
+.post-single .entry-cover {
+    margin-bottom: 2rem;
+}
+.post-single .entry-cover img {
+    max-height: 300px;
+    max-width: 100%;
+    width: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 10px;
+    filter: saturate(0.95);
+}
+
+/* Body text in serif for long-form reading */
+.post-content {
+    font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+    font-size: 1.05rem;
+    line-height: 1.78;
+    text-wrap: pretty;
+}
+
+/* Inline code: subtle accent */
+.post-content :not(pre) > code {
+    font-size: 0.855em;
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 1px 5px;
+    color: var(--ac);
+}
+
+/* Code blocks */
+.post-content pre {
+    border-radius: 8px;
+    border: 1px solid var(--border);
+}
+
+/* Blockquote with accent left border */
+.post-content blockquote {
+    border-left: 3px solid var(--ac);
+    padding-left: 18px;
+    color: var(--secondary);
+}
+
+/* Subtle accent underline on content links */
+.post-content a {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+    text-decoration-color: color-mix(in oklch, var(--ac) 35%, transparent);
+}
+.post-content a:hover {
+    text-decoration-color: var(--ac);
+}
+
+/* ── 13. Giscus blending ────────────────────────────────────────────────── */
+/* Blend modes let the iframe composite naturally with the page background.
+   Light: multiply turns white → warm cream; dark text barely changes.
+   Dark: screen lifts near-black → navy; light text stays readable. */
+:root:not([data-theme="dark"]) .giscus-frame {
+    mix-blend-mode: multiply;
+}
+[data-theme="dark"] .giscus-frame {
+    mix-blend-mode: lighten;
+}
+
+/* ── 15. Single-post spacing ────────────────────────────────────────────── */
+.post-single .post-tags {
+    margin-bottom: 1.5rem;
+}
+
+/* ── 16. Dark-mode logo shadow ──────────────────────────────────────────── */
+[data-theme="dark"] .profile img {
+    filter: drop-shadow(0 4px 18px oklch(56% 0.13 232 / 0.30));
 }

@@ -5,8 +5,12 @@
 {{- /* Sync PaperMod theme toggle with Giscus iframe */ -}}
 <script>
 (function() {
+  var giscusScript = document.querySelector('script[data-giscus-dark-theme]');
+  var lightTheme = giscusScript ? giscusScript.getAttribute('data-theme') : 'noborder_light';
+  var darkTheme  = giscusScript ? giscusScript.getAttribute('data-giscus-dark-theme') : 'noborder_dark';
+
   function getTheme() {
-    return document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+    return document.documentElement.getAttribute('data-theme') === 'dark' ? darkTheme : lightTheme;
   }
   function setGiscusTheme(theme) {
     var iframe = document.querySelector('iframe.giscus-frame');

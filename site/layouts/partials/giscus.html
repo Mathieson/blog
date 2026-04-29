@@ -1,5 +1,11 @@
 {{- with site.Params.giscus -}}
 {{- if and .repo .repoId .category .categoryId }}
+{{- $lightTheme := .theme | default "noborder_light" }}
+{{- $darkTheme := "noborder_dark" }}
+{{- if hugo.IsProduction }}
+  {{- $lightTheme = "https://mathieson.github.io/blog/giscus-light.css" }}
+  {{- $darkTheme = "https://mathieson.github.io/blog/giscus-dark.css" }}
+{{- end }}
 <script src="https://giscus.app/client.js"
   data-repo="{{ .repo }}"
   data-repo-id="{{ .repoId }}"
@@ -10,9 +16,10 @@
   data-reactions-enabled="{{ .reactionsEnabled | default "1" }}"
   data-emit-metadata="{{ .emitMetadata | default "0" }}"
   data-input-position="{{ .inputPosition | default "bottom" }}"
-  data-theme="{{ .theme | default "preferred_color_scheme" }}"
+  data-theme="{{ $lightTheme }}"
   data-lang="{{ .lang | default "en" }}"
   data-loading="{{ .loading | default "lazy" }}"
+  data-giscus-dark-theme="{{ $darkTheme }}"
   crossorigin="anonymous"
   async>
 </script>

@@ -87,6 +87,11 @@
   {{- if not (.Param "hideMeta") }}
   <footer class="entry-footer">
     {{- partial "post_meta.html" . -}}
+    {{- with .Params.tags }}
+    <ul class="post-tags">
+      {{- range . }}<li><a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a></li>{{- end }}
+    </ul>
+    {{- end }}
   </footer>
   {{- end }}
   <a class="entry-link" aria-label="post link to {{ .Title | plainify }}" href="{{ .Permalink }}"></a>

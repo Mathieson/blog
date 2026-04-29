@@ -48,6 +48,8 @@ buildExpired    = false
   ShowBreadCrumbs      = true
   ShowCodeCopyButtons  = true
   ShowRssButtonInList  = true
+  hideAuthor           = true
+  DateFormat           = "Jan 2, 2006"
   ShowToc              = true
   disableScrollToTop   = false
   comments             = true   # enables the Giscus partial
@@ -60,7 +62,6 @@ buildExpired    = false
   [params.profileMode]
     enabled     = true
     title       = "Mat's Mind Dump"
-    subtitle    = "Adventures in Tech Art, AI & iOS Dev"
     imageUrl    = "logo.png"   # resolves from site/assets/logo.png
     imageWidth  = 180
     imageHeight = 180
@@ -87,14 +88,14 @@ buildExpired    = false
     reactionsEnabled = "1"
     emitMetadata     = "0"
     inputPosition    = "bottom"
-    theme            = "preferred_color_scheme"
+    theme            = "noborder_light"
     lang             = "en"
     loading          = "lazy"
 
 # ---------------------------------------------------------------------------
 # Menus
 # ---------------------------------------------------------------------------
-[[menus.main]]
-  name       = "Tags"
-  url        = "/tags/"
-  weight     = 20
+# [[menus.main]]
+#   name       = "Tags"
+#   url        = "/tags/"
+#   weight     = 20
