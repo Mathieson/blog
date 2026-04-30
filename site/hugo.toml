@@ -56,14 +56,14 @@ buildExpired    = false
 
   [params.label]
     text        = "Mat's Mind Dump"
-    icon        = "/logo.png"
+    icon        = "/logos.png"
     iconHeight  = 40
 
   [params.profileMode]
     enabled     = true
     title       = "Mat's Mind Dump"
-    imageUrl    = "logo.png"   # resolves from site/assets/logo.png
-    imageWidth  = 180
+    imageUrl    = "logos.png"  # resolves from site/assets/logos.png
+    imageWidth  = 270          # full combined width at height 180 (3:2 ratio, no crop)
     imageHeight = 180
     imageTitle  = "Mat's Mind Dump"
 

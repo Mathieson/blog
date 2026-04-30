@@ -14,8 +14,8 @@
     --tertiary:    oklch(80%   0.012 80);
     --content:     oklch(22%   0.010 260);
     --border:      oklch(90%   0.012 80);
-    --code-bg:     oklch(96%   0.010 80);
-    --code-block-bg: oklch(96% 0.010 80);
+    --code-bg:     oklch(94%   0.008 250);
+    --code-block-bg: oklch(94% 0.008 250);
 
     /* Custom accent + transition */
     --ac:    oklch(56% 0.13 232);     /* steel blue */
@@ -78,9 +78,16 @@ a:hover, .post-content a:hover {
     font-size: 0;
 }
 .logo a img {
-    transform: none;
+    /* Show only the left (day) half of the combined logos.png sprite */
+    width: 30px;
+    object-fit: cover;
+    object-position: left;
     filter: drop-shadow(0 2px 6px oklch(56% 0.13 232 / 0.18));
     transition: filter var(--tr), transform var(--tr);
+}
+[data-theme="dark"] .logo a img {
+    /* Show the right (night) half */
+    object-position: right;
 }
 .logo a:hover img {
     filter: drop-shadow(0 4px 12px oklch(56% 0.13 232 / 0.30));
@@ -123,9 +130,17 @@ a:hover, .post-content a:hover {
 }
 
 .profile img {
+    /* Show only the left (day) half of the combined logos.png sprite */
+    width: 135px;
+    object-fit: cover;
+    object-position: left;
     border-radius: 0 !important;
     filter: drop-shadow(0 4px 18px oklch(56% 0.13 232 / 0.22));
     transition: filter var(--tr), transform 0.25s ease;
+}
+[data-theme="dark"] .profile img {
+    /* Show the right (night) half */
+    object-position: right;
 }
 .profile img:hover {
     filter: drop-shadow(0 8px 28px oklch(56% 0.13 232 / 0.32));
@@ -396,7 +411,82 @@ ul.post-tags li a:hover {
     text-decoration-color: var(--ac);
 }
 
-/* ── 13. Giscus blending ────────────────────────────────────────────────── */
+/* ── 13. Syntax highlight — light-mode overrides ───────────────────────── */
+/* PaperMod's md-content.css hardcodes `color: rgb(213,213,214)` on pre code
+   (designed for dark). Override it first so plain/unsyntaxed code is readable,
+   then fix every Chroma token class for light mode. */
+:root:not([data-theme="dark"]) .md-content pre code {
+    color: #1f2328 !important;
+}
+:root:not([data-theme="dark"]) .chroma { color: #1f2328; }
+:root:not([data-theme="dark"]) .chroma .err { color: #f6f8fa; background-color: #82071e; }
+:root:not([data-theme="dark"]) .chroma .hl  { background-color: #dedede; }
+:root:not([data-theme="dark"]) .chroma .lnt { color: #7f7f7f; }
+:root:not([data-theme="dark"]) .chroma .ln  { color: #7f7f7f; }
+:root:not([data-theme="dark"]) .chroma .k   { color: #cf222e; }
+:root:not([data-theme="dark"]) .chroma .kc  { color: #cf222e; }
+:root:not([data-theme="dark"]) .chroma .kd  { color: #cf222e; }
+:root:not([data-theme="dark"]) .chroma .kn  { color: #cf222e; }
+:root:not([data-theme="dark"]) .chroma .kp  { color: #cf222e; }
+:root:not([data-theme="dark"]) .chroma .kr  { color: #cf222e; }
+:root:not([data-theme="dark"]) .chroma .kt  { color: #cf222e; }
+:root:not([data-theme="dark"]) .chroma .na  { color: #1f2328; }
+:root:not([data-theme="dark"]) .chroma .nc  { color: #1f2328; }
+:root:not([data-theme="dark"]) .chroma .no  { color: #0550ae; }
+:root:not([data-theme="dark"]) .chroma .nd  { color: #0550ae; font-weight: normal; }
+:root:not([data-theme="dark"]) .chroma .ni  { color: #6639ba; }
+:root:not([data-theme="dark"]) .chroma .nl  { color: #900; font-weight: bold; }
+:root:not([data-theme="dark"]) .chroma .nn  { color: #24292e; }
+:root:not([data-theme="dark"]) .chroma .nx  { color: #1f2328; }
+:root:not([data-theme="dark"]) .chroma .nt  { color: #0550ae; }
+:root:not([data-theme="dark"]) .chroma .nb  { color: #6639ba; }
+:root:not([data-theme="dark"]) .chroma .bp  { color: #6a737d; }
+:root:not([data-theme="dark"]) .chroma .nv  { color: #953800; }
+:root:not([data-theme="dark"]) .chroma .vc  { color: #953800; }
+:root:not([data-theme="dark"]) .chroma .vg  { color: #953800; }
+:root:not([data-theme="dark"]) .chroma .vi  { color: #953800; }
+:root:not([data-theme="dark"]) .chroma .vm  { color: #953800; }
+:root:not([data-theme="dark"]) .chroma .nf  { color: #6639ba; }
+:root:not([data-theme="dark"]) .chroma .fm  { color: #6639ba; }
+:root:not([data-theme="dark"]) .chroma .s   { color: #0a3069; }
+:root:not([data-theme="dark"]) .chroma .sa  { color: #0a3069; }
+:root:not([data-theme="dark"]) .chroma .sb  { color: #0a3069; }
+:root:not([data-theme="dark"]) .chroma .sc  { color: #0a3069; }
+:root:not([data-theme="dark"]) .chroma .dl  { color: #0a3069; }
+:root:not([data-theme="dark"]) .chroma .sd  { color: #0a3069; }
+:root:not([data-theme="dark"]) .chroma .s2  { color: #0a3069; }
+:root:not([data-theme="dark"]) .chroma .se  { color: #0a3069; }
+:root:not([data-theme="dark"]) .chroma .sh  { color: #0a3069; }
+:root:not([data-theme="dark"]) .chroma .si  { color: #0a3069; }
+:root:not([data-theme="dark"]) .chroma .sx  { color: #0a3069; }
+:root:not([data-theme="dark"]) .chroma .sr  { color: #0a3069; }
+:root:not([data-theme="dark"]) .chroma .s1  { color: #0a3069; }
+:root:not([data-theme="dark"]) .chroma .ss  { color: #032f62; }
+:root:not([data-theme="dark"]) .chroma .m   { color: #0550ae; }
+:root:not([data-theme="dark"]) .chroma .mb  { color: #0550ae; }
+:root:not([data-theme="dark"]) .chroma .mf  { color: #0550ae; }
+:root:not([data-theme="dark"]) .chroma .mh  { color: #0550ae; }
+:root:not([data-theme="dark"]) .chroma .mi  { color: #0550ae; }
+:root:not([data-theme="dark"]) .chroma .il  { color: #0550ae; }
+:root:not([data-theme="dark"]) .chroma .mo  { color: #0550ae; }
+:root:not([data-theme="dark"]) .chroma .o   { color: #0550ae; font-weight: normal; }
+:root:not([data-theme="dark"]) .chroma .ow  { color: #0550ae; font-weight: normal; }
+:root:not([data-theme="dark"]) .chroma .p   { color: #1f2328; }
+:root:not([data-theme="dark"]) .chroma .c   { color: #57606a; font-style: normal; }
+:root:not([data-theme="dark"]) .chroma .ch  { color: #57606a; font-style: normal; }
+:root:not([data-theme="dark"]) .chroma .cm  { color: #57606a; font-style: normal; }
+:root:not([data-theme="dark"]) .chroma .c1  { color: #57606a; font-style: normal; }
+:root:not([data-theme="dark"]) .chroma .cs  { color: #57606a; font-style: normal; }
+:root:not([data-theme="dark"]) .chroma .cp  { color: #57606a; font-style: normal; }
+:root:not([data-theme="dark"]) .chroma .cpf { color: #57606a; font-style: normal; }
+:root:not([data-theme="dark"]) .chroma .gd  { color: #82071e; background-color: #ffebe9; }
+:root:not([data-theme="dark"]) .chroma .ge  { color: #1f2328; }
+:root:not([data-theme="dark"]) .chroma .gi  { color: #116329; background-color: #dafbe1; }
+:root:not([data-theme="dark"]) .chroma .go  { color: #1f2328; }
+:root:not([data-theme="dark"]) .chroma .gl  { text-decoration: underline; }
+:root:not([data-theme="dark"]) .chroma .w   { color: #1f2328; }
+
+/* ── 14. Giscus blending ────────────────────────────────────────────────── */
 /* Blend modes let the iframe composite naturally with the page background.
    Light: multiply turns white → warm cream; dark text barely changes.
    Dark: screen lifts near-black → navy; light text stays readable. */
