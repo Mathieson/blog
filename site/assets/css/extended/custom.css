@@ -489,16 +489,6 @@ ul.post-tags li a:hover {
 :root:not([data-theme="dark"]) .chroma .gl  { text-decoration: underline; }
 :root:not([data-theme="dark"]) .chroma .w   { color: #1f2328; }
 
-/* ── 14. Giscus blending ────────────────────────────────────────────────── */
-/* Blend modes let the iframe composite naturally with the page background.
-   Light: multiply turns white → warm cream; dark text barely changes.
-   Dark: screen lifts near-black → navy; light text stays readable. */
-:root:not([data-theme="dark"]) .giscus-frame {
-    mix-blend-mode: multiply;
-}
-[data-theme="dark"] .giscus-frame {
-    mix-blend-mode: lighten;
-}
 
 /* ── 15. Tags taxonomy page ─────────────────────────────────────────────── */
 .terms-tags {
