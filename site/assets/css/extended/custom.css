@@ -106,21 +106,24 @@ a:hover, .post-content a:hover {
     order: 2;
 }
 
-/* Menu links: small Montserrat caps */
+/* Menu links */
 .menu a {
     font-family: 'Montserrat', sans-serif;
-    font-size: 11px;
+    font-size: 0.7rem;
     font-weight: 700;
     letter-spacing: 0.07em;
     text-transform: uppercase;
-    color: var(--secondary);
-    padding: 5px 10px;
-    border-radius: 4px;
-    transition: color var(--tr), background var(--tr);
+    color: var(--ac);
+    text-decoration: none;
+    transition: color var(--tr);
 }
 .menu a:hover {
-    color: var(--ac);
-    background: var(--ac-bg);
+    color: var(--ac-h);
+}
+/* Override PaperMod's active-page underline */
+.menu .active {
+    font-weight: 700;
+    text-decoration: none;
 }
 
 /* ── 7. Profile section ─────────────────────────────────────────────────── */
@@ -497,7 +500,39 @@ ul.post-tags li a:hover {
     mix-blend-mode: lighten;
 }
 
-/* ── 15. Single-post spacing ────────────────────────────────────────────── */
+/* ── 15. Tags taxonomy page ─────────────────────────────────────────────── */
+.terms-tags {
+    gap: 8px;
+}
+.terms-tags li {
+    font-weight: 700;
+}
+.terms-tags a {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--ac);
+    background: var(--ac-bg);
+    padding: 2px 9px;
+    border-radius: 20px;
+    border: 1px solid color-mix(in oklch, var(--ac) 18%, transparent);
+    transition: background var(--tr), color var(--tr), transform var(--tr);
+}
+.terms-tags a:hover {
+    background: var(--ac);
+    color: #fff;
+    transform: translateY(-1px);
+}
+.terms-tags a sup {
+    font-size: 0.65rem;
+    opacity: 0.75;
+    margin-left: 3px;
+    vertical-align: super;
+}
+
+/* ── 16. Single-post spacing ────────────────────────────────────────────── */
 .post-single .post-tags {
     margin-bottom: 1.5rem;
 }

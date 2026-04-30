@@ -1,7 +1,7 @@
 +++
 title = "SymPy to Solve a Low Level ML Training Loop"
 date = 2022-08-26T00:00:00Z
-tags = ["machine-learning", "python", "swift"]
+tags = ["machine-learning", "python", "deep-learning"]
 [cover]
   image = "images/sympy-1.png"
 +++

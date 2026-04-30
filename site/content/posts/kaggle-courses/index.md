@@ -1,7 +1,7 @@
 +++
 title = "Kaggle Courses"
 date = 2021-08-08T00:00:00Z
-tags = ["machine-learning"]
+tags = ["machine-learning", "deep-learning", "education"]
 [cover]
   image = "images/dataset-card2.png"
 +++

@@ -1,7 +1,7 @@
 +++
 title = "Loss vs. reward in reinforcement learning"
 date = 2021-10-17T00:00:00Z
-tags = ["deep-learning", "pytorch", "reinforcement-learning"]
+tags = ["machine-learning", "deep-learning", "pytorch", "reinforcement-learning"]
 +++
 
 

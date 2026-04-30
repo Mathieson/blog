@@ -1,7 +1,7 @@
 +++
 title = "The Best PyCharm MayaPy Interpreter Setup"
 date = 2022-06-16T00:00:00Z
-tags = ["autocomplete", "maya", "pycharm", "python", "setup", "tech-art"]
+tags = ["maya", "python", "pycharm", "tooling", "tech-art"]
 [cover]
   image = "images/68RuLLrsBdxbVJLxm3py3YoK6zX0aPIv3qttEhkb0_4.webp"
 +++

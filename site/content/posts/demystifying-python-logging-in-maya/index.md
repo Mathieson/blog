@@ -1,7 +1,7 @@
 +++
 title = "Python logging in Maya"
 date = 2021-07-13T00:00:00Z
-tags = ["maya", "python"]
+tags = ["maya", "python", "tech-art", "tooling"]
 +++
 
 

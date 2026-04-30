@@ -1,7 +1,7 @@
 +++
 title = "CoreData Swift Scalar Optionals"
 date = 2022-01-22T00:00:00Z
-tags = ["coredata", "swift"]
+tags = ["swift", "ios", "coredata"]
 +++
 
 
