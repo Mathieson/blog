@@ -7,11 +7,9 @@ on:
     branches: [main]
   workflow_dispatch:
 
-# Allow the workflow to write to GitHub Pages
+# Write access to push the built site to the gh-pages branch
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
 # Only allow one deployment at a time; don't cancel in-progress runs
 concurrency:
@@ -19,7 +17,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -39,18 +37,9 @@ jobs:
         # hugo.toml sets minifyOutput = false because Hugo's minifier
         # breaks PaperMod's JSON-LD schema output.
 
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
+      - name: Deploy to gh-pages branch
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          path: site/public
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: site/public
+          publish_branch: gh-pages
