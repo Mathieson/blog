@@ -3,6 +3,9 @@ title = "Tensorflow to PyTorch"
 date = 2021-10-10T00:00:00Z
 tags = ["machine-learning", "deep-learning", "pytorch", "python"]
 description = "Why I switched from TensorFlow to PyTorch: debuggability and transparency into the training process."
+[cover]
+  image = "images/pytorch-logo.png"
+  alt = "PyTorch logo"
 +++
 
 

@@ -3,6 +3,9 @@ title = "CoreData Swift Scalar Optionals"
 date = 2022-01-22T00:00:00Z
 tags = ["swift", "ios", "coredata"]
 description = "CoreData doesn't support optional scalar types like Double — here's a clean workaround for optional numeric fields in a SwiftUI input form."
+[cover]
+  image = "images/swift-icon.png"
+  alt = "Swift icon"
 +++
 
 

@@ -3,6 +3,9 @@ title = "Loss vs. reward in reinforcement learning"
 date = 2021-10-17T00:00:00Z
 tags = ["machine-learning", "deep-learning", "pytorch", "reinforcement-learning"]
 description = "Untangling how reward relates to the loss function when you come to reinforcement learning from standard deep learning."
+[cover]
+  image = "images/pytorch-logo.png"
+  alt = "PyTorch logo"
 +++
 
 

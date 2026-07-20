@@ -3,6 +3,9 @@ title = "Using the __new__ method in Python classes"
 date = 2021-03-28T00:00:00Z
 tags = ["python"]
 description = "What Python's __new__ method actually does, how it differs from __init__, and when overriding it is useful."
+[cover]
+  image = "images/python-logo.png"
+  alt = "Python logo"
 +++
 
 
