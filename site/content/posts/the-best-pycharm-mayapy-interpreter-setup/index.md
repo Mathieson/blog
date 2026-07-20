@@ -4,7 +4,8 @@ date = 2022-06-16T00:00:00Z
 tags = ["maya", "python", "pycharm", "tooling", "tech-art"]
 description = "Configuring PyCharm with MayaPy and Autodesk's stub files for full autocomplete and a slick Maya unit-testing workflow."
 [cover]
-  image = "images/68RuLLrsBdxbVJLxm3py3YoK6zX0aPIv3qttEhkb0_4.webp"
+  image = "images/pycharm-icon.png"
+  alt = "PyCharm icon"
 +++
 
 

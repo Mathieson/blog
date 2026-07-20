@@ -5,6 +5,7 @@ tags = ["software-development", "education"]
 description = "Reflections on completing BCIT's three-year Applied Software Development program as a self-taught developer with a decade of industry experience."
 [cover]
   image = "images/BCIT_logo2-1.png"
+  alt = "BCIT logo"
 +++
 
 

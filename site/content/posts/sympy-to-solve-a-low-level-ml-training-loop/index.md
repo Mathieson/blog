@@ -5,6 +5,7 @@ tags = ["machine-learning", "python", "deep-learning"]
 description = "Using SymPy's symbolic differentiation to hand-build backpropagation for a from-scratch training loop targeting on-device iOS training."
 [cover]
   image = "images/sympy-1.png"
+  alt = "SymPy logo"
 +++
 
 

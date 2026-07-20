@@ -5,6 +5,7 @@ tags = ["machine-learning", "deep-learning", "education"]
 description = "A quick review of Kaggle's free data-science courses from the perspective of someone getting started with deep learning."
 [cover]
   image = "images/dataset-card2.png"
+  alt = "Kaggle logo"
 +++
 
 
