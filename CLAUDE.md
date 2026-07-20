@@ -13,24 +13,19 @@ Opens at http://localhost:1313. The `-D` flag includes draft posts.
 
 ## Creating a new post
 
-Posts live under `site/content/posts/`. Each post is a directory containing a single `index.md` file:
-
-```
-site/content/posts/<slug>/index.md
+```bash
+hugo new posts/<slug> --source site
 ```
 
-Frontmatter uses TOML (delimited by `+++`):
-
-```toml
-+++
-title = "Post Title"
-date = 2026-04-02
-draft = true
-tags = ["tag1", "tag2"]
-+++
-```
+This creates `site/content/posts/<slug>/index.md` from `site/archetypes/posts/index.md`, pre-filled with TOML frontmatter (`+++`-delimited): title, date, `draft = true`, empty `tags`, and empty `description`. Always fill in `description` (one sentence — it feeds search-engine and social-share previews). Post images live in the post's own directory (e.g. `images/`) and are referenced relatively.
 
 Set `draft = false` (or remove the field) to publish. Draft posts are excluded from production builds but visible locally via `./preview.sh`.
+
+## Design tokens
+
+The site's colors are OKLCH tokens in `site/assets/css/extended/custom.css` (warm cream light / deep navy dark, steel-blue accent). Three places must stay visually in sync with those tokens:
+- `site/assets/css/extended/chroma-theme.css` — code-block backgrounds use `var(--code-block-bg)` etc.
+- `site/static/giscus-light.css` / `giscus-dark.css` — Giscus comment themes with token values hard-coded as hex (Giscus loads these from the live site URL, so changes only take effect after deploy).
 
 ## Architecture
 
