@@ -40,6 +40,7 @@ buildExpired    = false
   env           = "production"
   author        = "Mat"
   description   = "Adventures in Tech Art, AI & iOS Dev"
+  images        = ["og-default.jpg"]  # default social-share card (posts with a cover use that instead)
   defaultTheme  = "light"
   disableSpecial1stPost = true
   ShowReadingTime      = true
@@ -95,6 +96,11 @@ buildExpired    = false
 # ---------------------------------------------------------------------------
 # Menus
 # ---------------------------------------------------------------------------
+[[menus.main]]
+  name       = "Search"
+  url        = "/search/"
+  weight     = 10
+
 [[menus.main]]
   name       = "Tags"
   url        = "/tags/"

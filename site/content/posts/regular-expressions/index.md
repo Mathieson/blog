@@ -3,6 +3,7 @@ title = "Regular Expressions"
 date = 2022-09-08T00:00:00Z
 draft = true
 tags = ["python", "tech-art", "tooling"]
+description = "Why regex is one of the highest-value skills I've learned in my career, and a primer on using it from Python."
 +++
 
 Learning regex is one of the most valuable time investments I've made in my career. It is (mostly) the same across programming languages, and is integrated into most text editors and IDEs. It is always there to help get me out of a jam or complete an otherwise laborious task super quickly.

@@ -2,6 +2,7 @@
 title = "SymPy to Solve a Low Level ML Training Loop"
 date = 2022-08-26T00:00:00Z
 tags = ["machine-learning", "python", "deep-learning"]
+description = "Using SymPy's symbolic differentiation to hand-build backpropagation for a from-scratch training loop targeting on-device iOS training."
 [cover]
   image = "images/sympy-1.png"
 +++

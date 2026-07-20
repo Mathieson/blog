@@ -2,6 +2,7 @@
 title = "Python logging in Maya"
 date = 2021-07-13T00:00:00Z
 tags = ["maya", "python", "tech-art", "tooling"]
+description = "How Python's logging hierarchy actually works, and how to configure loggers sensibly inside Autodesk Maya."
 +++
 
 

@@ -3,6 +3,7 @@ title = "Switching from PyCharm to VS Code for Maya Development"
 date = 2026-04-02
 draft = false
 tags = ["maya", "python", "vscode", "tooling", "tech-art"]
+description = "Why I moved my Maya Python development from PyCharm to VS Code, and the uv-based workflow that finally made it click."
 +++
 
 If you've been around here before, you might have seen my post on [setting up PyCharm for Maya Python development](/posts/the-best-pycharm-mayapy-interpreter-setup/). It's been one of my more practical posts, and for a long time it reflected how I actually worked. PyCharm was my IDE of choice for Maya scripting, and I didn't have much reason to look elsewhere.

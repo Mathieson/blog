@@ -2,6 +2,7 @@
 title = "Applied Software Development Retrospective"
 date = 2021-04-05T00:00:00Z
 tags = ["software-development", "education"]
+description = "Reflections on completing BCIT's three-year Applied Software Development program as a self-taught developer with a decade of industry experience."
 [cover]
   image = "images/BCIT_logo2-1.png"
 +++

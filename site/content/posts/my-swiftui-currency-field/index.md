@@ -2,6 +2,7 @@
 title = "My SwiftUI Currency Field"
 date = 2022-01-12T00:00:00Z
 tags = ["ios", "swift", "swiftui"]
+description = "A simple, robust SwiftUI currency input field — no over-engineered solutions required."
 +++
 
 
