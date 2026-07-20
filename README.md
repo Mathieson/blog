@@ -10,7 +10,7 @@ A static blog built with [Hugo](https://gohugo.io/) and the [PaperMod](https://g
 
 | Tool                                               | Version  | Install                      |
 | -------------------------------------------------- | -------- | ---------------------------- |
-| [Hugo (extended)](https://gohugo.io/installation/) | ≥ 0.120  | `brew install hugo` (macOS)  |
+| [Hugo (extended)](https://gohugo.io/installation/) | 0.155.3 (CI pin; ≥ 0.120 works locally) | `brew install hugo` (macOS)  |
 | [Git](https://git-scm.com/)                        | any      | Required for theme submodule |
 
 After cloning, initialise the PaperMod theme submodule:
@@ -31,6 +31,18 @@ git submodule update --init --recursive
 Open <http://localhost:1313>. The `-D` flag includes draft posts.
 
 **Draft posts** have `draft = true` in their frontmatter. They are visible locally with `-D` but excluded from production builds. To publish a draft, change `draft = true` → `draft = false`.
+
+---
+
+## Writing a new post
+
+```bash
+hugo new posts/my-post-title --source site
+```
+
+This creates `site/content/posts/my-post-title/index.md` from the archetype in `site/archetypes/posts/`, pre-filled with title, date, empty tags, and `draft = true`. Write the post, fill in `description` (used for search-engine and social-share previews), set `draft = false`, then commit and push — the site deploys automatically.
+
+Images live next to the post (e.g. `site/content/posts/my-post-title/images/`) and are referenced relatively: `![alt](images/foo.png)`.
 
 ---
 

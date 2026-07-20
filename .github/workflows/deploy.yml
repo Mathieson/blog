@@ -30,7 +30,9 @@ jobs:
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
         with:
-          hugo-version: 'latest'
+          # Pinned so a Hugo release with breaking changes can't silently
+          # break deploys. Keep in sync with the version in README.md.
+          hugo-version: '0.155.3'
           extended: true         # PaperMod requires Hugo extended
 
       - name: Build
