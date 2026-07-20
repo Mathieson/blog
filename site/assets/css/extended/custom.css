@@ -152,8 +152,11 @@ a:hover, .post-content a:hover {
 
 .profile h1,
 .home-info .entry-header h1 {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-optical-sizing: auto;
+    font-variation-settings: "SOFT" 100, "WONK" 1;
+    letter-spacing: normal;
     color: var(--ac);
 }
 
