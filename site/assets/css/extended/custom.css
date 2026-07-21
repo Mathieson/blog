@@ -132,6 +132,23 @@ a:hover, .post-content a:hover {
     padding: 52px 0 44px;
 }
 
+/* Logo + title are grouped (see index_profile.html) so they read as one unit
+   and lift together on hover, rather than the brain moving while the title
+   stays put. */
+.profile-brand {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+    text-decoration: none;
+    transition: transform 0.25s ease;
+}
+.profile-brand:hover,
+.profile-brand:focus-visible {
+    transform: translateY(-3px);
+    text-decoration: none;
+}
+
 .profile img {
     /* Show only the left (day) half of the combined logos.png sprite */
     width: 135px;
@@ -139,15 +156,15 @@ a:hover, .post-content a:hover {
     object-position: left;
     border-radius: 0 !important;
     filter: drop-shadow(0 4px 18px oklch(56% 0.13 232 / 0.22));
-    transition: filter var(--tr), transform 0.25s ease;
+    transition: filter var(--tr);
 }
 [data-theme="dark"] .profile img {
     /* Show the right (night) half */
     object-position: right;
 }
-.profile img:hover {
+.profile-brand:hover img,
+.profile-brand:focus-visible img {
     filter: drop-shadow(0 8px 28px oklch(56% 0.13 232 / 0.32));
-    transform: translateY(-3px);
 }
 
 .profile h1,
@@ -158,6 +175,12 @@ a:hover, .post-content a:hover {
     font-variation-settings: "SOFT" 100, "WONK" 1;
     letter-spacing: normal;
     color: var(--ac);
+}
+/* Sit the title snug under the brain now that they're one group. The sprite
+   carries ~24px of transparent space below the brain, so a negative top margin
+   pulls the title up to close the *visual* gap (not just the element gap). */
+.profile-brand h1 {
+    margin: -0.85rem 0 0;
 }
 
 /* Subtitle styling kept defensively in case the param is re-added */
