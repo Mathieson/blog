@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="light">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Reinforcement-Learning | Mat&#39;s Mind Dump</title>
+<meta name="keywords" content="">
+<meta name="description" content="Adventures in Tech Art, AI &amp; iOS Dev">
+<meta name="author" content="Mat">
+<link rel="canonical" href="https://mathieson.github.io/blog/tags/reinforcement-learning/">
+<link crossorigin="anonymous" href="/blog/assets/css/stylesheet.c91380afb3f4124192224fe1cbd9bed0c7f76403520c60f9acc62dcbf3426d5a.css" integrity="sha256-yROAr7P0EkGSIk/hy9m&#43;0Mf3ZANSDGD5rMYty/NCbVo=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://mathieson.github.io/blog/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://mathieson.github.io/blog/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://mathieson.github.io/blog/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://mathieson.github.io/blog/apple-touch-icon.png">
+<link rel="mask-icon" href="https://mathieson.github.io/blog/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="https://mathieson.github.io/blog/tags/reinforcement-learning/index.xml" title="rss">
+<link rel="alternate" hreflang="en" href="https://mathieson.github.io/blog/tags/reinforcement-learning/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    }
+
+</script><link rel="icon" type="image/png" sizes="32x32" href="https://mathieson.github.io/blog/favicon-32x32-dark.png" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/png" sizes="16x16" href="https://mathieson.github.io/blog/favicon-16x16-dark.png" media="(prefers-color-scheme: dark)">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,600,100,1&family=Montserrat:wght@600;700&family=Lato:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<script data-goatcounter="https://matfacer.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<meta property="og:url" content="https://mathieson.github.io/blog/tags/reinforcement-learning/">
+  <meta property="og:site_name" content="Mat&#39;s Mind Dump">
+  <meta property="og:title" content="Reinforcement-Learning">
+  <meta property="og:description" content="Adventures in Tech Art, AI &amp; iOS Dev">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="website">
+      <meta property="og:image" content="https://mathieson.github.io/blog/og-default.jpg">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://mathieson.github.io/blog/og-default.jpg">
+  <meta name="twitter:title" content="Reinforcement-Learning">
+  <meta name="twitter:description" content="Adventures in Tech Art, AI &amp; iOS Dev">
+
+</head>
+<body class="list" id="top">
+    <header class="header">
+    <nav class="header-nav">
+        <div class="logo">
+            <a href="https://mathieson.github.io/blog/" accesskey="h" title="Mat&#39;s Mind Dump (Alt + H)">
+                        
+                    <img src="https://mathieson.github.io/blog/logos_hu_703e81d02529ebd6.png" alt="" aria-label="logo"
+                        height="40">Mat&#39;s Mind Dump</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu" class="menu">
+            <li>
+                <a href="https://mathieson.github.io/blog/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://mathieson.github.io/blog/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+<header class="page-header"><nav class="breadcrumbs" role="navigation" aria-label="Breadcrumb">
+    <a href='https://mathieson.github.io/blog/'>Home</a>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+            <a href="https://mathieson.github.io/blog/tags/">Tags</a></nav>
+  <h1>
+    Reinforcement-Learning
+  </h1>
+</header>
+
+<article class="post-entry tag-entry"> 
+<figure class="entry-cover">
+            <img loading="lazy"
+                srcset='https://mathieson.github.io/blog/posts/loss-vs-reward-in-reinforcement-learning/images/pytorch-logo_hu_276c832c331b154d.png 360w,https://mathieson.github.io/blog/posts/loss-vs-reward-in-reinforcement-learning/images/pytorch-logo_hu_9debf00eaa58fc0d.png 480w,https://mathieson.github.io/blog/posts/loss-vs-reward-in-reinforcement-learning/images/pytorch-logo_hu_8d2c7f624c1d9181.png 720w,https://mathieson.github.io/blog/posts/loss-vs-reward-in-reinforcement-learning/images/pytorch-logo_hu_536034ddcc4cd6a.png 1080w,https://mathieson.github.io/blog/posts/loss-vs-reward-in-reinforcement-learning/images/pytorch-logo.png 1200w'
+                src="https://mathieson.github.io/blog/posts/loss-vs-reward-in-reinforcement-learning/images/pytorch-logo.png"
+                sizes="(min-width: 768px) 720px, 100vw"
+                width="1200" height="1000"
+                alt="PyTorch logo">
+</figure>
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Loss vs. reward in reinforcement learning
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Reinforcement learning is my area of focus so far when it comes to deep learning. RL is probably not the first stop for most on the machine learning education circuit, but it just happens to be where the problem I am trying to solve has taken me.
+When starting down the RL road, I was immediately confused by the concept of reward. Nothing was confusing about what it was - giving a dog a treat when it sits after you’ve asked it to sums things up pretty well. Instead, I was confused by its relation to the loss function. Both, at a high level, help inform when the correct thing is happening.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2021-10-17 00:00:00 +0000 UTC'>Oct 17, 2021</span>&nbsp;·&nbsp;<span>⏱ 6 min</span>
+    <ul class="post-tags"><li><a href="/tags/machine-learning">machine-learning</a></li><li><a href="/tags/deep-learning">deep-learning</a></li><li><a href="/tags/pytorch">pytorch</a></li><li><a href="/tags/reinforcement-learning">reinforcement-learning</a></li>
+    </ul>
+  </footer>
+  <a class="entry-link" aria-label="post link to Loss vs. reward in reinforcement learning" href="https://mathieson.github.io/blog/posts/loss-vs-reward-in-reinforcement-learning/"></a>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://mathieson.github.io/blog/">Mat&#39;s Mind Dump</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
+    </svg>
+</a><script>
+(function() {
+  var giscusScript = document.querySelector('script[data-giscus-dark-theme]');
+  var lightTheme = giscusScript ? giscusScript.getAttribute('data-theme') : 'noborder_light';
+  var darkTheme  = giscusScript ? giscusScript.getAttribute('data-giscus-dark-theme') : 'noborder_dark';
+
+  function getTheme() {
+    return document.documentElement.getAttribute('data-theme') === 'dark' ? darkTheme : lightTheme;
+  }
+  function setGiscusTheme(theme) {
+    var iframe = document.querySelector('iframe.giscus-frame');
+    if (iframe) {
+      iframe.contentWindow.postMessage(
+        { giscus: { setConfig: { theme: theme } } },
+        'https://giscus.app'
+      );
+    }
+  }
+  
+  window.addEventListener('message', function(e) {
+    if (e.origin === 'https://giscus.app') {
+      setGiscusTheme(getTheme());
+    }
+  });
+  
+  var observer = new MutationObserver(function() {
+    setGiscusTheme(getTheme());
+  });
+  observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+})();
+</script>
+
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var toplink = document.getElementById("top-link");
+    window.onscroll = function () {
+        const scrollThreshold = window.innerHeight;
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            toplink.classList.remove("hidden");
+        } else {
+            toplink.classList.add("hidden");
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

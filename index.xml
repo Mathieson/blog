@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Mat&#39;s Mind Dump</title>
+    <link>https://mathieson.github.io/blog/</link>
+    <description>Recent content on Mat&#39;s Mind Dump</description>
+    <image>
+      <title>Mat&#39;s Mind Dump</title>
+      <url>https://mathieson.github.io/blog/og-default.jpg</url>
+      <link>https://mathieson.github.io/blog/og-default.jpg</link>
+    </image>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 02 Apr 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://mathieson.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Switching from PyCharm to VS Code — and Fixing Python Environments with uv</title>
+      <link>https://mathieson.github.io/blog/posts/switching-from-pycharm-to-vscode-with-uv/</link>
+      <pubDate>Thu, 02 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>https://mathieson.github.io/blog/posts/switching-from-pycharm-to-vscode-with-uv/</guid>
+      <description>Why I moved from PyCharm to VS Code, and the uv-based workflow — solving a Maya environment-isolation problem along the way — that finally made it click.</description>
+    </item>
+    <item>
+      <title>SymPy to Solve a Low Level ML Training Loop</title>
+      <link>https://mathieson.github.io/blog/posts/sympy-to-solve-a-low-level-ml-training-loop/</link>
+      <pubDate>Fri, 26 Aug 2022 00:00:00 +0000</pubDate>
+      <guid>https://mathieson.github.io/blog/posts/sympy-to-solve-a-low-level-ml-training-loop/</guid>
+      <description>Using SymPy&amp;#39;s symbolic differentiation to hand-build backpropagation for a from-scratch training loop targeting on-device iOS training.</description>
+    </item>
+    <item>
+      <title>The Best PyCharm MayaPy Interpreter Setup</title>
+      <link>https://mathieson.github.io/blog/posts/the-best-pycharm-mayapy-interpreter-setup/</link>
+      <pubDate>Thu, 16 Jun 2022 00:00:00 +0000</pubDate>
+      <guid>https://mathieson.github.io/blog/posts/the-best-pycharm-mayapy-interpreter-setup/</guid>
+      <description>Configuring PyCharm with MayaPy and Autodesk&amp;#39;s stub files for full autocomplete and a slick Maya unit-testing workflow.</description>
+    </item>
+    <item>
+      <title>CoreData Swift Scalar Optionals</title>
+      <link>https://mathieson.github.io/blog/posts/coredata-swift-scalar-optionals/</link>
+      <pubDate>Sat, 22 Jan 2022 00:00:00 +0000</pubDate>
+      <guid>https://mathieson.github.io/blog/posts/coredata-swift-scalar-optionals/</guid>
+      <description>CoreData doesn&amp;#39;t support optional scalar types like Double — here&amp;#39;s a clean workaround for optional numeric fields in a SwiftUI input form.</description>
+    </item>
+    <item>
+      <title>My SwiftUI Currency Field</title>
+      <link>https://mathieson.github.io/blog/posts/my-swiftui-currency-field/</link>
+      <pubDate>Wed, 12 Jan 2022 00:00:00 +0000</pubDate>
+      <guid>https://mathieson.github.io/blog/posts/my-swiftui-currency-field/</guid>
+      <description>A simple, robust SwiftUI currency input field — no over-engineered solutions required.</description>
+    </item>
+    <item>
+      <title>Loss vs. reward in reinforcement learning</title>
+      <link>https://mathieson.github.io/blog/posts/loss-vs-reward-in-reinforcement-learning/</link>
+      <pubDate>Sun, 17 Oct 2021 00:00:00 +0000</pubDate>
+      <guid>https://mathieson.github.io/blog/posts/loss-vs-reward-in-reinforcement-learning/</guid>
+      <description>Untangling how reward relates to the loss function when you come to reinforcement learning from standard deep learning.</description>
+    </item>
+    <item>
+      <title>Tensorflow to PyTorch</title>
+      <link>https://mathieson.github.io/blog/posts/tensorflow-to-pytorch/</link>
+      <pubDate>Sun, 10 Oct 2021 00:00:00 +0000</pubDate>
+      <guid>https://mathieson.github.io/blog/posts/tensorflow-to-pytorch/</guid>
+      <description>Why I switched from TensorFlow to PyTorch: debuggability and transparency into the training process.</description>
+    </item>
+    <item>
+      <title>Kaggle Courses</title>
+      <link>https://mathieson.github.io/blog/posts/kaggle-courses/</link>
+      <pubDate>Sun, 08 Aug 2021 00:00:00 +0000</pubDate>
+      <guid>https://mathieson.github.io/blog/posts/kaggle-courses/</guid>
+      <description>A quick review of Kaggle&amp;#39;s free data-science courses from the perspective of someone getting started with deep learning.</description>
+    </item>
+    <item>
+      <title>Python logging in Maya</title>
+      <link>https://mathieson.github.io/blog/posts/demystifying-python-logging-in-maya/</link>
+      <pubDate>Tue, 13 Jul 2021 00:00:00 +0000</pubDate>
+      <guid>https://mathieson.github.io/blog/posts/demystifying-python-logging-in-maya/</guid>
+      <description>How Python&amp;#39;s logging hierarchy actually works, and how to configure loggers sensibly inside Autodesk Maya.</description>
+    </item>
+    <item>
+      <title>Applied Software Development Retrospective</title>
+      <link>https://mathieson.github.io/blog/posts/applied-software-development-retrospective/</link>
+      <pubDate>Mon, 05 Apr 2021 00:00:00 +0000</pubDate>
+      <guid>https://mathieson.github.io/blog/posts/applied-software-development-retrospective/</guid>
+      <description>Reflections on completing BCIT&amp;#39;s three-year Applied Software Development program as a self-taught developer with a decade of industry experience.</description>
+    </item>
+    <item>
+      <title>Using the __new__ method in Python classes</title>
+      <link>https://mathieson.github.io/blog/posts/using-the-__new__-method-in-python-classes/</link>
+      <pubDate>Sun, 28 Mar 2021 00:00:00 +0000</pubDate>
+      <guid>https://mathieson.github.io/blog/posts/using-the-__new__-method-in-python-classes/</guid>
+      <description>What Python&amp;#39;s __new__ method actually does, how it differs from __init__, and when overriding it is useful.</description>
+    </item>
+  </channel>
+</rss>

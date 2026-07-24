@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Tags on Mat&#39;s Mind Dump</title>
+    <link>https://mathieson.github.io/blog/tags/</link>
+    <description>Recent content in Tags on Mat&#39;s Mind Dump</description>
+    <image>
+      <title>Mat&#39;s Mind Dump</title>
+      <url>https://mathieson.github.io/blog/og-default.jpg</url>
+      <link>https://mathieson.github.io/blog/og-default.jpg</link>
+    </image>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 02 Apr 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://mathieson.github.io/blog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Maya</title>
+      <link>https://mathieson.github.io/blog/tags/maya/</link>
+      <pubDate>Thu, 02 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>https://mathieson.github.io/blog/tags/maya/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Python</title>
+      <link>https://mathieson.github.io/blog/tags/python/</link>
+      <pubDate>Thu, 02 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>https://mathieson.github.io/blog/tags/python/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Tech-Art</title>
+      <link>https://mathieson.github.io/blog/tags/tech-art/</link>
+      <pubDate>Thu, 02 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>https://mathieson.github.io/blog/tags/tech-art/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Tooling</title>
+      <link>https://mathieson.github.io/blog/tags/tooling/</link>
+      <pubDate>Thu, 02 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>https://mathieson.github.io/blog/tags/tooling/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Vscode</title>
+      <link>https://mathieson.github.io/blog/tags/vscode/</link>
+      <pubDate>Thu, 02 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>https://mathieson.github.io/blog/tags/vscode/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Deep-Learning</title>
+      <link>https://mathieson.github.io/blog/tags/deep-learning/</link>
+      <pubDate>Fri, 26 Aug 2022 00:00:00 +0000</pubDate>
+      <guid>https://mathieson.github.io/blog/tags/deep-learning/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Machine-Learning</title>
+      <link>https://mathieson.github.io/blog/tags/machine-learning/</link>
+      <pubDate>Fri, 26 Aug 2022 00:00:00 +0000</pubDate>
+      <guid>https://mathieson.github.io/blog/tags/machine-learning/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Pycharm</title>
+      <link>https://mathieson.github.io/blog/tags/pycharm/</link>
+      <pubDate>Thu, 16 Jun 2022 00:00:00 +0000</pubDate>
+      <guid>https://mathieson.github.io/blog/tags/pycharm/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Coredata</title>
+      <link>https://mathieson.github.io/blog/tags/coredata/</link>
+      <pubDate>Sat, 22 Jan 2022 00:00:00 +0000</pubDate>
+      <guid>https://mathieson.github.io/blog/tags/coredata/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Ios</title>
+      <link>https://mathieson.github.io/blog/tags/ios/</link>
+      <pubDate>Sat, 22 Jan 2022 00:00:00 +0000</pubDate>
+      <guid>https://mathieson.github.io/blog/tags/ios/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Swift</title>
+      <link>https://mathieson.github.io/blog/tags/swift/</link>
+      <pubDate>Sat, 22 Jan 2022 00:00:00 +0000</pubDate>
+      <guid>https://mathieson.github.io/blog/tags/swift/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Swiftui</title>
+      <link>https://mathieson.github.io/blog/tags/swiftui/</link>
+      <pubDate>Wed, 12 Jan 2022 00:00:00 +0000</pubDate>
+      <guid>https://mathieson.github.io/blog/tags/swiftui/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Pytorch</title>
+      <link>https://mathieson.github.io/blog/tags/pytorch/</link>
+      <pubDate>Sun, 17 Oct 2021 00:00:00 +0000</pubDate>
+      <guid>https://mathieson.github.io/blog/tags/pytorch/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Reinforcement-Learning</title>
+      <link>https://mathieson.github.io/blog/tags/reinforcement-learning/</link>
+      <pubDate>Sun, 17 Oct 2021 00:00:00 +0000</pubDate>
+      <guid>https://mathieson.github.io/blog/tags/reinforcement-learning/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Education</title>
+      <link>https://mathieson.github.io/blog/tags/education/</link>
+      <pubDate>Sun, 08 Aug 2021 00:00:00 +0000</pubDate>
+      <guid>https://mathieson.github.io/blog/tags/education/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Software-Development</title>
+      <link>https://mathieson.github.io/blog/tags/software-development/</link>
+      <pubDate>Mon, 05 Apr 2021 00:00:00 +0000</pubDate>
+      <guid>https://mathieson.github.io/blog/tags/software-development/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>
