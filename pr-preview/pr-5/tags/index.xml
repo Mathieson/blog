@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Tags on Mat&#39;s Mind Dump</title>
+    <link>https://mathieson.github.io/blog/pr-preview/pr-5/tags/</link>
+    <description>Recent content in Tags on Mat&#39;s Mind Dump</description>
+    <image>
+      <title>Mat&#39;s Mind Dump</title>
+      <url>https://mathieson.github.io/blog/pr-preview/pr-5/og-default.jpg</url>
+      <link>https://mathieson.github.io/blog/pr-preview/pr-5/og-default.jpg</link>
+    </image>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 24 Jul 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://mathieson.github.io/blog/pr-preview/pr-5/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Devops</title>
+      <link>https://mathieson.github.io/blog/pr-preview/pr-5/tags/devops/</link>
+      <pubDate>Fri, 24 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>https://mathieson.github.io/blog/pr-preview/pr-5/tags/devops/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Meta</title>
+      <link>https://mathieson.github.io/blog/pr-preview/pr-5/tags/meta/</link>
+      <pubDate>Fri, 24 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>https://mathieson.github.io/blog/pr-preview/pr-5/tags/meta/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Maya</title>
+      <link>https://mathieson.github.io/blog/pr-preview/pr-5/tags/maya/</link>
+      <pubDate>Thu, 02 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>https://mathieson.github.io/blog/pr-preview/pr-5/tags/maya/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Python</title>
+      <link>https://mathieson.github.io/blog/pr-preview/pr-5/tags/python/</link>
+      <pubDate>Thu, 02 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>https://mathieson.github.io/blog/pr-preview/pr-5/tags/python/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Tech-Art</title>
+      <link>https://mathieson.github.io/blog/pr-preview/pr-5/tags/tech-art/</link>
+      <pubDate>Thu, 02 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>https://mathieson.github.io/blog/pr-preview/pr-5/tags/tech-art/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Tooling</title>
+      <link>https://mathieson.github.io/blog/pr-preview/pr-5/tags/tooling/</link>
+      <pubDate>Thu, 02 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>https://mathieson.github.io/blog/pr-preview/pr-5/tags/tooling/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Vscode</title>
+      <link>https://mathieson.github.io/blog/pr-preview/pr-5/tags/vscode/</link>
+      <pubDate>Thu, 02 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>https://mathieson.github.io/blog/pr-preview/pr-5/tags/vscode/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Deep-Learning</title>
+      <link>https://mathieson.github.io/blog/pr-preview/pr-5/tags/deep-learning/</link>
+      <pubDate>Fri, 26 Aug 2022 00:00:00 +0000</pubDate>
+      <guid>https://mathieson.github.io/blog/pr-preview/pr-5/tags/deep-learning/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Machine-Learning</title>
+      <link>https://mathieson.github.io/blog/pr-preview/pr-5/tags/machine-learning/</link>
+      <pubDate>Fri, 26 Aug 2022 00:00:00 +0000</pubDate>
+      <guid>https://mathieson.github.io/blog/pr-preview/pr-5/tags/machine-learning/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Pycharm</title>
+      <link>https://mathieson.github.io/blog/pr-preview/pr-5/tags/pycharm/</link>
+      <pubDate>Thu, 16 Jun 2022 00:00:00 +0000</pubDate>
+      <guid>https://mathieson.github.io/blog/pr-preview/pr-5/tags/pycharm/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Coredata</title>
+      <link>https://mathieson.github.io/blog/pr-preview/pr-5/tags/coredata/</link>
+      <pubDate>Sat, 22 Jan 2022 00:00:00 +0000</pubDate>
+      <guid>https://mathieson.github.io/blog/pr-preview/pr-5/tags/coredata/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Ios</title>
+      <link>https://mathieson.github.io/blog/pr-preview/pr-5/tags/ios/</link>
+      <pubDate>Sat, 22 Jan 2022 00:00:00 +0000</pubDate>
+      <guid>https://mathieson.github.io/blog/pr-preview/pr-5/tags/ios/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Swift</title>
+      <link>https://mathieson.github.io/blog/pr-preview/pr-5/tags/swift/</link>
+      <pubDate>Sat, 22 Jan 2022 00:00:00 +0000</pubDate>
+      <guid>https://mathieson.github.io/blog/pr-preview/pr-5/tags/swift/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Swiftui</title>
+      <link>https://mathieson.github.io/blog/pr-preview/pr-5/tags/swiftui/</link>
+      <pubDate>Wed, 12 Jan 2022 00:00:00 +0000</pubDate>
+      <guid>https://mathieson.github.io/blog/pr-preview/pr-5/tags/swiftui/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Pytorch</title>
+      <link>https://mathieson.github.io/blog/pr-preview/pr-5/tags/pytorch/</link>
+      <pubDate>Sun, 17 Oct 2021 00:00:00 +0000</pubDate>
+      <guid>https://mathieson.github.io/blog/pr-preview/pr-5/tags/pytorch/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Reinforcement-Learning</title>
+      <link>https://mathieson.github.io/blog/pr-preview/pr-5/tags/reinforcement-learning/</link>
+      <pubDate>Sun, 17 Oct 2021 00:00:00 +0000</pubDate>
+      <guid>https://mathieson.github.io/blog/pr-preview/pr-5/tags/reinforcement-learning/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Education</title>
+      <link>https://mathieson.github.io/blog/pr-preview/pr-5/tags/education/</link>
+      <pubDate>Sun, 08 Aug 2021 00:00:00 +0000</pubDate>
+      <guid>https://mathieson.github.io/blog/pr-preview/pr-5/tags/education/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Software-Development</title>
+      <link>https://mathieson.github.io/blog/pr-preview/pr-5/tags/software-development/</link>
+      <pubDate>Mon, 05 Apr 2021 00:00:00 +0000</pubDate>
+      <guid>https://mathieson.github.io/blog/pr-preview/pr-5/tags/software-development/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

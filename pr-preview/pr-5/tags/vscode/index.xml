@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Vscode on Mat&#39;s Mind Dump</title>
+    <link>https://mathieson.github.io/blog/pr-preview/pr-5/tags/vscode/</link>
+    <description>Recent content in Vscode on Mat&#39;s Mind Dump</description>
+    <image>
+      <title>Mat&#39;s Mind Dump</title>
+      <url>https://mathieson.github.io/blog/pr-preview/pr-5/og-default.jpg</url>
+      <link>https://mathieson.github.io/blog/pr-preview/pr-5/og-default.jpg</link>
+    </image>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 02 Apr 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://mathieson.github.io/blog/pr-preview/pr-5/tags/vscode/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Switching from PyCharm to VS Code — and Fixing Python Environments with uv</title>
+      <link>https://mathieson.github.io/blog/pr-preview/pr-5/posts/switching-from-pycharm-to-vscode-with-uv/</link>
+      <pubDate>Thu, 02 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>https://mathieson.github.io/blog/pr-preview/pr-5/posts/switching-from-pycharm-to-vscode-with-uv/</guid>
+      <description>Why I moved from PyCharm to VS Code, and the uv-based workflow — solving a Maya environment-isolation problem along the way — that finally made it click.</description>
+    </item>
+  </channel>
+</rss>

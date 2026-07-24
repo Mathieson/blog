@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Tech-Art on Mat&#39;s Mind Dump</title>
+    <link>https://mathieson.github.io/blog/pr-preview/pr-5/tags/tech-art/</link>
+    <description>Recent content in Tech-Art on Mat&#39;s Mind Dump</description>
+    <image>
+      <title>Mat&#39;s Mind Dump</title>
+      <url>https://mathieson.github.io/blog/pr-preview/pr-5/og-default.jpg</url>
+      <link>https://mathieson.github.io/blog/pr-preview/pr-5/og-default.jpg</link>
+    </image>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 02 Apr 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://mathieson.github.io/blog/pr-preview/pr-5/tags/tech-art/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Switching from PyCharm to VS Code — and Fixing Python Environments with uv</title>
+      <link>https://mathieson.github.io/blog/pr-preview/pr-5/posts/switching-from-pycharm-to-vscode-with-uv/</link>
+      <pubDate>Thu, 02 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>https://mathieson.github.io/blog/pr-preview/pr-5/posts/switching-from-pycharm-to-vscode-with-uv/</guid>
+      <description>Why I moved from PyCharm to VS Code, and the uv-based workflow — solving a Maya environment-isolation problem along the way — that finally made it click.</description>
+    </item>
+    <item>
+      <title>Regular Expressions</title>
+      <link>https://mathieson.github.io/blog/pr-preview/pr-5/posts/regular-expressions/</link>
+      <pubDate>Thu, 08 Sep 2022 00:00:00 +0000</pubDate>
+      <guid>https://mathieson.github.io/blog/pr-preview/pr-5/posts/regular-expressions/</guid>
+      <description>Why regex is one of the highest-value skills I&amp;#39;ve learned in my career, and a primer on using it from Python.</description>
+    </item>
+    <item>
+      <title>The Best PyCharm MayaPy Interpreter Setup</title>
+      <link>https://mathieson.github.io/blog/pr-preview/pr-5/posts/the-best-pycharm-mayapy-interpreter-setup/</link>
+      <pubDate>Thu, 16 Jun 2022 00:00:00 +0000</pubDate>
+      <guid>https://mathieson.github.io/blog/pr-preview/pr-5/posts/the-best-pycharm-mayapy-interpreter-setup/</guid>
+      <description>Configuring PyCharm with MayaPy and Autodesk&amp;#39;s stub files for full autocomplete and a slick Maya unit-testing workflow.</description>
+    </item>
+    <item>
+      <title>Python logging in Maya</title>
+      <link>https://mathieson.github.io/blog/pr-preview/pr-5/posts/demystifying-python-logging-in-maya/</link>
+      <pubDate>Tue, 13 Jul 2021 00:00:00 +0000</pubDate>
+      <guid>https://mathieson.github.io/blog/pr-preview/pr-5/posts/demystifying-python-logging-in-maya/</guid>
+      <description>How Python&amp;#39;s logging hierarchy actually works, and how to configure loggers sensibly inside Autodesk Maya.</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="light">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Loss vs. reward in reinforcement learning | Mat&#39;s Mind Dump</title>
+<meta name="keywords" content="machine-learning, deep-learning, pytorch, reinforcement-learning">
+<meta name="description" content="Untangling how reward relates to the loss function when you come to reinforcement learning from standard deep learning.">
+<meta name="author" content="Mat">
+<link rel="canonical" href="https://mathieson.github.io/blog/pr-preview/pr-5/posts/loss-vs-reward-in-reinforcement-learning/">
+<link crossorigin="anonymous" href="/blog/pr-preview/pr-5/assets/css/stylesheet.c91380afb3f4124192224fe1cbd9bed0c7f76403520c60f9acc62dcbf3426d5a.css" integrity="sha256-yROAr7P0EkGSIk/hy9m&#43;0Mf3ZANSDGD5rMYty/NCbVo=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://mathieson.github.io/blog/pr-preview/pr-5/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://mathieson.github.io/blog/pr-preview/pr-5/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://mathieson.github.io/blog/pr-preview/pr-5/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://mathieson.github.io/blog/pr-preview/pr-5/apple-touch-icon.png">
+<link rel="mask-icon" href="https://mathieson.github.io/blog/pr-preview/pr-5/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://mathieson.github.io/blog/pr-preview/pr-5/posts/loss-vs-reward-in-reinforcement-learning/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    }
+
+</script><link rel="icon" type="image/png" sizes="32x32" href="https://mathieson.github.io/blog/pr-preview/pr-5/favicon-32x32-dark.png" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/png" sizes="16x16" href="https://mathieson.github.io/blog/pr-preview/pr-5/favicon-16x16-dark.png" media="(prefers-color-scheme: dark)">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,600,100,1&family=Montserrat:wght@600;700&family=Lato:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<script data-goatcounter="https://matfacer.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<meta property="og:url" content="https://mathieson.github.io/blog/pr-preview/pr-5/posts/loss-vs-reward-in-reinforcement-learning/">
+  <meta property="og:site_name" content="Mat&#39;s Mind Dump">
+  <meta property="og:title" content="Loss vs. reward in reinforcement learning">
+  <meta property="og:description" content="Untangling how reward relates to the loss function when you come to reinforcement learning from standard deep learning.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2021-10-17T00:00:00+00:00">
+    <meta property="article:modified_time" content="2021-10-17T00:00:00+00:00">
+    <meta property="article:tag" content="Machine-Learning">
+    <meta property="article:tag" content="Deep-Learning">
+    <meta property="article:tag" content="Pytorch">
+    <meta property="article:tag" content="Reinforcement-Learning">
+    <meta property="og:image" content="https://mathieson.github.io/blog/pr-preview/pr-5/images/pytorch-logo.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://mathieson.github.io/blog/pr-preview/pr-5/images/pytorch-logo.png">
+  <meta name="twitter:title" content="Loss vs. reward in reinforcement learning">
+  <meta name="twitter:description" content="Untangling how reward relates to the loss function when you come to reinforcement learning from standard deep learning.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://mathieson.github.io/blog/pr-preview/pr-5/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Loss vs. reward in reinforcement learning",
+      "item": "https://mathieson.github.io/blog/pr-preview/pr-5/posts/loss-vs-reward-in-reinforcement-learning/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Loss vs. reward in reinforcement learning",
+  "name": "Loss vs. reward in reinforcement learning",
+  "description": "Untangling how reward relates to the loss function when you come to reinforcement learning from standard deep learning.",
+  "keywords": [
+    "machine-learning", "deep-learning", "pytorch", "reinforcement-learning"
+  ],
+  "articleBody": "\"Reinforcement learning is my area of focus so far when it comes to deep learning. RL is probably not the first stop for most on the machine learning education circuit, but it just happens to be where the problem I am trying to solve has taken me.\\nWhen starting down the RL road, I was immediately confused by the concept of reward. Nothing was confusing about what it was - giving a dog a treat when it sits after you’ve asked it to sums things up pretty well. Instead, I was confused by its relation to the loss function. Both, at a high level, help inform when the correct thing is happening.\\nRL primer Skip this if you’re already familiar with RL.\\nIf you’re unfamiliar with reinforcement learning - things work a bit different from standard deep learning. There are similar concepts, but the terminology and applications have shifted somewhat. The purpose is to train an agent (think robot) to navigate an environment (play a game, or more generally, accomplish a task).\\nNeural networks are still present in RL, but they are applied differently, and, in my experience so far, the emphasis is less on the NN and more on the environment. For example, there is a high-level wrapper library for RL, stable-baselines, which can handle all of the NN setups for you.\\nThere is no dataset in reinforcement learning. Instead, you have an environment. To properly train your agent, you need to create a custom environment for your agent to interact. A standard template exists for creating custom environments. You need to describe the environment state, the agent’s allowed actions, and the reward for said actions.\\nWhereas the goal of other types of ML is to minimize loss, the agent in RL is determined to maximize its reward. It will seek out ways to get the highest score possible.\\nThat’s all for now!\\nSwinging blind and striking out I jumped straight in, deciding not to get caught up too early by the nuances of reward vs. loss and see how far I could get with reward only. The answer? Not very!\\nMy experiments focused mainly on rewarding the agent when closer to the desired goal than in the previous state. I played around with many different additional ideas surrounding this core concept.\\nI realized a potential flaw in my strategies in that my reward scheme was not predictable enough. I couldn’t tell what the accumulated score meant. This idea came from the concept that the agent will seek to maximize its score. Therefore, it should be somewhat absolute and predictable.\\nIn my next rounds of refining my rewards, I made an effort to incorporate this idea. I also borrowed some ideas from other environments I found in the OpenAI Gym. Still no significant improvements.\\nRevisiting the original question With lots of experience in what isn’t working, I returned to my original query of the difference between loss and reward. Research revealed some interesting insights.\\nIt turns out, what I was doing was something called reward shaping. It is not an evil concept or a bad thing but seems to get overused and easily abused. The description I read that helped most with bringing perspective was that in shaping the reward, you are slowly removing machine learning from the equation. Instead of the machine learning what to do, you are telling it what to do.\\nWhile this idea may be too “ML purist,” it helped give a basis for understanding where rewards might have a limit and where loss might come back into the picture.\\nHindsight experience replay This new information sent me down a new path of discovery. In reading more about reward shaping, I discovered hindsight experience replay (HER). It turns out, over-engineering reward schemas is a prevalent problem in RL, and HER is a more recent solution to help overcome the problem.\\nEnvironments can quickly become very complex, making the agent receive a reward in extremely rare circumstances. When this happens, the agent doesn’t get rewarded, which means it doesn’t learn. The natural next step is to begin adding interim rewards, hoping to increase the reward frequency, so the agent learns.\\nHER emulates a more human-like learning experience, where the agent will learn from its failures. I’ve read a great example: imagine you shoot a puck at a hockey net, and it goes wide to the right. Typical RL will assess the situation, see that you didn’t get the puck in the net, and not reward you. That is all you would know as the agent - “I didn’t get rewarded.”\\nAs humans, we assess more from this scenario and understand more than just “I didn’t get rewarded.” We realize that we shot the puck wide and to the right, and so, therefore, next time, if I want to hit my goal, I should shoot more to the left.\\nHER brings this same notion to RL, helping the agent learn not only from its successes but also from its failures. Using HER means reward shaping can then be reduced, and positive rewards can remain sparse.\\nI tried implementing HER and did see some success, which was quite exciting. Still, my success was only peaking at around 50-60% in an environment I could not have simplified further.\\nBack to custom loss Although I saw some signs of life from HER, the success rate in the most simplified environment possible was not enough. With plans to return to HER again later, it was time to return to a custom loss function.\\nTo give some insight into my problem space, while keeping it minimal - I am working on solving point coordinates of a mesh. The predicted numbers have a special relationship, representing a mesh, and not considering this relationship will make those predictions less accurate.\\nI installed PyTorch3D to leverage the mesh framework within, even though my problem is in 2D space, and it was quick and easy to create a custom loss function. I made the environment slightly more complicated once again and tried running my optimization loop. Keep in mind - this is not RL at this point, but instead just testing a theory on convergence for my problem, similar to PyTorch3D’s Fit Mesh tutorial. The result was great!\\nWhat have I learned? We are now up to speed with where I am currently in my adventures. Through this process, I feel my understanding of loss vs. reward has improved, where I can at least now come up with a plan on how to employ both tools to work together on the same problem at the same time.\\nHere is how I am summing things up for myself regarding loss and reward:\\nLoss is like the game of hot and cold. It measures relativity, and it helps in the journey of getting to the goal. Reward is received for being in the desired state (or not). It is more absolute, and should be given sparingly. You can roughly fit both into the carrot and stick analogy if you squint your brain a bit.\\nMy next steps are to provide even more complex examples to the current setup to stress test further, then return to RL to create an agent and environment to deploy this solution, hopefully.\\nMy learnings are still a WIP, obviously, so there is a possibility I’m still off. I’ll aim to update again later with however things progress.\\n\"",
+  "wordCount" : "1234",
+  "inLanguage": "en",
+  "image":"https://mathieson.github.io/blog/pr-preview/pr-5/images/pytorch-logo.png","datePublished": "2021-10-17T00:00:00Z",
+  "dateModified": "2021-10-17T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Mat"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://mathieson.github.io/blog/pr-preview/pr-5/posts/loss-vs-reward-in-reinforcement-learning/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Mat's Mind Dump",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://mathieson.github.io/blog/pr-preview/pr-5/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="header-nav">
+        <div class="logo">
+            <a href="https://mathieson.github.io/blog/pr-preview/pr-5/" accesskey="h" title="Mat&#39;s Mind Dump (Alt + H)">
+                        
+                    <img src="https://mathieson.github.io/blog/pr-preview/pr-5/logos_hu_703e81d02529ebd6.png" alt="" aria-label="logo"
+                        height="40">Mat&#39;s Mind Dump</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu" class="menu">
+            <li>
+                <a href="https://mathieson.github.io/blog/pr-preview/pr-5/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://mathieson.github.io/blog/pr-preview/pr-5/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <nav class="breadcrumbs" role="navigation" aria-label="Breadcrumb">
+    <a href='https://mathieson.github.io/blog/pr-preview/pr-5/'>Home</a>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+            <a href="https://mathieson.github.io/blog/pr-preview/pr-5/posts/">Posts</a></nav>
+    <h1 class="post-title entry-hint-parent">
+      Loss vs. reward in reinforcement learning
+    </h1>
+    <div class="post-description">
+      Untangling how reward relates to the loss function when you come to reinforcement learning from standard deep learning.
+    </div>
+    <div class="post-meta"><span title='2021-10-17 00:00:00 +0000 UTC'>Oct 17, 2021</span>&nbsp;·&nbsp;<span>⏱ 6 min</span>
+
+</div>
+  </header> 
+<figure class="entry-cover">
+            <img loading="eager"
+                srcset='https://mathieson.github.io/blog/pr-preview/pr-5/posts/loss-vs-reward-in-reinforcement-learning/images/pytorch-logo_hu_276c832c331b154d.png 360w,https://mathieson.github.io/blog/pr-preview/pr-5/posts/loss-vs-reward-in-reinforcement-learning/images/pytorch-logo_hu_9debf00eaa58fc0d.png 480w,https://mathieson.github.io/blog/pr-preview/pr-5/posts/loss-vs-reward-in-reinforcement-learning/images/pytorch-logo_hu_8d2c7f624c1d9181.png 720w,https://mathieson.github.io/blog/pr-preview/pr-5/posts/loss-vs-reward-in-reinforcement-learning/images/pytorch-logo_hu_536034ddcc4cd6a.png 1080w,https://mathieson.github.io/blog/pr-preview/pr-5/posts/loss-vs-reward-in-reinforcement-learning/images/pytorch-logo.png 1200w'
+                src="https://mathieson.github.io/blog/pr-preview/pr-5/posts/loss-vs-reward-in-reinforcement-learning/images/pytorch-logo.png"
+                sizes="(min-width: 768px) 720px, 100vw"
+                width="1200" height="1000"
+                alt="PyTorch logo">
+        
+</figure><details class="toc" >
+    <summary accesskey="c" title="(Alt + C)">
+        <span class="title">Table of Contents</span>
+    </summary>
+
+    <div class="inner"><ul>
+            <li>
+                <a href="#rl-primer" aria-label="RL primer">RL primer</a></li>
+            <li>
+                <a href="#swinging-blind-and-striking-out" aria-label="Swinging blind and striking out">Swinging blind and striking out</a></li>
+            <li>
+                <a href="#revisiting-the-original-question" aria-label="Revisiting the original question">Revisiting the original question</a></li>
+            <li>
+                <a href="#hindsight-experience-replay" aria-label="Hindsight experience replay">Hindsight experience replay</a></li>
+            <li>
+                <a href="#back-to-custom-loss" aria-label="Back to custom loss">Back to custom loss</a></li>
+            <li>
+                <a href="#what-have-i-learned" aria-label="What have I learned?">What have I learned?</a>
+            </li>
+        </ul>
+    </div>
+</details>
+
+  <div class="post-content md-content"><p>Reinforcement learning is my area of focus so far when it comes to deep learning. RL is probably not the first stop for most on the machine learning education circuit, but it just happens to be where the problem I am trying to solve has taken me.</p>
+<p>When starting down the RL road, I was immediately confused by the concept of reward. Nothing was confusing about what it was - giving a dog a treat when it sits after you&rsquo;ve asked it to sums things up pretty well. Instead, I was confused by its relation to the loss function. Both, at a high level, help inform when the correct thing is happening.</p>
+<h2 id="rl-primer">RL primer<a hidden class="anchor" aria-hidden="true" href="#rl-primer">#</a></h2>
+<p>Skip this if you&rsquo;re already familiar with RL.</p>
+<p>If you&rsquo;re unfamiliar with reinforcement learning - things work a bit different from standard deep learning. There are similar concepts, but the terminology and applications have shifted somewhat. The purpose is to train an agent (think robot) to navigate an environment (play a game, or more generally, accomplish a task).</p>
+<p>Neural networks are still present in RL, but they are applied differently, and, in my experience so far, the emphasis is less on the NN and more on the environment. For example, there is a high-level wrapper library for RL, <a href="https://github.com/DLR-RM/stable-baselines3">stable-baselines</a>, which can handle all of the NN setups for you.</p>
+<p>There is no dataset in reinforcement learning. Instead, you have an environment. To properly train your agent, you need to create a custom environment for your agent to interact. A standard template exists for creating custom environments. You need to describe the environment state, the agent&rsquo;s allowed actions, and the reward for said actions.</p>
+<p><img alt="5 Things You Need to Know about Reinforcement Learning - KDnuggets" loading="lazy" src="/blog/pr-preview/pr-5/posts/loss-vs-reward-in-reinforcement-learning/images/reinforcement-learning-fig1-700.jpg"></p>
+<p>Whereas the goal of other types of ML is to minimize loss, the agent in RL is determined to maximize its reward. It will seek out ways to get the highest score possible.</p>
+<p>That&rsquo;s all for now!</p>
+<h2 id="swinging-blind-and-striking-out">Swinging blind and striking out<a hidden class="anchor" aria-hidden="true" href="#swinging-blind-and-striking-out">#</a></h2>
+<p>I jumped straight in, deciding not to get caught up too early by the nuances of reward vs. loss and see how far I could get with reward only. The answer? Not very!</p>
+<p>My experiments focused mainly on rewarding the agent when closer to the desired goal than in the previous state. I played around with many different additional ideas surrounding this core concept.</p>
+<p>I realized a potential flaw in my strategies in that my reward scheme was not predictable enough. I couldn&rsquo;t tell what the accumulated score meant. This idea came from the concept that the agent will seek to maximize its score. Therefore, it should be somewhat absolute and predictable.</p>
+<p>In my next rounds of refining my rewards, I made an effort to incorporate this idea. I also borrowed some ideas from other environments I found in the <a href="https://gym.openai.com/envs/#classic_control">OpenAI Gym</a>. Still no significant improvements.</p>
+<h2 id="revisiting-the-original-question">Revisiting the original question<a hidden class="anchor" aria-hidden="true" href="#revisiting-the-original-question">#</a></h2>
+<p>With lots of experience in what isn&rsquo;t working, I returned to my original query of the difference between loss and reward. Research revealed some interesting insights.</p>
+<p>It turns out, what I was doing was something called reward shaping. It is not an evil concept or a bad thing but seems to get overused and easily abused. The description I read that helped most with bringing perspective was that in shaping the reward, you are slowly removing machine learning from the equation. Instead of the machine <em>learning</em> what to do, you are <em>telling</em> it what to do.</p>
+<p>While this idea may be too &ldquo;ML purist,&rdquo; it helped give a basis for understanding where rewards might have a limit and where loss might come back into the picture.</p>
+<h2 id="hindsight-experience-replay">Hindsight experience replay<a hidden class="anchor" aria-hidden="true" href="#hindsight-experience-replay">#</a></h2>
+<p>This new information sent me down a new path of discovery. In reading more about reward shaping, I discovered hindsight experience replay (HER). It turns out, over-engineering reward schemas is a prevalent problem in RL, and HER is a more recent solution to help overcome the problem.</p>
+<p><img alt="Accelerating Information Propagation in Hindsight Experience Replay | by  Gershom Agim | llucid | Towards Data Science" loading="lazy" src="images/0*3jMKfAhjxuux_eiN.png"></p>
+<p>Environments can quickly become very complex, making the agent receive a reward in <strong>extremely</strong> rare circumstances. When this happens, the agent doesn&rsquo;t get rewarded, which means it doesn&rsquo;t learn. The natural next step is to begin adding interim rewards, hoping to increase the reward frequency, so the agent learns.</p>
+<p>HER emulates a more human-like learning experience, where the agent will learn from its failures. I&rsquo;ve read a great example: imagine you shoot a puck at a hockey net, and it goes wide to the right. Typical RL will assess the situation, see that you didn&rsquo;t get the puck in the net, and not reward you. That is all you would know as the agent - &ldquo;I didn&rsquo;t get rewarded.&rdquo;</p>
+<p>As humans, we assess more from this scenario and understand more than just &ldquo;I didn&rsquo;t get rewarded.&rdquo; We realize that we shot the puck wide and to the right, and so, therefore, next time, if I want to hit my goal, I should shoot more to the left.</p>
+<p><img alt="Hindsight experience replay paper review" loading="lazy" src="/blog/pr-preview/pr-5/posts/loss-vs-reward-in-reinforcement-learning/images/hindsight-experience-replay-paper-review-12-638.jpg"></p>
+<p>HER brings this same notion to RL, helping the agent learn not only from its successes but also from its failures. Using HER means reward shaping can then be reduced, and positive rewards can remain sparse.</p>
+<p>I tried implementing HER and did see some success, which was quite exciting. Still, my success was only peaking at around 50-60% in an environment I could not have simplified further.</p>
+<h2 id="back-to-custom-loss">Back to custom loss<a hidden class="anchor" aria-hidden="true" href="#back-to-custom-loss">#</a></h2>
+<p>Although I saw some signs of life from HER, the success rate in the most simplified environment possible was not enough. With plans to return to HER again later, it was time to return to a custom loss function.</p>
+<p>To give some insight into my problem space, while keeping it minimal - I am working on solving point coordinates of a mesh. The predicted numbers have a special relationship, representing a mesh, and not considering this relationship will make those predictions less accurate.</p>
+<p>I installed <a href="http://pytorch3d.org">PyTorch3D</a> to leverage the mesh framework within, even though my problem is in 2D space, and it was quick and easy to create a custom loss function. I made the environment slightly more complicated once again and tried running my optimization loop. Keep in mind - this is not RL at this point, but instead just testing a theory on convergence for my problem, similar to <a href="https://pytorch3d.org/tutorials/deform_source_mesh_to_target_mesh">PyTorch3D&rsquo;s Fit Mesh</a> tutorial. The result was great!</p>
+<p><img alt="Convergence results from custom loss function optimization" loading="lazy" src="/blog/pr-preview/pr-5/posts/loss-vs-reward-in-reinforcement-learning/images/image.png"></p>
+<h2 id="what-have-i-learned">What have I learned?<a hidden class="anchor" aria-hidden="true" href="#what-have-i-learned">#</a></h2>
+<p>We are now up to speed with where I am currently in my adventures. Through this process, I feel my understanding of loss vs. reward has improved, where I can at least now come up with a plan on how to employ both tools to work together on the same problem at the same time.</p>
+<p>Here is how I am summing things up for myself regarding loss and reward:</p>
+<ul>
+<li>Loss is like the game of hot and cold. It measures relativity, and it helps in the journey of getting to the goal.</li>
+<li>Reward is received for being in the desired state (or not). It is more absolute, and should be given sparingly.</li>
+</ul>
+<p>You can roughly fit both into the carrot and stick analogy if you squint your brain a bit.</p>
+<p><img alt="Carrot And Stick Analogy" loading="lazy" src="/blog/pr-preview/pr-5/posts/loss-vs-reward-in-reinforcement-learning/images/file.jpg"></p>
+<p>My next steps are to provide even more complex examples to the current setup to stress test further, then return to RL to create an agent and environment to deploy this solution, hopefully.</p>
+<p>My learnings are still a WIP, obviously, so there is a possibility I&rsquo;m still off. I&rsquo;ll aim to update again later with however things progress.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://mathieson.github.io/blog/pr-preview/pr-5/tags/machine-learning/">Machine-Learning</a></li>
+      <li><a href="https://mathieson.github.io/blog/pr-preview/pr-5/tags/deep-learning/">Deep-Learning</a></li>
+      <li><a href="https://mathieson.github.io/blog/pr-preview/pr-5/tags/pytorch/">Pytorch</a></li>
+      <li><a href="https://mathieson.github.io/blog/pr-preview/pr-5/tags/reinforcement-learning/">Reinforcement-Learning</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="https://mathieson.github.io/blog/pr-preview/pr-5/posts/my-swiftui-currency-field/">
+    <span class="title">« Prev</span>
+    <span>My SwiftUI Currency Field</span>
+  </a>
+  <a class="next" href="https://mathieson.github.io/blog/pr-preview/pr-5/posts/tensorflow-to-pytorch/">
+    <span class="title">Next »</span>
+    <span>Tensorflow to PyTorch</span>
+  </a>
+</nav>
+
+  </footer>
+<script src="https://giscus.app/client.js"
+  data-repo="Mathieson/blog"
+  data-repo-id="R_kgDOROa5Jw"
+  data-category="Announcements"
+  data-category-id="DIC_kwDOROa5J84C2mkH"
+  data-mapping="pathname"
+  data-strict="0"
+  data-reactions-enabled="1"
+  data-emit-metadata="0"
+  data-input-position="bottom"
+  data-theme="https://mathieson.github.io/blog/giscus-light.css"
+  data-lang="en"
+  data-loading="lazy"
+  data-giscus-dark-theme="https://mathieson.github.io/blog/giscus-dark.css"
+  crossorigin="anonymous"
+  async>
+</script>
+
+
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://mathieson.github.io/blog/pr-preview/pr-5/">Mat&#39;s Mind Dump</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
+    </svg>
+</a><script>
+(function() {
+  var giscusScript = document.querySelector('script[data-giscus-dark-theme]');
+  var lightTheme = giscusScript ? giscusScript.getAttribute('data-theme') : 'noborder_light';
+  var darkTheme  = giscusScript ? giscusScript.getAttribute('data-giscus-dark-theme') : 'noborder_dark';
+
+  function getTheme() {
+    return document.documentElement.getAttribute('data-theme') === 'dark' ? darkTheme : lightTheme;
+  }
+  function setGiscusTheme(theme) {
+    var iframe = document.querySelector('iframe.giscus-frame');
+    if (iframe) {
+      iframe.contentWindow.postMessage(
+        { giscus: { setConfig: { theme: theme } } },
+        'https://giscus.app'
+      );
+    }
+  }
+  
+  window.addEventListener('message', function(e) {
+    if (e.origin === 'https://giscus.app') {
+      setGiscusTheme(getTheme());
+    }
+  });
+  
+  var observer = new MutationObserver(function() {
+    setGiscusTheme(getTheme());
+  });
+  observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+})();
+</script>
+
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var toplink = document.getElementById("top-link");
+    window.onscroll = function () {
+        const scrollThreshold = window.innerHeight;
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            toplink.classList.remove("hidden");
+        } else {
+            toplink.classList.add("hidden");
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>
