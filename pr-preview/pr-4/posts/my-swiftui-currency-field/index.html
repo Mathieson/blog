@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="light">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>My SwiftUI Currency Field | Mat&#39;s Mind Dump</title>
+<meta name="keywords" content="ios, swift, swiftui">
+<meta name="description" content="A simple, robust SwiftUI currency input field — no over-engineered solutions required.">
+<meta name="author" content="Mat">
+<link rel="canonical" href="https://mathieson.github.io/blog/pr-preview/pr-4/posts/my-swiftui-currency-field/">
+<link crossorigin="anonymous" href="/blog/pr-preview/pr-4/assets/css/stylesheet.c91380afb3f4124192224fe1cbd9bed0c7f76403520c60f9acc62dcbf3426d5a.css" integrity="sha256-yROAr7P0EkGSIk/hy9m&#43;0Mf3ZANSDGD5rMYty/NCbVo=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://mathieson.github.io/blog/pr-preview/pr-4/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://mathieson.github.io/blog/pr-preview/pr-4/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://mathieson.github.io/blog/pr-preview/pr-4/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://mathieson.github.io/blog/pr-preview/pr-4/apple-touch-icon.png">
+<link rel="mask-icon" href="https://mathieson.github.io/blog/pr-preview/pr-4/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://mathieson.github.io/blog/pr-preview/pr-4/posts/my-swiftui-currency-field/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    }
+
+</script><link rel="icon" type="image/png" sizes="32x32" href="https://mathieson.github.io/blog/pr-preview/pr-4/favicon-32x32-dark.png" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/png" sizes="16x16" href="https://mathieson.github.io/blog/pr-preview/pr-4/favicon-16x16-dark.png" media="(prefers-color-scheme: dark)">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,600,100,1&family=Montserrat:wght@600;700&family=Lato:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<script data-goatcounter="https://matfacer.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<meta property="og:url" content="https://mathieson.github.io/blog/pr-preview/pr-4/posts/my-swiftui-currency-field/">
+  <meta property="og:site_name" content="Mat&#39;s Mind Dump">
+  <meta property="og:title" content="My SwiftUI Currency Field">
+  <meta property="og:description" content="A simple, robust SwiftUI currency input field — no over-engineered solutions required.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2022-01-12T00:00:00+00:00">
+    <meta property="article:modified_time" content="2022-01-12T00:00:00+00:00">
+    <meta property="article:tag" content="Ios">
+    <meta property="article:tag" content="Swift">
+    <meta property="article:tag" content="Swiftui">
+    <meta property="og:image" content="https://mathieson.github.io/blog/pr-preview/pr-4/images/swiftui-icon.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://mathieson.github.io/blog/pr-preview/pr-4/images/swiftui-icon.png">
+  <meta name="twitter:title" content="My SwiftUI Currency Field">
+  <meta name="twitter:description" content="A simple, robust SwiftUI currency input field — no over-engineered solutions required.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://mathieson.github.io/blog/pr-preview/pr-4/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "My SwiftUI Currency Field",
+      "item": "https://mathieson.github.io/blog/pr-preview/pr-4/posts/my-swiftui-currency-field/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "My SwiftUI Currency Field",
+  "name": "My SwiftUI Currency Field",
+  "description": "A simple, robust SwiftUI currency input field — no over-engineered solutions required.",
+  "keywords": [
+    "ios", "swift", "swiftui"
+  ],
+  "articleBody": "\"I’ve been spending a lot of time in SwiftUI lately and, so far, I love it.\\nWhile it is remarkably flexible and powerful, it is still very young. There are still pain points from what seems to be a lack of coverage in the framework. Worse still, because it is changing and updating so rapidly, I am finding that much advice on StackOverflow and many blog posts are outdated already.\\nOne such area is with entering currency values in an application. Searching this topic brought back many results, but all of which seemed overly complicated. I returned to this today and came up with what I feel is a solid and straightforward solution, so I thought I would share!\\nimport SwiftUI struct SelectOnFocus: ViewModifier { func body(content: Content) -\\u003e some View { content .onReceive(NotificationCenter.default.publisher(for: UITextField.textDidBeginEditingNotification)) { obj in if let textField = obj.object as? UITextField { textField.selectedTextRange = textField.textRange(from: textField.beginningOfDocument, to: textField.endOfDocument) } } } } extension TextField { func selectOnFocus() -\\u003e some View { modifier(SelectOnFocus()) } } public struct CurrencyField: View { @Binding var value: Decimal? @FocusState private var isActive var locale = Locale.current var formatter: NumberFormatter { let formatter = NumberFormatter() formatter.locale = locale formatter.numberStyle = .currency return formatter } public var body: some View { TextField(formatter.string(from: 0) ?? \\\"0\\\", value: $value, format: .currency(code: locale.currencyCode!)) .selectOnFocus() .multilineTextAlignment(.trailing) .focused($isActive) .keyboardType(formatter.maximumFractionDigits \\u003e 0 ? .decimalPad: .numberPad) .allowsHitTesting(false) .overlay( GeometryReader { geometry in Button { isActive = true } label: { Color.clear } .frame(width: geometry.size.width, height: geometry.size.height) } ) } } struct CurrencyField_Previews: PreviewProvider { static var previews: some View { VStack { Group { CurrencyField(value: .constant(23.40)) CurrencyField(value: .constant(0.0)) CurrencyField(value: .constant(3.0)) CurrencyField(value: .constant(nil)) CurrencyField(value: .constant(391), locale: Locale(identifier: \\\"ja_jp\\\")) CurrencyField(value: .constant(127), locale: Locale(identifier: \\\"ru_ru\\\")) CurrencyField(value: .constant(67), locale: Locale(identifier: \\\"zh-cn\\\")) CurrencyField(value: .constant(345), locale: Locale(identifier: \\\"sv-se\\\")) } } .previewLayout(.sizeThatFits) } } And here are the results from the PreviewProvider.\\nThe behaviour is similar to a currency field you often see in apps.\\nThe text field is overlayed with an invisible button, blocking direct interactivity to the field. Pressing the button activates the text field for editing. Upon activation, the text field’s contents are selected, making it so the user will fully re-enter the price each time. Keyboard is either decimal pad or number pad, depending on the locale being used. If the local doesn’t support decimal places with their currency (i.e. Japan), then there is no reason to present the decimal pad keyboard. \"",
+  "wordCount" : "399",
+  "inLanguage": "en",
+  "image":"https://mathieson.github.io/blog/pr-preview/pr-4/images/swiftui-icon.png","datePublished": "2022-01-12T00:00:00Z",
+  "dateModified": "2022-01-12T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Mat"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://mathieson.github.io/blog/pr-preview/pr-4/posts/my-swiftui-currency-field/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Mat's Mind Dump",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://mathieson.github.io/blog/pr-preview/pr-4/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="header-nav">
+        <div class="logo">
+            <a href="https://mathieson.github.io/blog/pr-preview/pr-4/" accesskey="h" title="Mat&#39;s Mind Dump (Alt + H)">
+                        
+                    <img src="https://mathieson.github.io/blog/pr-preview/pr-4/logos_hu_703e81d02529ebd6.png" alt="" aria-label="logo"
+                        height="40">Mat&#39;s Mind Dump</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu" class="menu">
+            <li>
+                <a href="https://mathieson.github.io/blog/pr-preview/pr-4/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://mathieson.github.io/blog/pr-preview/pr-4/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <nav class="breadcrumbs" role="navigation" aria-label="Breadcrumb">
+    <a href='https://mathieson.github.io/blog/pr-preview/pr-4/'>Home</a>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+            <a href="https://mathieson.github.io/blog/pr-preview/pr-4/posts/">Posts</a></nav>
+    <h1 class="post-title entry-hint-parent">
+      My SwiftUI Currency Field
+    </h1>
+    <div class="post-description">
+      A simple, robust SwiftUI currency input field — no over-engineered solutions required.
+    </div>
+    <div class="post-meta"><span title='2022-01-12 00:00:00 +0000 UTC'>Jan 12, 2022</span>&nbsp;·&nbsp;<span>⏱ 2 min</span>
+
+</div>
+  </header> 
+<figure class="entry-cover">
+            <img loading="eager"
+                srcset='https://mathieson.github.io/blog/pr-preview/pr-4/posts/my-swiftui-currency-field/images/swiftui-icon_hu_1824ad94e9eddd00.png 360w,https://mathieson.github.io/blog/pr-preview/pr-4/posts/my-swiftui-currency-field/images/swiftui-icon_hu_622efab206fe4ca4.png 480w,https://mathieson.github.io/blog/pr-preview/pr-4/posts/my-swiftui-currency-field/images/swiftui-icon_hu_50664b80d5f239cf.png 720w,https://mathieson.github.io/blog/pr-preview/pr-4/posts/my-swiftui-currency-field/images/swiftui-icon_hu_c89f68e58984a02b.png 1080w,https://mathieson.github.io/blog/pr-preview/pr-4/posts/my-swiftui-currency-field/images/swiftui-icon.png 1200w'
+                src="https://mathieson.github.io/blog/pr-preview/pr-4/posts/my-swiftui-currency-field/images/swiftui-icon.png"
+                sizes="(min-width: 768px) 720px, 100vw"
+                width="1200" height="1000"
+                alt="SwiftUI icon">
+        
+</figure>
+
+  <div class="post-content md-content"><p>I&rsquo;ve been spending a lot of time in SwiftUI lately and, so far, I love it.</p>
+<p>While it is remarkably flexible and powerful, it is still very young. There are still pain points from what seems to be a lack of coverage in the framework. Worse still, because it is changing and updating so rapidly, I am finding that much advice on StackOverflow and many blog posts are outdated already.</p>
+<p>One such area is with entering currency values in an application. Searching this topic brought back many results, but all of which seemed overly complicated. I returned to this today and came up with what I feel is a solid and straightforward solution, so I thought I would share!</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-swift" data-lang="swift"><span class="line"><span class="cl"><span class="kd">import</span> <span class="nc">SwiftUI</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">struct</span> <span class="nc">SelectOnFocus</span><span class="p">:</span> <span class="n">ViewModifier</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="nf">body</span><span class="p">(</span><span class="n">content</span><span class="p">:</span> <span class="n">Content</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="n">some</span> <span class="n">View</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">content</span>
+</span></span><span class="line"><span class="cl">            <span class="p">.</span><span class="n">onReceive</span><span class="p">(</span><span class="n">NotificationCenter</span><span class="p">.</span><span class="k">default</span><span class="p">.</span><span class="n">publisher</span><span class="p">(</span><span class="k">for</span><span class="p">:</span> <span class="n">UITextField</span><span class="p">.</span><span class="n">textDidBeginEditingNotification</span><span class="p">))</span> <span class="p">{</span> <span class="n">obj</span> <span class="k">in</span>
+</span></span><span class="line"><span class="cl">                <span class="k">if</span> <span class="kd">let</span> <span class="nv">textField</span> <span class="p">=</span> <span class="n">obj</span><span class="p">.</span><span class="n">object</span> <span class="k">as</span><span class="p">?</span> <span class="n">UITextField</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">textField</span><span class="p">.</span><span class="n">selectedTextRange</span> <span class="p">=</span> <span class="n">textField</span><span class="p">.</span><span class="n">textRange</span><span class="p">(</span><span class="n">from</span><span class="p">:</span> <span class="n">textField</span><span class="p">.</span><span class="n">beginningOfDocument</span><span class="p">,</span> <span class="n">to</span><span class="p">:</span> <span class="n">textField</span><span class="p">.</span><span class="n">endOfDocument</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">extension</span> <span class="nc">TextField</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="nf">selectOnFocus</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="n">some</span> <span class="n">View</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">modifier</span><span class="p">(</span><span class="n">SelectOnFocus</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">struct</span> <span class="nc">CurrencyField</span><span class="p">:</span> <span class="n">View</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="p">@</span><span class="n">Binding</span> <span class="kd">var</span> <span class="nv">value</span><span class="p">:</span> <span class="n">Decimal</span><span class="p">?</span>
+</span></span><span class="line"><span class="cl">    <span class="p">@</span><span class="n">FocusState</span> <span class="kd">private</span> <span class="kd">var</span> <span class="nv">isActive</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nv">locale</span> <span class="p">=</span> <span class="n">Locale</span><span class="p">.</span><span class="n">current</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nv">formatter</span><span class="p">:</span> <span class="n">NumberFormatter</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">let</span> <span class="nv">formatter</span> <span class="p">=</span> <span class="n">NumberFormatter</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="n">formatter</span><span class="p">.</span><span class="n">locale</span> <span class="p">=</span> <span class="n">locale</span>
+</span></span><span class="line"><span class="cl">        <span class="n">formatter</span><span class="p">.</span><span class="n">numberStyle</span> <span class="p">=</span> <span class="p">.</span><span class="n">currency</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">formatter</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">var</span> <span class="nv">body</span><span class="p">:</span> <span class="n">some</span> <span class="n">View</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">TextField</span><span class="p">(</span><span class="n">formatter</span><span class="p">.</span><span class="n">string</span><span class="p">(</span><span class="n">from</span><span class="p">:</span> <span class="mi">0</span><span class="p">)</span> <span class="p">??</span> <span class="s">&#34;0&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                  <span class="n">value</span><span class="p">:</span> <span class="err">$</span><span class="n">value</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                  <span class="n">format</span><span class="p">:</span> <span class="p">.</span><span class="n">currency</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">locale</span><span class="p">.</span><span class="n">currencyCode</span><span class="p">!))</span>
+</span></span><span class="line"><span class="cl">            <span class="p">.</span><span class="n">selectOnFocus</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">            <span class="p">.</span><span class="n">multilineTextAlignment</span><span class="p">(.</span><span class="n">trailing</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">.</span><span class="n">focused</span><span class="p">(</span><span class="err">$</span><span class="n">isActive</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">.</span><span class="n">keyboardType</span><span class="p">(</span><span class="n">formatter</span><span class="p">.</span><span class="n">maximumFractionDigits</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="p">?</span> <span class="p">.</span><span class="n">decimalPad</span><span class="p">:</span> <span class="p">.</span><span class="n">numberPad</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">.</span><span class="n">allowsHitTesting</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">.</span><span class="n">overlay</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">                <span class="n">GeometryReader</span> <span class="p">{</span> <span class="n">geometry</span> <span class="k">in</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">Button</span> <span class="p">{</span> <span class="n">isActive</span> <span class="p">=</span> <span class="kc">true</span> <span class="p">}</span> <span class="n">label</span><span class="p">:</span> <span class="p">{</span> <span class="n">Color</span><span class="p">.</span><span class="n">clear</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                        <span class="p">.</span><span class="n">frame</span><span class="p">(</span><span class="n">width</span><span class="p">:</span> <span class="n">geometry</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span> <span class="n">geometry</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">height</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">struct</span> <span class="nc">CurrencyField_Previews</span><span class="p">:</span> <span class="n">PreviewProvider</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">static</span> <span class="kd">var</span> <span class="nv">previews</span><span class="p">:</span> <span class="n">some</span> <span class="n">View</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">VStack</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Group</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">CurrencyField</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="p">.</span><span class="n">constant</span><span class="p">(</span><span class="mf">23.40</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">                <span class="n">CurrencyField</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="p">.</span><span class="n">constant</span><span class="p">(</span><span class="mf">0.0</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">                <span class="n">CurrencyField</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="p">.</span><span class="n">constant</span><span class="p">(</span><span class="mf">3.0</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">                <span class="n">CurrencyField</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="p">.</span><span class="n">constant</span><span class="p">(</span><span class="kc">nil</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">                <span class="n">CurrencyField</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="p">.</span><span class="n">constant</span><span class="p">(</span><span class="mi">391</span><span class="p">),</span> <span class="n">locale</span><span class="p">:</span> <span class="n">Locale</span><span class="p">(</span><span class="n">identifier</span><span class="p">:</span> <span class="s">&#34;ja_jp&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">                <span class="n">CurrencyField</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="p">.</span><span class="n">constant</span><span class="p">(</span><span class="mi">127</span><span class="p">),</span> <span class="n">locale</span><span class="p">:</span> <span class="n">Locale</span><span class="p">(</span><span class="n">identifier</span><span class="p">:</span> <span class="s">&#34;ru_ru&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">                <span class="n">CurrencyField</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="p">.</span><span class="n">constant</span><span class="p">(</span><span class="mi">67</span><span class="p">),</span> <span class="n">locale</span><span class="p">:</span> <span class="n">Locale</span><span class="p">(</span><span class="n">identifier</span><span class="p">:</span> <span class="s">&#34;zh-cn&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">                <span class="n">CurrencyField</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="p">.</span><span class="n">constant</span><span class="p">(</span><span class="mi">345</span><span class="p">),</span> <span class="n">locale</span><span class="p">:</span> <span class="n">Locale</span><span class="p">(</span><span class="n">identifier</span><span class="p">:</span> <span class="s">&#34;sv-se&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">.</span><span class="n">previewLayout</span><span class="p">(.</span><span class="n">sizeThatFits</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>And here are the results from the PreviewProvider.</p>
+<p><img alt="CurrencyField preview showing multiple locale formats" loading="lazy" src="/blog/pr-preview/pr-4/posts/my-swiftui-currency-field/images/Screen-Shot-2022-01-10-at-5.28.24-PM.png"></p>
+<p>The behaviour is similar to a currency field you often see in apps.</p>
+<ul>
+<li>The text field is overlayed with an invisible button, blocking direct interactivity to the field. Pressing the button activates the text field for editing.</li>
+<li>Upon activation, the text field&rsquo;s contents are selected, making it so the user will fully re-enter the price each time.</li>
+<li>Keyboard is either decimal pad or number pad, depending on the locale being used. If the local doesn&rsquo;t support decimal places with their currency (i.e. Japan), then there is no reason to present the decimal pad keyboard.</li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://mathieson.github.io/blog/pr-preview/pr-4/tags/ios/">Ios</a></li>
+      <li><a href="https://mathieson.github.io/blog/pr-preview/pr-4/tags/swift/">Swift</a></li>
+      <li><a href="https://mathieson.github.io/blog/pr-preview/pr-4/tags/swiftui/">Swiftui</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="https://mathieson.github.io/blog/pr-preview/pr-4/posts/coredata-swift-scalar-optionals/">
+    <span class="title">« Prev</span>
+    <span>CoreData Swift Scalar Optionals</span>
+  </a>
+  <a class="next" href="https://mathieson.github.io/blog/pr-preview/pr-4/posts/loss-vs-reward-in-reinforcement-learning/">
+    <span class="title">Next »</span>
+    <span>Loss vs. reward in reinforcement learning</span>
+  </a>
+</nav>
+
+  </footer>
+<script src="https://giscus.app/client.js"
+  data-repo="Mathieson/blog"
+  data-repo-id="R_kgDOROa5Jw"
+  data-category="Announcements"
+  data-category-id="DIC_kwDOROa5J84C2mkH"
+  data-mapping="pathname"
+  data-strict="0"
+  data-reactions-enabled="1"
+  data-emit-metadata="0"
+  data-input-position="bottom"
+  data-theme="https://mathieson.github.io/blog/giscus-light.css"
+  data-lang="en"
+  data-loading="lazy"
+  data-giscus-dark-theme="https://mathieson.github.io/blog/giscus-dark.css"
+  crossorigin="anonymous"
+  async>
+</script>
+
+
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://mathieson.github.io/blog/pr-preview/pr-4/">Mat&#39;s Mind Dump</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
+    </svg>
+</a><script>
+(function() {
+  var giscusScript = document.querySelector('script[data-giscus-dark-theme]');
+  var lightTheme = giscusScript ? giscusScript.getAttribute('data-theme') : 'noborder_light';
+  var darkTheme  = giscusScript ? giscusScript.getAttribute('data-giscus-dark-theme') : 'noborder_dark';
+
+  function getTheme() {
+    return document.documentElement.getAttribute('data-theme') === 'dark' ? darkTheme : lightTheme;
+  }
+  function setGiscusTheme(theme) {
+    var iframe = document.querySelector('iframe.giscus-frame');
+    if (iframe) {
+      iframe.contentWindow.postMessage(
+        { giscus: { setConfig: { theme: theme } } },
+        'https://giscus.app'
+      );
+    }
+  }
+  
+  window.addEventListener('message', function(e) {
+    if (e.origin === 'https://giscus.app') {
+      setGiscusTheme(getTheme());
+    }
+  });
+  
+  var observer = new MutationObserver(function() {
+    setGiscusTheme(getTheme());
+  });
+  observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+})();
+</script>
+
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var toplink = document.getElementById("top-link");
+    window.onscroll = function () {
+        const scrollThreshold = window.innerHeight;
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            toplink.classList.remove("hidden");
+        } else {
+            toplink.classList.add("hidden");
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>
