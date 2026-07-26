@@ -2,7 +2,7 @@
 
 A static blog built with [Hugo](https://gohugo.io/) and the [PaperMod](https://github.com/adityatelange/hugo-PaperMod) theme, deployed to GitHub Pages. Comments are powered by [Giscus](https://giscus.app/) (GitHub Discussions). Originally migrated from WordPress.
 
-**Live site:** <https://mathieson.github.io/blog/>
+**Live site:** <https://matfacer.com/>
 
 ---
 

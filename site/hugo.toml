@@ -2,7 +2,7 @@
 # Hugo configuration for Mat's Mind Dump
 # =============================================================================
 
-baseURL      = "https://mathieson.github.io/blog/"
+baseURL      = "https://matfacer.com/"
 languageCode = "en-us"
 title        = "Mat's Mind Dump"
 theme        = "PaperMod"

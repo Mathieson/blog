@@ -39,4 +39,6 @@ The site's colors are OKLCH tokens in `site/assets/css/extended/custom.css` (war
 
 ## Deployment
 
-Pushing to `main` triggers GitHub Actions (`.github/workflows/deploy.yml`), which runs `hugo --source site` and publishes to GitHub Pages at https://mathieson.github.io/blog/.
+Pushing to `main` triggers GitHub Actions (`.github/workflows/deploy.yml`), which runs `hugo --source site` and pushes the built site to the `gh-pages` branch, which GitHub Pages serves at https://matfacer.com/.
+
+The custom domain is set by `site/static/CNAME` (Hugo copies it into `site/public/`, so it survives every deploy). Don't rely on setting the domain in Settings → Pages alone — `peaceiris/actions-gh-pages` replaces the branch contents on each run.

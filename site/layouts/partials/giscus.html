@@ -3,8 +3,10 @@
 {{- $lightTheme := .theme | default "noborder_light" }}
 {{- $darkTheme := "noborder_dark" }}
 {{- if hugo.IsProduction }}
-  {{- $lightTheme = "https://mathieson.github.io/blog/giscus-light.css" }}
-  {{- $darkTheme = "https://mathieson.github.io/blog/giscus-dark.css" }}
+  {{- /* Derived from baseURL so a domain change can't leave these stale.
+         Giscus fetches these over the network, so they must be absolute. */}}
+  {{- $lightTheme = absURL "giscus-light.css" }}
+  {{- $darkTheme = absURL "giscus-dark.css" }}
 {{- end }}
 <script src="https://giscus.app/client.js"
   data-repo="{{ .repo }}"
