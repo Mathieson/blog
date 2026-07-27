@@ -40,8 +40,14 @@ jobs:
         # breaks PaperMod's JSON-LD schema output.
 
       - name: Deploy to gh-pages branch
-        uses: peaceiris/actions-gh-pages@v4
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: site/public
-          publish_branch: gh-pages
+          folder: site/public
+          branch: gh-pages
+          # Clean stale files from the main site, but never touch pr-preview/.
+          # That directory is owned by the PR Preview workflow, and its
+          # previews must stay live until their PR is merged or closed.
+          # (peaceiris/actions-gh-pages was used here before, but it can only
+          # keep everything or nothing — keep_files would have left deleted
+          # posts published forever.)
+          clean-exclude: pr-preview/
