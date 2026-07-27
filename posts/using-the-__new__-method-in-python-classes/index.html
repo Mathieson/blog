@@ -9,16 +9,16 @@
 <meta name="keywords" content="python">
 <meta name="description" content="What Python&#39;s __new__ method actually does, how it differs from __init__, and when overriding it is useful.">
 <meta name="author" content="Mat">
-<link rel="canonical" href="https://mathieson.github.io/blog/posts/using-the-__new__-method-in-python-classes/">
-<link crossorigin="anonymous" href="/blog/assets/css/stylesheet.c91380afb3f4124192224fe1cbd9bed0c7f76403520c60f9acc62dcbf3426d5a.css" integrity="sha256-yROAr7P0EkGSIk/hy9m&#43;0Mf3ZANSDGD5rMYty/NCbVo=" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://mathieson.github.io/blog/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="https://mathieson.github.io/blog/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://mathieson.github.io/blog/favicon-32x32.png">
-<link rel="apple-touch-icon" href="https://mathieson.github.io/blog/apple-touch-icon.png">
-<link rel="mask-icon" href="https://mathieson.github.io/blog/safari-pinned-tab.svg">
+<link rel="canonical" href="https://matfacer.com/posts/using-the-__new__-method-in-python-classes/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.c91380afb3f4124192224fe1cbd9bed0c7f76403520c60f9acc62dcbf3426d5a.css" integrity="sha256-yROAr7P0EkGSIk/hy9m&#43;0Mf3ZANSDGD5rMYty/NCbVo=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://matfacer.com/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://matfacer.com/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://matfacer.com/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://matfacer.com/apple-touch-icon.png">
+<link rel="mask-icon" href="https://matfacer.com/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="https://mathieson.github.io/blog/posts/using-the-__new__-method-in-python-classes/">
+<link rel="alternate" hreflang="en" href="https://matfacer.com/posts/using-the-__new__-method-in-python-classes/">
 <noscript>
     <style>
         #theme-toggle,
@@ -33,14 +33,14 @@
         document.querySelector("html").dataset.theme = 'dark';
     }
 
-</script><link rel="icon" type="image/png" sizes="32x32" href="https://mathieson.github.io/blog/favicon-32x32-dark.png" media="(prefers-color-scheme: dark)">
-<link rel="icon" type="image/png" sizes="16x16" href="https://mathieson.github.io/blog/favicon-16x16-dark.png" media="(prefers-color-scheme: dark)">
+</script><link rel="icon" type="image/png" sizes="32x32" href="https://matfacer.com/favicon-32x32-dark.png" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/png" sizes="16x16" href="https://matfacer.com/favicon-16x16-dark.png" media="(prefers-color-scheme: dark)">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,600,100,1&family=Montserrat:wght@600;700&family=Lato:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
 <script data-goatcounter="https://matfacer.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<meta property="og:url" content="https://mathieson.github.io/blog/posts/using-the-__new__-method-in-python-classes/">
+<meta property="og:url" content="https://matfacer.com/posts/using-the-__new__-method-in-python-classes/">
   <meta property="og:site_name" content="Mat&#39;s Mind Dump">
   <meta property="og:title" content="Using the __new__ method in Python classes">
   <meta property="og:description" content="What Python&#39;s __new__ method actually does, how it differs from __init__, and when overriding it is useful.">
@@ -50,9 +50,9 @@
     <meta property="article:published_time" content="2021-03-28T00:00:00+00:00">
     <meta property="article:modified_time" content="2021-03-28T00:00:00+00:00">
     <meta property="article:tag" content="Python">
-    <meta property="og:image" content="https://mathieson.github.io/blog/images/python-logo.png">
+    <meta property="og:image" content="https://matfacer.com/images/python-logo.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://mathieson.github.io/blog/images/python-logo.png">
+<meta name="twitter:image" content="https://matfacer.com/images/python-logo.png">
   <meta name="twitter:title" content="Using the __new__ method in Python classes">
   <meta name="twitter:description" content="What Python&#39;s __new__ method actually does, how it differs from __init__, and when overriding it is useful.">
 
@@ -66,13 +66,13 @@
       "@type": "ListItem",
       "position":  1 ,
       "name": "Posts",
-      "item": "https://mathieson.github.io/blog/posts/"
+      "item": "https://matfacer.com/posts/"
     }, 
     {
       "@type": "ListItem",
       "position":  2 ,
       "name": "Using the __new__ method in Python classes",
-      "item": "https://mathieson.github.io/blog/posts/using-the-__new__-method-in-python-classes/"
+      "item": "https://matfacer.com/posts/using-the-__new__-method-in-python-classes/"
     }
   ]
 }
@@ -90,7 +90,7 @@
   "articleBody": "\"The __new__ method is a special method for Python classes. It is essentially the constructor for your class and handles its creation. You may think this is what the __init__ method is for, but the class instance (referred to from here out as “object”) is actually already created by the time __init__ gets called. The __init__ method is just setting initial values for an already created object. The __new__ method is what gets called before the object exists and actually creates and returns the object.\\nThis concept can be a bit confusing at first. A better way of understanding might be through example.\\nclass Sphere(object): pass class Cube(object): def __new__(cls, *args, **kwargs): return object.__new__(Sphere, *args, **kwargs) obj = Cube() print \\\"My cube object is of type: %s\\\" % type(obj) Here is the most basic and obvious example of what __new__ does. If you run this code, you will see that your cube is actually a sphere. The __new__ method of the Cube class is being overridden. If I were to not override the method, the code inside would essentially look like this:\\nreturn object.__new__(cls, *args, **kwargs) If you examine the two lines you will see that the only change I have made is replacing cls with the class of my choosing, Sphere. The variable cls is just the class that was passed in to the __new__ method to be used when creating the object. In this case it would have been Cube.\\nNow that we have a very basic explanation of this handy method out of the way, how can it be used?\\nFactories The best application I have found for the __new__ method is to be used as a factory to automatically build other classes. For example, I was writing my own wrapper for Maya Python and wanted it so when I created an instance of my main “Maya Node” wrapper class it would automatically return a sub-class depending on the type of node. If the node was a joint, it would return a JointWrapper object instead of a MayaNode object. I have since switched over to using PyMel and discovered it is doing the same thing.\\nAnother example of this factory approach is for versioning a rig wrapper class for interacting with my rigs. This is something I did recently. I stored a version number on my rig in Maya and then had a series of wrapper classes for it: RigWrapper, RigWrapper_2, RigWrapper_2_01, RigWrapper_3, etc. Each of these rig wrapper “versions” would inherit from the previous. Inside the __new__ method on the original RigWrapper class I had code that would get the version number stored on the rig in the scene and then do an introspection of the file to find all other versions of the RigWrapper class. It would then do a comparison of these classes names to find the closest version without rounding up (if the rig in Maya was version 2.9 it would use RigWrapper_2_01 rather than RigWrapper_3). This is the class it would then use to create and return. The rig would be correctly wrapped with the appropriate version of the wrapper class; you can call RigWrapper(‘ctrl_master’) and it will return an instance of RigWrapper_2_01.\\nThis was powerful because it brought all the features of inheritance to my rigging interface while also being very simple to use. It allowed me to make major changes to my rigs with little concern for them breaking because of incompatibility with the tools. As long as my tools for the rigs were using the RigWrapper class it would get the correct wrapper class and work as expected, and I didn’t have to do any extra work at this point in order to find which wrapper to use. All the work was already done.\\nSingletons Every once in a while you might come across an instance where you might want a class to ever be able to be created once. Nine times out of ten this probably means you should be breaking this code out to its own module, but there is still that odd time that you might have reason not to. You can use the __new__ method to make it so your class only ever gets created once. Here is example code for this:\\nclass Singleton(object): _instance = None def __init__(self, *args, **kwargs): # Init will always be called, so check if it has already been initialized by whether there is already an instance stored. if self.__class__._instance: return else: # If there is no instance stored, store this instance for next time. self.__class__._instance = self # Carry on with whatever initialization you want to have happen. self._whatever = True def __new__(cls, *args, **kwargs): if cls._instance: return cls._instance else: return object.__new__(cls, *args, **kwargs) Validation I have done this before, but I cannot fully endorse this as it creates some strange and unexpected behaviour. It is not illegal and is supported by Python, but it just doesn’t feel right. Doing a quick search about it on Stack Overflow showed shared sentiments from others. What I am talking about is doing validation checks in __new__ and returning None if those checks are not met.\\nThe reason this makes for unexpected and strange behaviour is that if you are creating an instance of a class, you are expecting an instance of that class to be returned. Having it return None instead is unpredictable and weird. This is a very good reason not to do this.\\nYou can also make an argument for this, although I do not feel it beats the argument against doing this. Imagine the scenario of creating a class that requires a file path to be created. If this class is passed a path to a file that doesn’t exist, the class will be useless and will error when its functions are called. You could do a os.path.exists in the __new__ and if it fails return None rather than creating the class. Then before you start calling any of its functions just check to make sure the class instance is equal to something. If you are creating many instances of this class and collect them in a list, you can filter the list to remove any None objects. This would ensure any object that is successfully created with the class will be working and be associated with a file on disk.\\nThe alternative to this would be creating a function in the class called isValid or doesFileExist, or something similar. Before calling a function that requires the file to exist, call this function just to ensure that it does. This is a lot more clear since you will have a function stating exactly what is happening, rather than you just magically getting None returned. It isn’t quite as clean though since you will be having checks all over the place to make sure the file exists. It would be easier if the class just never exists if the file doesn’t exist.\\nIn the end, this validation approach is a very grey area. I’m not really all that keen on one approach over another. The jury is still out on this one for me. Not a huge fan though.\\nIt would be great to hear if anyone out there is using __new__ in other ways. These are just the uses I have found for it, but I am sure there are many other great applications.\\n\"",
   "wordCount" : "1226",
   "inLanguage": "en",
-  "image":"https://mathieson.github.io/blog/images/python-logo.png","datePublished": "2021-03-28T00:00:00Z",
+  "image":"https://matfacer.com/images/python-logo.png","datePublished": "2021-03-28T00:00:00Z",
   "dateModified": "2021-03-28T00:00:00Z",
   "author":{
     "@type": "Person",
@@ -98,14 +98,14 @@
   },
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://mathieson.github.io/blog/posts/using-the-__new__-method-in-python-classes/"
+    "@id": "https://matfacer.com/posts/using-the-__new__-method-in-python-classes/"
   },
   "publisher": {
     "@type": "Organization",
     "name": "Mat's Mind Dump",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://mathieson.github.io/blog/favicon.ico"
+      "url": "https://matfacer.com/favicon.ico"
     }
   }
 }
@@ -115,9 +115,9 @@
     <header class="header">
     <nav class="header-nav">
         <div class="logo">
-            <a href="https://mathieson.github.io/blog/" accesskey="h" title="Mat&#39;s Mind Dump (Alt + H)">
+            <a href="https://matfacer.com/" accesskey="h" title="Mat&#39;s Mind Dump (Alt + H)">
                         
-                    <img src="https://mathieson.github.io/blog/logos_hu_703e81d02529ebd6.png" alt="" aria-label="logo"
+                    <img src="https://matfacer.com/logos_hu_703e81d02529ebd6.png" alt="" aria-label="logo"
                         height="40">Mat&#39;s Mind Dump</a>
             <div class="logo-switches">
                 <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
@@ -144,12 +144,12 @@
         </div>
         <ul id="menu" class="menu">
             <li>
-                <a href="https://mathieson.github.io/blog/search/" title="Search (Alt &#43; /)" accesskey=/>
+                <a href="https://matfacer.com/search/" title="Search (Alt &#43; /)" accesskey=/>
                     <span>Search</span>
                 </a>
             </li>
             <li>
-                <a href="https://mathieson.github.io/blog/tags/" title="Tags">
+                <a href="https://matfacer.com/tags/" title="Tags">
                     <span>Tags</span>
                 </a>
             </li>
@@ -161,12 +161,12 @@
 <article class="post-single">
   <header class="post-header">
     <nav class="breadcrumbs" role="navigation" aria-label="Breadcrumb">
-    <a href='https://mathieson.github.io/blog/'>Home</a>
+    <a href='https://matfacer.com/'>Home</a>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
                 <polyline points="9 18 15 12 9 6"></polyline>
             </svg>
-            <a href="https://mathieson.github.io/blog/posts/">Posts</a></nav>
+            <a href="https://matfacer.com/posts/">Posts</a></nav>
     <h1 class="post-title entry-hint-parent">
       Using the __new__ method in Python classes
     </h1>
@@ -179,8 +179,8 @@
   </header> 
 <figure class="entry-cover">
             <img loading="eager"
-                srcset='https://mathieson.github.io/blog/posts/using-the-__new__-method-in-python-classes/images/python-logo_hu_b61dad87fe0215a.png 360w,https://mathieson.github.io/blog/posts/using-the-__new__-method-in-python-classes/images/python-logo_hu_1fd23f67a0eeb836.png 480w,https://mathieson.github.io/blog/posts/using-the-__new__-method-in-python-classes/images/python-logo_hu_9c5cc17c6b2a27c0.png 720w,https://mathieson.github.io/blog/posts/using-the-__new__-method-in-python-classes/images/python-logo_hu_343a6fbced556451.png 1080w,https://mathieson.github.io/blog/posts/using-the-__new__-method-in-python-classes/images/python-logo.png 1200w'
-                src="https://mathieson.github.io/blog/posts/using-the-__new__-method-in-python-classes/images/python-logo.png"
+                srcset='https://matfacer.com/posts/using-the-__new__-method-in-python-classes/images/python-logo_hu_b61dad87fe0215a.png 360w,https://matfacer.com/posts/using-the-__new__-method-in-python-classes/images/python-logo_hu_1fd23f67a0eeb836.png 480w,https://matfacer.com/posts/using-the-__new__-method-in-python-classes/images/python-logo_hu_9c5cc17c6b2a27c0.png 720w,https://matfacer.com/posts/using-the-__new__-method-in-python-classes/images/python-logo_hu_343a6fbced556451.png 1080w,https://matfacer.com/posts/using-the-__new__-method-in-python-classes/images/python-logo.png 1200w'
+                src="https://matfacer.com/posts/using-the-__new__-method-in-python-classes/images/python-logo.png"
                 sizes="(min-width: 768px) 720px, 100vw"
                 width="1200" height="1000"
                 alt="Python logo">
@@ -254,10 +254,10 @@
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="https://mathieson.github.io/blog/tags/python/">Python</a></li>
+      <li><a href="https://matfacer.com/tags/python/">Python</a></li>
     </ul>
 <nav class="paginav">
-  <a class="prev" href="https://mathieson.github.io/blog/posts/applied-software-development-retrospective/">
+  <a class="prev" href="https://matfacer.com/posts/applied-software-development-retrospective/">
     <span class="title">« Prev</span>
     <span>Applied Software Development Retrospective</span>
   </a>
@@ -274,10 +274,10 @@
   data-reactions-enabled="1"
   data-emit-metadata="0"
   data-input-position="bottom"
-  data-theme="https://mathieson.github.io/blog/giscus-light.css"
+  data-theme="https://matfacer.com/giscus-light.css"
   data-lang="en"
   data-loading="lazy"
-  data-giscus-dark-theme="https://mathieson.github.io/blog/giscus-dark.css"
+  data-giscus-dark-theme="https://matfacer.com/giscus-dark.css"
   crossorigin="anonymous"
   async>
 </script>
@@ -287,7 +287,7 @@
     </main>
     
 <footer class="footer">
-        <span>&copy; 2026 <a href="https://mathieson.github.io/blog/">Mat&#39;s Mind Dump</a></span> · 
+        <span>&copy; 2026 <a href="https://matfacer.com/">Mat&#39;s Mind Dump</a></span> · 
 
     <span>
         Powered by

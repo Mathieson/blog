@@ -9,16 +9,16 @@
 <meta name="keywords" content="maya, python, vscode, tooling, tech-art">
 <meta name="description" content="Why I moved from PyCharm to VS Code, and the uv-based workflow — solving a Maya environment-isolation problem along the way — that finally made it click.">
 <meta name="author" content="Mat">
-<link rel="canonical" href="https://mathieson.github.io/blog/posts/switching-from-pycharm-to-vscode-with-uv/">
-<link crossorigin="anonymous" href="/blog/assets/css/stylesheet.c91380afb3f4124192224fe1cbd9bed0c7f76403520c60f9acc62dcbf3426d5a.css" integrity="sha256-yROAr7P0EkGSIk/hy9m&#43;0Mf3ZANSDGD5rMYty/NCbVo=" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://mathieson.github.io/blog/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="https://mathieson.github.io/blog/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://mathieson.github.io/blog/favicon-32x32.png">
-<link rel="apple-touch-icon" href="https://mathieson.github.io/blog/apple-touch-icon.png">
-<link rel="mask-icon" href="https://mathieson.github.io/blog/safari-pinned-tab.svg">
+<link rel="canonical" href="https://matfacer.com/posts/switching-from-pycharm-to-vscode-with-uv/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.c91380afb3f4124192224fe1cbd9bed0c7f76403520c60f9acc62dcbf3426d5a.css" integrity="sha256-yROAr7P0EkGSIk/hy9m&#43;0Mf3ZANSDGD5rMYty/NCbVo=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://matfacer.com/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://matfacer.com/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://matfacer.com/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://matfacer.com/apple-touch-icon.png">
+<link rel="mask-icon" href="https://matfacer.com/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="https://mathieson.github.io/blog/posts/switching-from-pycharm-to-vscode-with-uv/">
+<link rel="alternate" hreflang="en" href="https://matfacer.com/posts/switching-from-pycharm-to-vscode-with-uv/">
 <noscript>
     <style>
         #theme-toggle,
@@ -33,14 +33,14 @@
         document.querySelector("html").dataset.theme = 'dark';
     }
 
-</script><link rel="icon" type="image/png" sizes="32x32" href="https://mathieson.github.io/blog/favicon-32x32-dark.png" media="(prefers-color-scheme: dark)">
-<link rel="icon" type="image/png" sizes="16x16" href="https://mathieson.github.io/blog/favicon-16x16-dark.png" media="(prefers-color-scheme: dark)">
+</script><link rel="icon" type="image/png" sizes="32x32" href="https://matfacer.com/favicon-32x32-dark.png" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/png" sizes="16x16" href="https://matfacer.com/favicon-16x16-dark.png" media="(prefers-color-scheme: dark)">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,600,100,1&family=Montserrat:wght@600;700&family=Lato:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
 <script data-goatcounter="https://matfacer.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<meta property="og:url" content="https://mathieson.github.io/blog/posts/switching-from-pycharm-to-vscode-with-uv/">
+<meta property="og:url" content="https://matfacer.com/posts/switching-from-pycharm-to-vscode-with-uv/">
   <meta property="og:site_name" content="Mat&#39;s Mind Dump">
   <meta property="og:title" content="Switching from PyCharm to VS Code — and Fixing Python Environments with uv">
   <meta property="og:description" content="Why I moved from PyCharm to VS Code, and the uv-based workflow — solving a Maya environment-isolation problem along the way — that finally made it click.">
@@ -54,9 +54,9 @@
     <meta property="article:tag" content="Vscode">
     <meta property="article:tag" content="Tooling">
     <meta property="article:tag" content="Tech-Art">
-    <meta property="og:image" content="https://mathieson.github.io/blog/images/vscode-icon.png">
+    <meta property="og:image" content="https://matfacer.com/images/vscode-icon.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://mathieson.github.io/blog/images/vscode-icon.png">
+<meta name="twitter:image" content="https://matfacer.com/images/vscode-icon.png">
   <meta name="twitter:title" content="Switching from PyCharm to VS Code — and Fixing Python Environments with uv">
   <meta name="twitter:description" content="Why I moved from PyCharm to VS Code, and the uv-based workflow — solving a Maya environment-isolation problem along the way — that finally made it click.">
 
@@ -70,13 +70,13 @@
       "@type": "ListItem",
       "position":  1 ,
       "name": "Posts",
-      "item": "https://mathieson.github.io/blog/posts/"
+      "item": "https://matfacer.com/posts/"
     }, 
     {
       "@type": "ListItem",
       "position":  2 ,
       "name": "Switching from PyCharm to VS Code — and Fixing Python Environments with uv",
-      "item": "https://mathieson.github.io/blog/posts/switching-from-pycharm-to-vscode-with-uv/"
+      "item": "https://matfacer.com/posts/switching-from-pycharm-to-vscode-with-uv/"
     }
   ]
 }
@@ -94,7 +94,7 @@
   "articleBody": "\"If you’ve been around here before, you might have seen my post on setting up PyCharm for Maya Python development. It’s been one of my more practical posts, and for a long time it reflected how I actually worked. PyCharm was my IDE of choice for Maya scripting, and I didn’t have much reason to look elsewhere.\\nI’d tried VS Code over the years and never really landed on it. Getting it properly configured for Maya — pointing it at the right interpreter, getting reasonable autocomplete — always felt like more friction than it was worth. PyCharm just worked, and once you had a good setup going, it was hard to argue with.\\nRecently I went back to VS Code and gave it another proper shot. This time, it clicked. And in revisiting everything, I also realized my old workflow had a limitation I hadn’t fully reckoned with — something I’ll get into below. Workflows evolve. It is what it is. Here’s where I’ve landed.\\nTwo things that made the difference uv The first is uv, the Python package and project manager from Astral. If you haven’t run into it yet, it’s worth a look — it’s fast, opinionated in the right ways, and has become my go-to for managing Python environments.\\nFor Maya development specifically, the challenge has always been the same: getting a Python environment set up that gives you both good autocomplete in the editor and the ability to actually execute code against Maya in headless mode.\\nIn my PyCharm post, the approach was to point PyCharm directly at mayapy as the system interpreter — no virtual environment involved. That works, and it unlocks a lot, but it means you’re working in Maya’s Python environment directly. Any packages you install go in there with everything else, and you lose the isolation and reproducibility that a virtual environment gives you.\\nWith uv, the goal was to get to a venv-based workflow. The problem is that when you create a virtual environment and try to run code with mayapy in headless mode, Maya’s own site-packages folder isn’t on the Python path inside your venv — so anything that depends on Maya’s modules can’t be found.\\nIn my old PyCharm setup, the fix was a manual step in the interpreter settings — you had to go in and explicitly add Maya’s site-packages directory to the path. It worked, but it was easy to forget, and it was something you had to redo whenever you set up a new project.\\nWith uv, we solved this more cleanly. As part of the thin wrapper script that creates the virtual environment, we now automatically drop a .pth file into the venv’s own site-packages directory. That file contains a single line: the path to Maya’s site-packages. Python picks up .pth files automatically at startup, so the moment the venv is activated, Maya’s packages are on the path — no manual config step, nothing to forget, nothing to redo.\\nThe wrapper script lets you define which Maya version to work with, which then gets passed to uv. For example:\\nuv sync --python maya2025 Behind the scenes, this becomes:\\nuv sync --python \\\"C:\\\\Program Files\\\\Autodesk\\\\Maya2025\\\\bin\\\\mayapy.exe\\\" You could pass the full interpreter path like this every time and use vanilla uv if you wanted — it works. But it’s a bit tedious, and you’d also miss out on the automatic .pth setup and the auto-sync of maya-stubs that the wrapper handles for you. The script just takes care of all of that in one step.\\nThe script handles setting up the venv and dropping in that .pth file automatically.\\nOn Windows, that .pth file line looks something like this (adjust for your Maya version):\\nC:\\\\Program Files\\\\Autodesk\\\\Maya2025\\\\Python\\\\Lib\\\\site-packages Worth noting: this isn’t a VS Code-specific trick. If you’re still on PyCharm, the same approach should work for you too — it operates at the Python environment level, not the IDE level. But it did solve the friction I was hitting in VS Code, and it’s cleaner than the manual path configuration I’d been doing before.\\nAI-assisted autocomplete The other thing is that Copilot — and AI-assisted autocomplete in general — has really closed the gap that used to make PyCharm feel superior on the completions side. VS Code’s native autocomplete for Maya was always a weak point. That’s less of a concern now when you’ve got something like Copilot doing a lot of the heavy lifting on suggestions.\\nA couple of areas where VS Code is notably better Once I was set up, a couple of things stood out as better in VS Code than I was used to in PyCharm.\\nThe GitLab Workflow extension is the main one. MR reviews, pipeline status, CI feedback — it all surfaces cleanly inside the editor. The PyCharm experience always felt like it was playing catch-up by comparison.\\nCopilot integration is the second. I’ll caveat that it’s been a while since I’ve been in PyCharm, so it may have improved — but I’d find it hard to imagine it hitting the same level of integration that VS Code has, given that both Copilot and VS Code come from Microsoft. It shows. Commit message generation is built right in. Copilot can look at what’s happening in the terminal and help you work through errors there. It’s woven into the editor throughout rather than feeling like something bolted on.\\nTo be fair, I haven’t explored the newer AI-centric IDEs that have been popping up recently. I’ve stayed between these two main players, so it’s entirely possible there’s something out there with even better AI integration. I’m happy with where I’ve landed though — there’s only so much you can realistically go and evaluate.\\nWhat I do miss about PyCharm PyCharm is a more polished experience. It’s a commercial product built specifically for Python development, and that focus shows. Everything is there out of the box. You don’t have to go hunting for extensions, experiment with settings, or put in the upfront investment to get things feeling right.\\nVS Code is the opposite. It’s general purpose, and making it your own takes real time and exploration. Finding the extensions that fit your workflow, getting them configured the way you want — none of that is handed to you. It’s a more DIY experience, and if you’re not in the mood for that, PyCharm’s polish is hard to argue with.\\nOnce I’d put in the time though, I found I prefer where I landed. The trade-off of upfront investment for a better-integrated toolchain — especially around GitLab and Copilot — is one I’d make again.\\nSo should you switch? If you’re on PyCharm for Maya development and things are working for you, there’s no urgent reason to change. The old PyCharm setup post still holds up for what it is.\\nBut if GitLab and Copilot are a meaningful part of your workflow, VS Code has better answers for both now. And the setup story — which used to be the main argument against it — isn’t really an argument anymore.\\n\"",
   "wordCount" : "1173",
   "inLanguage": "en",
-  "image":"https://mathieson.github.io/blog/images/vscode-icon.png","datePublished": "2026-04-02T00:00:00Z",
+  "image":"https://matfacer.com/images/vscode-icon.png","datePublished": "2026-04-02T00:00:00Z",
   "dateModified": "2026-04-02T00:00:00Z",
   "author":{
     "@type": "Person",
@@ -102,14 +102,14 @@
   },
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://mathieson.github.io/blog/posts/switching-from-pycharm-to-vscode-with-uv/"
+    "@id": "https://matfacer.com/posts/switching-from-pycharm-to-vscode-with-uv/"
   },
   "publisher": {
     "@type": "Organization",
     "name": "Mat's Mind Dump",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://mathieson.github.io/blog/favicon.ico"
+      "url": "https://matfacer.com/favicon.ico"
     }
   }
 }
@@ -119,9 +119,9 @@
     <header class="header">
     <nav class="header-nav">
         <div class="logo">
-            <a href="https://mathieson.github.io/blog/" accesskey="h" title="Mat&#39;s Mind Dump (Alt + H)">
+            <a href="https://matfacer.com/" accesskey="h" title="Mat&#39;s Mind Dump (Alt + H)">
                         
-                    <img src="https://mathieson.github.io/blog/logos_hu_703e81d02529ebd6.png" alt="" aria-label="logo"
+                    <img src="https://matfacer.com/logos_hu_703e81d02529ebd6.png" alt="" aria-label="logo"
                         height="40">Mat&#39;s Mind Dump</a>
             <div class="logo-switches">
                 <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
@@ -148,12 +148,12 @@
         </div>
         <ul id="menu" class="menu">
             <li>
-                <a href="https://mathieson.github.io/blog/search/" title="Search (Alt &#43; /)" accesskey=/>
+                <a href="https://matfacer.com/search/" title="Search (Alt &#43; /)" accesskey=/>
                     <span>Search</span>
                 </a>
             </li>
             <li>
-                <a href="https://mathieson.github.io/blog/tags/" title="Tags">
+                <a href="https://matfacer.com/tags/" title="Tags">
                     <span>Tags</span>
                 </a>
             </li>
@@ -165,12 +165,12 @@
 <article class="post-single">
   <header class="post-header">
     <nav class="breadcrumbs" role="navigation" aria-label="Breadcrumb">
-    <a href='https://mathieson.github.io/blog/'>Home</a>
+    <a href='https://matfacer.com/'>Home</a>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
                 <polyline points="9 18 15 12 9 6"></polyline>
             </svg>
-            <a href="https://mathieson.github.io/blog/posts/">Posts</a></nav>
+            <a href="https://matfacer.com/posts/">Posts</a></nav>
     <h1 class="post-title entry-hint-parent">
       Switching from PyCharm to VS Code — and Fixing Python Environments with uv
     </h1>
@@ -183,8 +183,8 @@
   </header> 
 <figure class="entry-cover">
             <img loading="eager"
-                srcset='https://mathieson.github.io/blog/posts/switching-from-pycharm-to-vscode-with-uv/images/vscode-icon_hu_c639baa538e5684f.png 360w,https://mathieson.github.io/blog/posts/switching-from-pycharm-to-vscode-with-uv/images/vscode-icon_hu_cc5aa77522a2158.png 480w,https://mathieson.github.io/blog/posts/switching-from-pycharm-to-vscode-with-uv/images/vscode-icon_hu_ae7ec21af829a696.png 720w,https://mathieson.github.io/blog/posts/switching-from-pycharm-to-vscode-with-uv/images/vscode-icon_hu_1a20636d03f31c5e.png 1080w,https://mathieson.github.io/blog/posts/switching-from-pycharm-to-vscode-with-uv/images/vscode-icon.png 1200w'
-                src="https://mathieson.github.io/blog/posts/switching-from-pycharm-to-vscode-with-uv/images/vscode-icon.png"
+                srcset='https://matfacer.com/posts/switching-from-pycharm-to-vscode-with-uv/images/vscode-icon_hu_c639baa538e5684f.png 360w,https://matfacer.com/posts/switching-from-pycharm-to-vscode-with-uv/images/vscode-icon_hu_cc5aa77522a2158.png 480w,https://matfacer.com/posts/switching-from-pycharm-to-vscode-with-uv/images/vscode-icon_hu_ae7ec21af829a696.png 720w,https://matfacer.com/posts/switching-from-pycharm-to-vscode-with-uv/images/vscode-icon_hu_1a20636d03f31c5e.png 1080w,https://matfacer.com/posts/switching-from-pycharm-to-vscode-with-uv/images/vscode-icon.png 1200w'
+                src="https://matfacer.com/posts/switching-from-pycharm-to-vscode-with-uv/images/vscode-icon.png"
                 sizes="(min-width: 768px) 720px, 100vw"
                 width="1200" height="1000"
                 alt="Visual Studio Code icon">
@@ -254,14 +254,14 @@
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="https://mathieson.github.io/blog/tags/maya/">Maya</a></li>
-      <li><a href="https://mathieson.github.io/blog/tags/python/">Python</a></li>
-      <li><a href="https://mathieson.github.io/blog/tags/vscode/">Vscode</a></li>
-      <li><a href="https://mathieson.github.io/blog/tags/tooling/">Tooling</a></li>
-      <li><a href="https://mathieson.github.io/blog/tags/tech-art/">Tech-Art</a></li>
+      <li><a href="https://matfacer.com/tags/maya/">Maya</a></li>
+      <li><a href="https://matfacer.com/tags/python/">Python</a></li>
+      <li><a href="https://matfacer.com/tags/vscode/">Vscode</a></li>
+      <li><a href="https://matfacer.com/tags/tooling/">Tooling</a></li>
+      <li><a href="https://matfacer.com/tags/tech-art/">Tech-Art</a></li>
     </ul>
 <nav class="paginav">
-  <a class="next" href="https://mathieson.github.io/blog/posts/sympy-to-solve-a-low-level-ml-training-loop/">
+  <a class="next" href="https://matfacer.com/posts/sympy-to-solve-a-low-level-ml-training-loop/">
     <span class="title">Next »</span>
     <span>SymPy to Solve a Low Level ML Training Loop</span>
   </a>
@@ -278,10 +278,10 @@
   data-reactions-enabled="1"
   data-emit-metadata="0"
   data-input-position="bottom"
-  data-theme="https://mathieson.github.io/blog/giscus-light.css"
+  data-theme="https://matfacer.com/giscus-light.css"
   data-lang="en"
   data-loading="lazy"
-  data-giscus-dark-theme="https://mathieson.github.io/blog/giscus-dark.css"
+  data-giscus-dark-theme="https://matfacer.com/giscus-dark.css"
   crossorigin="anonymous"
   async>
 </script>
@@ -291,7 +291,7 @@
     </main>
     
 <footer class="footer">
-        <span>&copy; 2026 <a href="https://mathieson.github.io/blog/">Mat&#39;s Mind Dump</a></span> · 
+        <span>&copy; 2026 <a href="https://matfacer.com/">Mat&#39;s Mind Dump</a></span> · 
 
     <span>
         Powered by

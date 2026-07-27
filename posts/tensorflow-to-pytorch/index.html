@@ -9,16 +9,16 @@
 <meta name="keywords" content="machine-learning, deep-learning, pytorch, python">
 <meta name="description" content="Why I switched from TensorFlow to PyTorch: debuggability and transparency into the training process.">
 <meta name="author" content="Mat">
-<link rel="canonical" href="https://mathieson.github.io/blog/posts/tensorflow-to-pytorch/">
-<link crossorigin="anonymous" href="/blog/assets/css/stylesheet.c91380afb3f4124192224fe1cbd9bed0c7f76403520c60f9acc62dcbf3426d5a.css" integrity="sha256-yROAr7P0EkGSIk/hy9m&#43;0Mf3ZANSDGD5rMYty/NCbVo=" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://mathieson.github.io/blog/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="https://mathieson.github.io/blog/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://mathieson.github.io/blog/favicon-32x32.png">
-<link rel="apple-touch-icon" href="https://mathieson.github.io/blog/apple-touch-icon.png">
-<link rel="mask-icon" href="https://mathieson.github.io/blog/safari-pinned-tab.svg">
+<link rel="canonical" href="https://matfacer.com/posts/tensorflow-to-pytorch/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.c91380afb3f4124192224fe1cbd9bed0c7f76403520c60f9acc62dcbf3426d5a.css" integrity="sha256-yROAr7P0EkGSIk/hy9m&#43;0Mf3ZANSDGD5rMYty/NCbVo=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://matfacer.com/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://matfacer.com/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://matfacer.com/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://matfacer.com/apple-touch-icon.png">
+<link rel="mask-icon" href="https://matfacer.com/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="https://mathieson.github.io/blog/posts/tensorflow-to-pytorch/">
+<link rel="alternate" hreflang="en" href="https://matfacer.com/posts/tensorflow-to-pytorch/">
 <noscript>
     <style>
         #theme-toggle,
@@ -33,14 +33,14 @@
         document.querySelector("html").dataset.theme = 'dark';
     }
 
-</script><link rel="icon" type="image/png" sizes="32x32" href="https://mathieson.github.io/blog/favicon-32x32-dark.png" media="(prefers-color-scheme: dark)">
-<link rel="icon" type="image/png" sizes="16x16" href="https://mathieson.github.io/blog/favicon-16x16-dark.png" media="(prefers-color-scheme: dark)">
+</script><link rel="icon" type="image/png" sizes="32x32" href="https://matfacer.com/favicon-32x32-dark.png" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/png" sizes="16x16" href="https://matfacer.com/favicon-16x16-dark.png" media="(prefers-color-scheme: dark)">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,600,100,1&family=Montserrat:wght@600;700&family=Lato:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
 <script data-goatcounter="https://matfacer.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<meta property="og:url" content="https://mathieson.github.io/blog/posts/tensorflow-to-pytorch/">
+<meta property="og:url" content="https://matfacer.com/posts/tensorflow-to-pytorch/">
   <meta property="og:site_name" content="Mat&#39;s Mind Dump">
   <meta property="og:title" content="Tensorflow to PyTorch">
   <meta property="og:description" content="Why I switched from TensorFlow to PyTorch: debuggability and transparency into the training process.">
@@ -53,9 +53,9 @@
     <meta property="article:tag" content="Deep-Learning">
     <meta property="article:tag" content="Pytorch">
     <meta property="article:tag" content="Python">
-    <meta property="og:image" content="https://mathieson.github.io/blog/images/pytorch-logo.png">
+    <meta property="og:image" content="https://matfacer.com/images/pytorch-logo.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://mathieson.github.io/blog/images/pytorch-logo.png">
+<meta name="twitter:image" content="https://matfacer.com/images/pytorch-logo.png">
   <meta name="twitter:title" content="Tensorflow to PyTorch">
   <meta name="twitter:description" content="Why I switched from TensorFlow to PyTorch: debuggability and transparency into the training process.">
 
@@ -69,13 +69,13 @@
       "@type": "ListItem",
       "position":  1 ,
       "name": "Posts",
-      "item": "https://mathieson.github.io/blog/posts/"
+      "item": "https://matfacer.com/posts/"
     }, 
     {
       "@type": "ListItem",
       "position":  2 ,
       "name": "Tensorflow to PyTorch",
-      "item": "https://mathieson.github.io/blog/posts/tensorflow-to-pytorch/"
+      "item": "https://matfacer.com/posts/tensorflow-to-pytorch/"
     }
   ]
 }
@@ -93,7 +93,7 @@
   "articleBody": "\"My journey into machine learning is still in its relatively early stages. I began by familiarizing myself with Tensorflow. It was an excellent introduction, whetting my appetite for AI, but I am now ready to make the switch to PyTorch.\\nThere are two key drivers behind my decision to make this change.\\nDebugging Process transparency Debugging Debugging in Tensorflow has been problematic, to say the least, being most painful when writing custom loss functions. I’d feed dummy data to the loss function while writing it, pre-vetting what I was creating. However, when something didn’t work as expected during training, troubleshooting was near impossible. Tensors at training time are opaque, acting in some “virtual” fashion if my memory serves (this was a while ago now).\\nWhile I could throw down a breakpoint and inspect the values or print them out when I was “pre-vetting,” this “virtual” tensor removed any ability to do so. Perhaps this is possible to do, and I just hadn’t dug deep enough to discover how. I did dig mighty deep, though - so much so that it isn’t worth the effort even if it is possible.\\nOn the other hand, PyTorch maintains a reputation of operating much closer to native Python, interfacing more cleanly with NumPy, and being a friendlier experience when debugging.\\nProcess transparency Deep learning and neural nets have a steep learning curve, with many moving pieces and new concepts to understand (which can be intimidating). Tensorflow, and more specifically Keras, help reduce the barrier to entry by being a high-level wrapper, simplifying and removing the need for understanding some of the details of the underlying process. The structure for assembling a graph is apparent and feels guided, giving a clear template to follow to get results quickly.\\nAfter much reading and researching, I feel I am now over the initial hump of bewilderment and have a decent grasp of most of the inner workings of the training process. It feels like a good time to expose myself to a new library in hopes of validating and cementing my understandings. PyTorch feels, so far, like it shares more of what Keras is hiding and is slightly less structured. Seeing and working with more of the moving pieces is an exciting next step.\\nFor anyone out there also looking to break into PyTorch as a learning framework, I’ve found the following article to give a nicely pared-down view of the PyTorch life-cycle: PyTorch Tutorial: How to Develop Deep Learning Models with Python. Instead of walking you through a completed example, introducing too much additional information too soon and making things cloudy, It strips away everything non-essential. It gives you a look at the core process, leaving you with an easily digestible overview of the abstracted process.\\nIn closing I’ve immensely enjoyed working with Tensorflow and Keras and may find myself returning to it someday. For now, I am excited to continue my journey with PyTorch and see how different the experience is.\\n\"",
   "wordCount" : "496",
   "inLanguage": "en",
-  "image":"https://mathieson.github.io/blog/images/pytorch-logo.png","datePublished": "2021-10-10T00:00:00Z",
+  "image":"https://matfacer.com/images/pytorch-logo.png","datePublished": "2021-10-10T00:00:00Z",
   "dateModified": "2021-10-10T00:00:00Z",
   "author":{
     "@type": "Person",
@@ -101,14 +101,14 @@
   },
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://mathieson.github.io/blog/posts/tensorflow-to-pytorch/"
+    "@id": "https://matfacer.com/posts/tensorflow-to-pytorch/"
   },
   "publisher": {
     "@type": "Organization",
     "name": "Mat's Mind Dump",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://mathieson.github.io/blog/favicon.ico"
+      "url": "https://matfacer.com/favicon.ico"
     }
   }
 }
@@ -118,9 +118,9 @@
     <header class="header">
     <nav class="header-nav">
         <div class="logo">
-            <a href="https://mathieson.github.io/blog/" accesskey="h" title="Mat&#39;s Mind Dump (Alt + H)">
+            <a href="https://matfacer.com/" accesskey="h" title="Mat&#39;s Mind Dump (Alt + H)">
                         
-                    <img src="https://mathieson.github.io/blog/logos_hu_703e81d02529ebd6.png" alt="" aria-label="logo"
+                    <img src="https://matfacer.com/logos_hu_703e81d02529ebd6.png" alt="" aria-label="logo"
                         height="40">Mat&#39;s Mind Dump</a>
             <div class="logo-switches">
                 <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
@@ -147,12 +147,12 @@
         </div>
         <ul id="menu" class="menu">
             <li>
-                <a href="https://mathieson.github.io/blog/search/" title="Search (Alt &#43; /)" accesskey=/>
+                <a href="https://matfacer.com/search/" title="Search (Alt &#43; /)" accesskey=/>
                     <span>Search</span>
                 </a>
             </li>
             <li>
-                <a href="https://mathieson.github.io/blog/tags/" title="Tags">
+                <a href="https://matfacer.com/tags/" title="Tags">
                     <span>Tags</span>
                 </a>
             </li>
@@ -164,12 +164,12 @@
 <article class="post-single">
   <header class="post-header">
     <nav class="breadcrumbs" role="navigation" aria-label="Breadcrumb">
-    <a href='https://mathieson.github.io/blog/'>Home</a>
+    <a href='https://matfacer.com/'>Home</a>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
                 <polyline points="9 18 15 12 9 6"></polyline>
             </svg>
-            <a href="https://mathieson.github.io/blog/posts/">Posts</a></nav>
+            <a href="https://matfacer.com/posts/">Posts</a></nav>
     <h1 class="post-title entry-hint-parent">
       Tensorflow to PyTorch
     </h1>
@@ -182,8 +182,8 @@
   </header> 
 <figure class="entry-cover">
             <img loading="eager"
-                srcset='https://mathieson.github.io/blog/posts/tensorflow-to-pytorch/images/pytorch-logo_hu_276c832c331b154d.png 360w,https://mathieson.github.io/blog/posts/tensorflow-to-pytorch/images/pytorch-logo_hu_9debf00eaa58fc0d.png 480w,https://mathieson.github.io/blog/posts/tensorflow-to-pytorch/images/pytorch-logo_hu_8d2c7f624c1d9181.png 720w,https://mathieson.github.io/blog/posts/tensorflow-to-pytorch/images/pytorch-logo_hu_536034ddcc4cd6a.png 1080w,https://mathieson.github.io/blog/posts/tensorflow-to-pytorch/images/pytorch-logo.png 1200w'
-                src="https://mathieson.github.io/blog/posts/tensorflow-to-pytorch/images/pytorch-logo.png"
+                srcset='https://matfacer.com/posts/tensorflow-to-pytorch/images/pytorch-logo_hu_276c832c331b154d.png 360w,https://matfacer.com/posts/tensorflow-to-pytorch/images/pytorch-logo_hu_9debf00eaa58fc0d.png 480w,https://matfacer.com/posts/tensorflow-to-pytorch/images/pytorch-logo_hu_8d2c7f624c1d9181.png 720w,https://matfacer.com/posts/tensorflow-to-pytorch/images/pytorch-logo_hu_536034ddcc4cd6a.png 1080w,https://matfacer.com/posts/tensorflow-to-pytorch/images/pytorch-logo.png 1200w'
+                src="https://matfacer.com/posts/tensorflow-to-pytorch/images/pytorch-logo.png"
                 sizes="(min-width: 768px) 720px, 100vw"
                 width="1200" height="1000"
                 alt="PyTorch logo">
@@ -227,17 +227,17 @@
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="https://mathieson.github.io/blog/tags/machine-learning/">Machine-Learning</a></li>
-      <li><a href="https://mathieson.github.io/blog/tags/deep-learning/">Deep-Learning</a></li>
-      <li><a href="https://mathieson.github.io/blog/tags/pytorch/">Pytorch</a></li>
-      <li><a href="https://mathieson.github.io/blog/tags/python/">Python</a></li>
+      <li><a href="https://matfacer.com/tags/machine-learning/">Machine-Learning</a></li>
+      <li><a href="https://matfacer.com/tags/deep-learning/">Deep-Learning</a></li>
+      <li><a href="https://matfacer.com/tags/pytorch/">Pytorch</a></li>
+      <li><a href="https://matfacer.com/tags/python/">Python</a></li>
     </ul>
 <nav class="paginav">
-  <a class="prev" href="https://mathieson.github.io/blog/posts/loss-vs-reward-in-reinforcement-learning/">
+  <a class="prev" href="https://matfacer.com/posts/loss-vs-reward-in-reinforcement-learning/">
     <span class="title">« Prev</span>
     <span>Loss vs. reward in reinforcement learning</span>
   </a>
-  <a class="next" href="https://mathieson.github.io/blog/posts/kaggle-courses/">
+  <a class="next" href="https://matfacer.com/posts/kaggle-courses/">
     <span class="title">Next »</span>
     <span>Kaggle Courses</span>
   </a>
@@ -254,10 +254,10 @@
   data-reactions-enabled="1"
   data-emit-metadata="0"
   data-input-position="bottom"
-  data-theme="https://mathieson.github.io/blog/giscus-light.css"
+  data-theme="https://matfacer.com/giscus-light.css"
   data-lang="en"
   data-loading="lazy"
-  data-giscus-dark-theme="https://mathieson.github.io/blog/giscus-dark.css"
+  data-giscus-dark-theme="https://matfacer.com/giscus-dark.css"
   crossorigin="anonymous"
   async>
 </script>
@@ -267,7 +267,7 @@
     </main>
     
 <footer class="footer">
-        <span>&copy; 2026 <a href="https://mathieson.github.io/blog/">Mat&#39;s Mind Dump</a></span> · 
+        <span>&copy; 2026 <a href="https://matfacer.com/">Mat&#39;s Mind Dump</a></span> · 
 
     <span>
         Powered by

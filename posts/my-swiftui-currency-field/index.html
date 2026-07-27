@@ -9,16 +9,16 @@
 <meta name="keywords" content="ios, swift, swiftui">
 <meta name="description" content="A simple, robust SwiftUI currency input field — no over-engineered solutions required.">
 <meta name="author" content="Mat">
-<link rel="canonical" href="https://mathieson.github.io/blog/posts/my-swiftui-currency-field/">
-<link crossorigin="anonymous" href="/blog/assets/css/stylesheet.c91380afb3f4124192224fe1cbd9bed0c7f76403520c60f9acc62dcbf3426d5a.css" integrity="sha256-yROAr7P0EkGSIk/hy9m&#43;0Mf3ZANSDGD5rMYty/NCbVo=" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://mathieson.github.io/blog/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="https://mathieson.github.io/blog/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://mathieson.github.io/blog/favicon-32x32.png">
-<link rel="apple-touch-icon" href="https://mathieson.github.io/blog/apple-touch-icon.png">
-<link rel="mask-icon" href="https://mathieson.github.io/blog/safari-pinned-tab.svg">
+<link rel="canonical" href="https://matfacer.com/posts/my-swiftui-currency-field/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.c91380afb3f4124192224fe1cbd9bed0c7f76403520c60f9acc62dcbf3426d5a.css" integrity="sha256-yROAr7P0EkGSIk/hy9m&#43;0Mf3ZANSDGD5rMYty/NCbVo=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://matfacer.com/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://matfacer.com/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://matfacer.com/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://matfacer.com/apple-touch-icon.png">
+<link rel="mask-icon" href="https://matfacer.com/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="https://mathieson.github.io/blog/posts/my-swiftui-currency-field/">
+<link rel="alternate" hreflang="en" href="https://matfacer.com/posts/my-swiftui-currency-field/">
 <noscript>
     <style>
         #theme-toggle,
@@ -33,14 +33,14 @@
         document.querySelector("html").dataset.theme = 'dark';
     }
 
-</script><link rel="icon" type="image/png" sizes="32x32" href="https://mathieson.github.io/blog/favicon-32x32-dark.png" media="(prefers-color-scheme: dark)">
-<link rel="icon" type="image/png" sizes="16x16" href="https://mathieson.github.io/blog/favicon-16x16-dark.png" media="(prefers-color-scheme: dark)">
+</script><link rel="icon" type="image/png" sizes="32x32" href="https://matfacer.com/favicon-32x32-dark.png" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/png" sizes="16x16" href="https://matfacer.com/favicon-16x16-dark.png" media="(prefers-color-scheme: dark)">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,600,100,1&family=Montserrat:wght@600;700&family=Lato:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
 <script data-goatcounter="https://matfacer.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<meta property="og:url" content="https://mathieson.github.io/blog/posts/my-swiftui-currency-field/">
+<meta property="og:url" content="https://matfacer.com/posts/my-swiftui-currency-field/">
   <meta property="og:site_name" content="Mat&#39;s Mind Dump">
   <meta property="og:title" content="My SwiftUI Currency Field">
   <meta property="og:description" content="A simple, robust SwiftUI currency input field — no over-engineered solutions required.">
@@ -52,9 +52,9 @@
     <meta property="article:tag" content="Ios">
     <meta property="article:tag" content="Swift">
     <meta property="article:tag" content="Swiftui">
-    <meta property="og:image" content="https://mathieson.github.io/blog/images/swiftui-icon.png">
+    <meta property="og:image" content="https://matfacer.com/images/swiftui-icon.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://mathieson.github.io/blog/images/swiftui-icon.png">
+<meta name="twitter:image" content="https://matfacer.com/images/swiftui-icon.png">
   <meta name="twitter:title" content="My SwiftUI Currency Field">
   <meta name="twitter:description" content="A simple, robust SwiftUI currency input field — no over-engineered solutions required.">
 
@@ -68,13 +68,13 @@
       "@type": "ListItem",
       "position":  1 ,
       "name": "Posts",
-      "item": "https://mathieson.github.io/blog/posts/"
+      "item": "https://matfacer.com/posts/"
     }, 
     {
       "@type": "ListItem",
       "position":  2 ,
       "name": "My SwiftUI Currency Field",
-      "item": "https://mathieson.github.io/blog/posts/my-swiftui-currency-field/"
+      "item": "https://matfacer.com/posts/my-swiftui-currency-field/"
     }
   ]
 }
@@ -92,7 +92,7 @@
   "articleBody": "\"I’ve been spending a lot of time in SwiftUI lately and, so far, I love it.\\nWhile it is remarkably flexible and powerful, it is still very young. There are still pain points from what seems to be a lack of coverage in the framework. Worse still, because it is changing and updating so rapidly, I am finding that much advice on StackOverflow and many blog posts are outdated already.\\nOne such area is with entering currency values in an application. Searching this topic brought back many results, but all of which seemed overly complicated. I returned to this today and came up with what I feel is a solid and straightforward solution, so I thought I would share!\\nimport SwiftUI struct SelectOnFocus: ViewModifier { func body(content: Content) -\\u003e some View { content .onReceive(NotificationCenter.default.publisher(for: UITextField.textDidBeginEditingNotification)) { obj in if let textField = obj.object as? UITextField { textField.selectedTextRange = textField.textRange(from: textField.beginningOfDocument, to: textField.endOfDocument) } } } } extension TextField { func selectOnFocus() -\\u003e some View { modifier(SelectOnFocus()) } } public struct CurrencyField: View { @Binding var value: Decimal? @FocusState private var isActive var locale = Locale.current var formatter: NumberFormatter { let formatter = NumberFormatter() formatter.locale = locale formatter.numberStyle = .currency return formatter } public var body: some View { TextField(formatter.string(from: 0) ?? \\\"0\\\", value: $value, format: .currency(code: locale.currencyCode!)) .selectOnFocus() .multilineTextAlignment(.trailing) .focused($isActive) .keyboardType(formatter.maximumFractionDigits \\u003e 0 ? .decimalPad: .numberPad) .allowsHitTesting(false) .overlay( GeometryReader { geometry in Button { isActive = true } label: { Color.clear } .frame(width: geometry.size.width, height: geometry.size.height) } ) } } struct CurrencyField_Previews: PreviewProvider { static var previews: some View { VStack { Group { CurrencyField(value: .constant(23.40)) CurrencyField(value: .constant(0.0)) CurrencyField(value: .constant(3.0)) CurrencyField(value: .constant(nil)) CurrencyField(value: .constant(391), locale: Locale(identifier: \\\"ja_jp\\\")) CurrencyField(value: .constant(127), locale: Locale(identifier: \\\"ru_ru\\\")) CurrencyField(value: .constant(67), locale: Locale(identifier: \\\"zh-cn\\\")) CurrencyField(value: .constant(345), locale: Locale(identifier: \\\"sv-se\\\")) } } .previewLayout(.sizeThatFits) } } And here are the results from the PreviewProvider.\\nThe behaviour is similar to a currency field you often see in apps.\\nThe text field is overlayed with an invisible button, blocking direct interactivity to the field. Pressing the button activates the text field for editing. Upon activation, the text field’s contents are selected, making it so the user will fully re-enter the price each time. Keyboard is either decimal pad or number pad, depending on the locale being used. If the local doesn’t support decimal places with their currency (i.e. Japan), then there is no reason to present the decimal pad keyboard. \"",
   "wordCount" : "399",
   "inLanguage": "en",
-  "image":"https://mathieson.github.io/blog/images/swiftui-icon.png","datePublished": "2022-01-12T00:00:00Z",
+  "image":"https://matfacer.com/images/swiftui-icon.png","datePublished": "2022-01-12T00:00:00Z",
   "dateModified": "2022-01-12T00:00:00Z",
   "author":{
     "@type": "Person",
@@ -100,14 +100,14 @@
   },
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://mathieson.github.io/blog/posts/my-swiftui-currency-field/"
+    "@id": "https://matfacer.com/posts/my-swiftui-currency-field/"
   },
   "publisher": {
     "@type": "Organization",
     "name": "Mat's Mind Dump",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://mathieson.github.io/blog/favicon.ico"
+      "url": "https://matfacer.com/favicon.ico"
     }
   }
 }
@@ -117,9 +117,9 @@
     <header class="header">
     <nav class="header-nav">
         <div class="logo">
-            <a href="https://mathieson.github.io/blog/" accesskey="h" title="Mat&#39;s Mind Dump (Alt + H)">
+            <a href="https://matfacer.com/" accesskey="h" title="Mat&#39;s Mind Dump (Alt + H)">
                         
-                    <img src="https://mathieson.github.io/blog/logos_hu_703e81d02529ebd6.png" alt="" aria-label="logo"
+                    <img src="https://matfacer.com/logos_hu_703e81d02529ebd6.png" alt="" aria-label="logo"
                         height="40">Mat&#39;s Mind Dump</a>
             <div class="logo-switches">
                 <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
@@ -146,12 +146,12 @@
         </div>
         <ul id="menu" class="menu">
             <li>
-                <a href="https://mathieson.github.io/blog/search/" title="Search (Alt &#43; /)" accesskey=/>
+                <a href="https://matfacer.com/search/" title="Search (Alt &#43; /)" accesskey=/>
                     <span>Search</span>
                 </a>
             </li>
             <li>
-                <a href="https://mathieson.github.io/blog/tags/" title="Tags">
+                <a href="https://matfacer.com/tags/" title="Tags">
                     <span>Tags</span>
                 </a>
             </li>
@@ -163,12 +163,12 @@
 <article class="post-single">
   <header class="post-header">
     <nav class="breadcrumbs" role="navigation" aria-label="Breadcrumb">
-    <a href='https://mathieson.github.io/blog/'>Home</a>
+    <a href='https://matfacer.com/'>Home</a>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
                 <polyline points="9 18 15 12 9 6"></polyline>
             </svg>
-            <a href="https://mathieson.github.io/blog/posts/">Posts</a></nav>
+            <a href="https://matfacer.com/posts/">Posts</a></nav>
     <h1 class="post-title entry-hint-parent">
       My SwiftUI Currency Field
     </h1>
@@ -181,8 +181,8 @@
   </header> 
 <figure class="entry-cover">
             <img loading="eager"
-                srcset='https://mathieson.github.io/blog/posts/my-swiftui-currency-field/images/swiftui-icon_hu_1824ad94e9eddd00.png 360w,https://mathieson.github.io/blog/posts/my-swiftui-currency-field/images/swiftui-icon_hu_622efab206fe4ca4.png 480w,https://mathieson.github.io/blog/posts/my-swiftui-currency-field/images/swiftui-icon_hu_50664b80d5f239cf.png 720w,https://mathieson.github.io/blog/posts/my-swiftui-currency-field/images/swiftui-icon_hu_c89f68e58984a02b.png 1080w,https://mathieson.github.io/blog/posts/my-swiftui-currency-field/images/swiftui-icon.png 1200w'
-                src="https://mathieson.github.io/blog/posts/my-swiftui-currency-field/images/swiftui-icon.png"
+                srcset='https://matfacer.com/posts/my-swiftui-currency-field/images/swiftui-icon_hu_1824ad94e9eddd00.png 360w,https://matfacer.com/posts/my-swiftui-currency-field/images/swiftui-icon_hu_622efab206fe4ca4.png 480w,https://matfacer.com/posts/my-swiftui-currency-field/images/swiftui-icon_hu_50664b80d5f239cf.png 720w,https://matfacer.com/posts/my-swiftui-currency-field/images/swiftui-icon_hu_c89f68e58984a02b.png 1080w,https://matfacer.com/posts/my-swiftui-currency-field/images/swiftui-icon.png 1200w'
+                src="https://matfacer.com/posts/my-swiftui-currency-field/images/swiftui-icon.png"
                 sizes="(min-width: 768px) 720px, 100vw"
                 width="1200" height="1000"
                 alt="SwiftUI icon">
@@ -261,7 +261,7 @@
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><p>And here are the results from the PreviewProvider.</p>
-<p><img alt="CurrencyField preview showing multiple locale formats" loading="lazy" src="/blog/posts/my-swiftui-currency-field/images/Screen-Shot-2022-01-10-at-5.28.24-PM.png"></p>
+<p><img alt="CurrencyField preview showing multiple locale formats" loading="lazy" src="/posts/my-swiftui-currency-field/images/Screen-Shot-2022-01-10-at-5.28.24-PM.png"></p>
 <p>The behaviour is similar to a currency field you often see in apps.</p>
 <ul>
 <li>The text field is overlayed with an invisible button, blocking direct interactivity to the field. Pressing the button activates the text field for editing.</li>
@@ -274,16 +274,16 @@
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="https://mathieson.github.io/blog/tags/ios/">Ios</a></li>
-      <li><a href="https://mathieson.github.io/blog/tags/swift/">Swift</a></li>
-      <li><a href="https://mathieson.github.io/blog/tags/swiftui/">Swiftui</a></li>
+      <li><a href="https://matfacer.com/tags/ios/">Ios</a></li>
+      <li><a href="https://matfacer.com/tags/swift/">Swift</a></li>
+      <li><a href="https://matfacer.com/tags/swiftui/">Swiftui</a></li>
     </ul>
 <nav class="paginav">
-  <a class="prev" href="https://mathieson.github.io/blog/posts/coredata-swift-scalar-optionals/">
+  <a class="prev" href="https://matfacer.com/posts/coredata-swift-scalar-optionals/">
     <span class="title">« Prev</span>
     <span>CoreData Swift Scalar Optionals</span>
   </a>
-  <a class="next" href="https://mathieson.github.io/blog/posts/loss-vs-reward-in-reinforcement-learning/">
+  <a class="next" href="https://matfacer.com/posts/loss-vs-reward-in-reinforcement-learning/">
     <span class="title">Next »</span>
     <span>Loss vs. reward in reinforcement learning</span>
   </a>
@@ -300,10 +300,10 @@
   data-reactions-enabled="1"
   data-emit-metadata="0"
   data-input-position="bottom"
-  data-theme="https://mathieson.github.io/blog/giscus-light.css"
+  data-theme="https://matfacer.com/giscus-light.css"
   data-lang="en"
   data-loading="lazy"
-  data-giscus-dark-theme="https://mathieson.github.io/blog/giscus-dark.css"
+  data-giscus-dark-theme="https://matfacer.com/giscus-dark.css"
   crossorigin="anonymous"
   async>
 </script>
@@ -313,7 +313,7 @@
     </main>
     
 <footer class="footer">
-        <span>&copy; 2026 <a href="https://mathieson.github.io/blog/">Mat&#39;s Mind Dump</a></span> · 
+        <span>&copy; 2026 <a href="https://matfacer.com/">Mat&#39;s Mind Dump</a></span> · 
 
     <span>
         Powered by

@@ -2,57 +2,57 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Python on Mat&#39;s Mind Dump</title>
-    <link>https://mathieson.github.io/blog/tags/python/</link>
+    <link>https://matfacer.com/tags/python/</link>
     <description>Recent content in Python on Mat&#39;s Mind Dump</description>
     <image>
       <title>Mat&#39;s Mind Dump</title>
-      <url>https://mathieson.github.io/blog/og-default.jpg</url>
-      <link>https://mathieson.github.io/blog/og-default.jpg</link>
+      <url>https://matfacer.com/og-default.jpg</url>
+      <link>https://matfacer.com/og-default.jpg</link>
     </image>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 02 Apr 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://mathieson.github.io/blog/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://matfacer.com/tags/python/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Switching from PyCharm to VS Code — and Fixing Python Environments with uv</title>
-      <link>https://mathieson.github.io/blog/posts/switching-from-pycharm-to-vscode-with-uv/</link>
+      <link>https://matfacer.com/posts/switching-from-pycharm-to-vscode-with-uv/</link>
       <pubDate>Thu, 02 Apr 2026 00:00:00 +0000</pubDate>
-      <guid>https://mathieson.github.io/blog/posts/switching-from-pycharm-to-vscode-with-uv/</guid>
+      <guid>https://matfacer.com/posts/switching-from-pycharm-to-vscode-with-uv/</guid>
       <description>Why I moved from PyCharm to VS Code, and the uv-based workflow — solving a Maya environment-isolation problem along the way — that finally made it click.</description>
     </item>
     <item>
       <title>SymPy to Solve a Low Level ML Training Loop</title>
-      <link>https://mathieson.github.io/blog/posts/sympy-to-solve-a-low-level-ml-training-loop/</link>
+      <link>https://matfacer.com/posts/sympy-to-solve-a-low-level-ml-training-loop/</link>
       <pubDate>Fri, 26 Aug 2022 00:00:00 +0000</pubDate>
-      <guid>https://mathieson.github.io/blog/posts/sympy-to-solve-a-low-level-ml-training-loop/</guid>
+      <guid>https://matfacer.com/posts/sympy-to-solve-a-low-level-ml-training-loop/</guid>
       <description>Using SymPy&amp;#39;s symbolic differentiation to hand-build backpropagation for a from-scratch training loop targeting on-device iOS training.</description>
     </item>
     <item>
       <title>The Best PyCharm MayaPy Interpreter Setup</title>
-      <link>https://mathieson.github.io/blog/posts/the-best-pycharm-mayapy-interpreter-setup/</link>
+      <link>https://matfacer.com/posts/the-best-pycharm-mayapy-interpreter-setup/</link>
       <pubDate>Thu, 16 Jun 2022 00:00:00 +0000</pubDate>
-      <guid>https://mathieson.github.io/blog/posts/the-best-pycharm-mayapy-interpreter-setup/</guid>
+      <guid>https://matfacer.com/posts/the-best-pycharm-mayapy-interpreter-setup/</guid>
       <description>Configuring PyCharm with MayaPy and Autodesk&amp;#39;s stub files for full autocomplete and a slick Maya unit-testing workflow.</description>
     </item>
     <item>
       <title>Tensorflow to PyTorch</title>
-      <link>https://mathieson.github.io/blog/posts/tensorflow-to-pytorch/</link>
+      <link>https://matfacer.com/posts/tensorflow-to-pytorch/</link>
       <pubDate>Sun, 10 Oct 2021 00:00:00 +0000</pubDate>
-      <guid>https://mathieson.github.io/blog/posts/tensorflow-to-pytorch/</guid>
+      <guid>https://matfacer.com/posts/tensorflow-to-pytorch/</guid>
       <description>Why I switched from TensorFlow to PyTorch: debuggability and transparency into the training process.</description>
     </item>
     <item>
       <title>Python logging in Maya</title>
-      <link>https://mathieson.github.io/blog/posts/demystifying-python-logging-in-maya/</link>
+      <link>https://matfacer.com/posts/demystifying-python-logging-in-maya/</link>
       <pubDate>Tue, 13 Jul 2021 00:00:00 +0000</pubDate>
-      <guid>https://mathieson.github.io/blog/posts/demystifying-python-logging-in-maya/</guid>
+      <guid>https://matfacer.com/posts/demystifying-python-logging-in-maya/</guid>
       <description>How Python&amp;#39;s logging hierarchy actually works, and how to configure loggers sensibly inside Autodesk Maya.</description>
     </item>
     <item>
       <title>Using the __new__ method in Python classes</title>
-      <link>https://mathieson.github.io/blog/posts/using-the-__new__-method-in-python-classes/</link>
+      <link>https://matfacer.com/posts/using-the-__new__-method-in-python-classes/</link>
       <pubDate>Sun, 28 Mar 2021 00:00:00 +0000</pubDate>
-      <guid>https://mathieson.github.io/blog/posts/using-the-__new__-method-in-python-classes/</guid>
+      <guid>https://matfacer.com/posts/using-the-__new__-method-in-python-classes/</guid>
       <description>What Python&amp;#39;s __new__ method actually does, how it differs from __init__, and when overriding it is useful.</description>
     </item>
   </channel>
