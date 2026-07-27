@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Ios on Mat&#39;s Mind Dump</title>
+    <link>https://matfacer.com/pr-preview/pr-6/tags/ios/</link>
+    <description>Recent content in Ios on Mat&#39;s Mind Dump</description>
+    <image>
+      <title>Mat&#39;s Mind Dump</title>
+      <url>https://matfacer.com/pr-preview/pr-6/og-default.jpg</url>
+      <link>https://matfacer.com/pr-preview/pr-6/og-default.jpg</link>
+    </image>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 22 Jan 2022 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://matfacer.com/pr-preview/pr-6/tags/ios/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CoreData Swift Scalar Optionals</title>
+      <link>https://matfacer.com/pr-preview/pr-6/posts/coredata-swift-scalar-optionals/</link>
+      <pubDate>Sat, 22 Jan 2022 00:00:00 +0000</pubDate>
+      <guid>https://matfacer.com/pr-preview/pr-6/posts/coredata-swift-scalar-optionals/</guid>
+      <description>CoreData doesn&amp;#39;t support optional scalar types like Double — here&amp;#39;s a clean workaround for optional numeric fields in a SwiftUI input form.</description>
+    </item>
+    <item>
+      <title>My SwiftUI Currency Field</title>
+      <link>https://matfacer.com/pr-preview/pr-6/posts/my-swiftui-currency-field/</link>
+      <pubDate>Wed, 12 Jan 2022 00:00:00 +0000</pubDate>
+      <guid>https://matfacer.com/pr-preview/pr-6/posts/my-swiftui-currency-field/</guid>
+      <description>A simple, robust SwiftUI currency input field — no over-engineered solutions required.</description>
+    </item>
+  </channel>
+</rss>
