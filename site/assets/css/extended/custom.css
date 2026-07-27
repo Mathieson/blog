@@ -154,8 +154,8 @@ a:hover, .post-content a:hover {
        The 3:4 box is the crop window over the 3:2 sprite — height is
        load-bearing, not decoration. Change the two together or the night
        half bleeds in from the right. */
-    width: 156px;
-    height: 208px;
+    width: 144px;
+    height: 192px;
     object-fit: cover;
     object-position: left;
     border-radius: 0 !important;
@@ -184,7 +184,7 @@ a:hover, .post-content a:hover {
    carries ~24px of transparent space below the brain, so a negative top margin
    pulls the title up to close the *visual* gap (not just the element gap). */
 .profile-brand h1 {
-    margin: -0.98rem 0 0;
+    margin: -0.91rem 0 0;
 }
 
 /* On phones the title wraps to nearly the full viewport width, and PaperMod
@@ -199,12 +199,12 @@ a:hover, .post-content a:hover {
 @media (max-width: 768px) {
     .profile img {
         transform: none;
-        width: 165px;
-        height: 220px;
+        width: 153px;
+        height: 204px;
     }
     /* Scales with the logo — the sprite's transparent footer grows too. */
     .profile-brand h1 {
-        margin-top: -1.05rem;
+        margin-top: -0.96rem;
     }
 }
 
