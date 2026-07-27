@@ -21,6 +21,16 @@ This creates `site/content/posts/<slug>/index.md` from `site/archetypes/posts/in
 
 Set `draft = false` (or remove the field) to publish. Draft posts are excluded from production builds but visible locally via `./preview.sh`.
 
+### Cover images
+
+Covers are logos on a transparent 1200x1000 canvas. They render `contain`-fit into a fixed box in the post list, so the *artwork inside the canvas* — not the canvas — decides how big a logo looks. After adding a cover, normalise its optical weight so it doesn't out-shout its neighbours:
+
+```bash
+python3 scripts/normalize-cover.py --all          # or --check to preview
+```
+
+The script only touches covers named in post frontmatter. Leave body screenshots and diagrams alone — they're sized by their content.
+
 ## Design tokens
 
 The site's colors are OKLCH tokens in `site/assets/css/extended/custom.css` (warm cream light / deep navy dark, steel-blue accent). Three places must stay visually in sync with those tokens:

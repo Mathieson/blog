@@ -150,8 +150,12 @@ a:hover, .post-content a:hover {
 }
 
 .profile img {
-    /* Show only the left (day) half of the combined logos.png sprite */
-    width: 135px;
+    /* Show only the left (day) half of the combined logos.png sprite.
+       The 3:4 box is the crop window over the 3:2 sprite — height is
+       load-bearing, not decoration. Change the two together or the night
+       half bleeds in from the right. */
+    width: 144px;
+    height: 192px;
     object-fit: cover;
     object-position: left;
     border-radius: 0 !important;
@@ -180,7 +184,35 @@ a:hover, .post-content a:hover {
    carries ~24px of transparent space below the brain, so a negative top margin
    pulls the title up to close the *visual* gap (not just the element gap). */
 .profile-brand h1 {
-    margin: -0.85rem 0 0;
+    margin: -0.91rem 0 0;
+}
+
+/* On phones the title wraps to nearly the full viewport width, and PaperMod
+   additionally shrinks the logo (transform: scale(0.85) under 768px), so the
+   mark ends up undersized above its own title. Undo the theme's scale and size
+   the sprite explicitly instead.
+
+   Width and height must grow together: the visible half is a 3:4 crop window
+   over the 3:2 sprite, so widening alone lets the other half bleed in. Must
+   stay after .profile-brand h1 above — same specificity, so source order is
+   what lets the tightened margin win. */
+@media (max-width: 768px) {
+    .profile img {
+        transform: none;
+        width: 153px;
+        height: 204px;
+    }
+    /* Scales with the logo — the sprite's transparent footer grows too. */
+    .profile-brand h1 {
+        margin-top: -0.96rem;
+    }
+}
+
+/* Reclaim some of the fold the taller masthead takes on small screens. */
+@media (max-width: 550px) {
+    .main .profile {
+        padding: 32px 0 28px;
+    }
 }
 
 /* Subtitle styling kept defensively in case the param is re-added */
@@ -351,9 +383,35 @@ ul.post-tags li a:hover {
     transform: translateY(-1px);
 }
 
-/* ── 12. Cover thumbnail grid (post list) ──────────────────────────────── */
+/* ── 12. Cover thumbnails (post list) ──────────────────────────────────── */
+/* Narrow screens keep PaperMod's stacked order — cover above the text, where
+   there's no horizontal room to spare — but the height cap is what does the
+   work. Left unstyled the cover renders full-bleed at its natural aspect
+   ratio, which on a phone is a screen-filling logo above two lines of text.
+
+   Cover art is centred logos on transparent canvases, so `contain` keeps them
+   whole (where `cover` crops into them) and centres them in the wider box. */
+.post-entry .entry-cover {
+    margin-bottom: 14px;
+}
+.post-entry .entry-cover img {
+    width: 100%;
+    height: 116px;
+    object-fit: contain;
+    border-radius: 8px;
+    filter: saturate(0.88);
+    transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1), filter var(--tr);
+}
+.post-entry:hover .entry-cover img {
+    transform: scale(1.05);
+    filter: saturate(1.05);
+}
+
+/* Wide enough for a side thumbnail: move the cover into its own column.
+   `.tag-entry` hides its cover (PaperMod), so it stays out of the grid —
+   otherwise it reserves an empty thumbnail column and squeezes the text. */
 @media (min-width: 550px) {
-    .post-entry:has(.entry-cover) {
+    .post-entry:not(.tag-entry):has(.entry-cover) {
         display: grid;
         grid-template-columns: 1fr 120px;
         grid-template-rows: auto auto auto;
@@ -370,16 +428,7 @@ ul.post-tags li a:hover {
     .post-entry .entry-footer  { grid-area: footer; }
 
     .post-entry .entry-cover img {
-        width: 100%;
         height: 100px;
-        object-fit: cover;
-        border-radius: 8px;
-        filter: saturate(0.88);
-        transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1), filter var(--tr);
-    }
-    .post-entry:hover .entry-cover img {
-        transform: scale(1.05);
-        filter: saturate(1.05);
     }
 }
 
