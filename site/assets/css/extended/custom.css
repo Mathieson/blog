@@ -150,8 +150,12 @@ a:hover, .post-content a:hover {
 }
 
 .profile img {
-    /* Show only the left (day) half of the combined logos.png sprite */
-    width: 135px;
+    /* Show only the left (day) half of the combined logos.png sprite.
+       The 3:4 box is the crop window over the 3:2 sprite — height is
+       load-bearing, not decoration. Change the two together or the night
+       half bleeds in from the right. */
+    width: 156px;
+    height: 208px;
     object-fit: cover;
     object-position: left;
     border-radius: 0 !important;
@@ -180,7 +184,7 @@ a:hover, .post-content a:hover {
    carries ~24px of transparent space below the brain, so a negative top margin
    pulls the title up to close the *visual* gap (not just the element gap). */
 .profile-brand h1 {
-    margin: -0.85rem 0 0;
+    margin: -0.98rem 0 0;
 }
 
 /* On phones the title wraps to nearly the full viewport width, and PaperMod
