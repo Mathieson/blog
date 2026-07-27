@@ -19,7 +19,10 @@ buildExpired    = false
   minifyOutput = false
 
 [outputs]
-  home = ["HTML", "RSS", "JSON"]
+  # ROBOTS must be listed explicitly: declaring `home` at all overrides Hugo's
+  # defaults, so enableRobotsTXT above is ignored without it. JSON feeds
+  # PaperMod's search index.
+  home = ["HTML", "RSS", "JSON", "ROBOTS"]
 
 # ---------------------------------------------------------------------------
 # Syntax highlighting
