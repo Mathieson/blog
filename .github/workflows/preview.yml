@@ -27,10 +27,21 @@ jobs:
 
       - name: Build preview
         if: github.event.action != 'closed'
-        # -D includes drafts so in-progress posts are visible in the preview
+        # -D includes drafts so in-progress posts are visible in the preview.
+        #
+        # Previews are public, so they must not be indexed or counted:
+        #   --environment preview   -> hugo.IsProduction false (drops analytics)
+        #   HUGO_PARAMS_ENV=preview -> overrides params.env from hugo.toml
+        # PaperMod only emits "noindex, nofollow" when BOTH are non-production
+        # (its check ORs them together), so overriding just one is not enough.
+        #
+        # Deliberately NOT paired with a robots.txt Disallow: blocking the
+        # crawl would stop Google reading the noindex, letting preview URLs
+        # linked from public PR comments get indexed anyway.
         env:
           PR_NUMBER: ${{ github.event.number }}
-        run: hugo --source site --baseURL "https://matfacer.com/pr-preview/pr-${PR_NUMBER}/" -D
+          HUGO_PARAMS_ENV: preview
+        run: hugo --source site --environment preview --baseURL "https://matfacer.com/pr-preview/pr-${PR_NUMBER}/" -D
 
       - name: Deploy / remove preview
         uses: rossjrw/pr-preview-action@v1
